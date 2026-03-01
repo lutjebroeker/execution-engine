@@ -1,8 +1,8 @@
 // Execution Engine — waitlist form handler
 // Loaded via <script defer> after Supabase CDN script
 
-const SUPABASE_URL = 'https://YOUR_PROJECT_ID.supabase.co';
-const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+const SUPABASE_URL = 'https://iezciovqfjfvxivgczrc.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_X7qmCmL4mkCH7i5_xmef8g_NDeXMhuJ';
 
 const { createClient } = supabase;
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
