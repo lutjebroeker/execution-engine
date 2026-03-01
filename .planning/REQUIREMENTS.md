@@ -1,4 +1,4 @@
-# Requirements: LifeEngine (working title)
+# Requirements: Execution Engine
 
 **Defined:** 2026-03-01
 **Core Value:** Convert visitors into buyers by making the system's existence and working proof so compelling that the price feels like a steal — selling the car, not the driving lesson.
@@ -16,7 +16,7 @@
 - [ ] **COPY-05**: Solution section introduces the system — shows it is already built and running, not a course
 - [ ] **COPY-06**: "How it works" section: Vision → 12-Week Cycle → Daily AI Check-in → Weekly Review → Quarterly Review
 - [ ] **COPY-07**: Social proof section: personal results from using the system (execution score, streaks, completed cycles)
-- [ ] **COPY-08**: Value stack section: Hormozi-style — show €652 perceived value vs €149 price
+- [ ] **COPY-08**: Value stack section: Hormozi-style — show perceived component value vs €2,497 launch price (€4,997 full price)
 - [ ] **COPY-09**: Guarantee section: "Day 1 result or full refund" — vault set up + first Telegram check-in on day 1
 - [ ] **COPY-10**: Scarcity/urgency: first 20 buyers get free 1:1 setup call (€249 value)
 - [ ] **COPY-11**: FAQ section answers: "Do I need to know n8n?", "Do I need Obsidian?", "What if I'm not technical?", "How is this different from LifeOS?"
@@ -24,7 +24,7 @@
 ### Demand Generation (Priestley method)
 
 - [ ] **DMND-01**: Landing page is live at a URL (custom domain or subdomain) — traffic can be sent to it before product is fully packaged
-- [ ] **DMND-02**: Email capture form POSTs to Listmonk API (self-hosted on Proxmox/Docker, Brevo SMTP for sending)
+- [ ] **DMND-02**: Email capture form POSTs to Supabase via fetch() — table: `execution_engine_waitlist`
 - [ ] **DMND-03**: Thank-you page / confirmation after email capture that sets expectations ("you're on the list, here's what happens next")
 - [ ] **DMND-04**: Landing page includes a "Product Demo" section or embedded short-form video showing the Telegram bot in action
 - [ ] **DMND-05**: Page is shareable — meta tags, og:image, og:title for LinkedIn / WhatsApp previews
@@ -32,7 +32,7 @@
 ### Design & Build
 
 - [ ] **BUILD-01**: Self-contained pure HTML/CSS/JS page — no framework, no build step, hosted on Vercel or Netlify free tier
-- [ ] **BUILD-02**: Dark theme, modern SaaS aesthetic (consistent with brand direction established in product suite analysis)
+- [ ] **BUILD-02**: Light theme, editorial aesthetic — Georgia + System UI fonts, #1D4ED8 primary, white/off-white backgrounds (per BRAND.md)
 - [ ] **BUILD-03**: Mobile responsive — primary audience is on mobile (Telegram users)
 - [ ] **BUILD-04**: Page loads fast (<3s) — no unnecessary dependencies
 - [ ] **BUILD-05**: Analytics tracking (Plausible or simple GA4) — know who's visiting and where they came from
@@ -63,7 +63,7 @@
 
 ### Sales
 
-- [ ] **SALE-01**: Gumroad product page live with title, description, value stack, price (€149), and bundle ZIP attached
+- [ ] **SALE-01**: Gumroad product page live with title, description, value stack, price (€2,497 launch / €4,997 full), and bundle ZIP attached
 - [ ] **SALE-02**: Gumroad page linked from landing page (waitlist → Gumroad when ready)
 
 ---
@@ -140,15 +140,15 @@
 
 ---
 
-## Open Decisions (must resolve before Phase 1 ships)
+## Resolved Decisions
 
-| # | Decision | Options | Impact |
-|---|----------|---------|--------|
-| 1 | Product name | LifeEngine vs flow-year-coach vs other | Domain, copy, branding |
-| 2 | Language | Dutch vs English | Audience size, copywriting |
-| 3 | Primary Phase 1 CTA | Waitlist only vs dual CTA (waitlist + buy bundle) | Revenue timing |
-| 4 | Email platform | Mailchimp vs Brevo vs ConvertKit | Nurture sequence cost |
-| 5 | Landing page tech | Pure HTML/CSS vs Next.js vs Lovable | Build speed |
+| # | Decision | Resolution |
+|---|----------|------------|
+| 1 | Product name | **Execution Engine** |
+| 2 | Language | **English** |
+| 3 | Primary Phase 1 CTA | **Waitlist only** (Priestley: build demand before selling) |
+| 4 | Email platform | **Supabase** (`execution_engine_waitlist` table, existing infrastructure) |
+| 5 | Landing page tech | **Pure HTML/CSS/JS** (no build step, single index.html) |
 
 ---
 
@@ -176,4 +176,4 @@
 
 ---
 *Requirements defined: 2026-03-01*
-*Last updated: 2026-03-01 after initialization*
+*Last updated: 2026-03-01 — pricing updated to €2,497/€4,997 (BRAND.md), theme updated to light, email platform updated to Supabase, decisions resolved*
