@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Execution Engine — Build systems that actually execute.</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Execution Engine — Build systems that actually execute.">
+  <meta property="og:description" content="AI-powered accountability for people who think in systems. Telegram check-ins, 12-week cycles, confrontational accountability. Execution rate: 23% → 87%.">
+  <meta property="og:image" content="https://executionengine.vercel.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://executionengine.vercel.app">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Execution Engine — Build systems that actually execute.">
+  <meta name="twitter:description" content="AI-powered accountability for people who think in systems. Execution rate: 23% → 87%.">
+  <meta name="twitter:image" content="https://executionengine.vercel.app/og-image.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- 1. NAV -->
+  <!-- ============================================================ -->
+  <nav class="nav">
+    <div class="nav__inner container">
+      <span class="nav__logo">Execution Engine</span>
+      <a href="#waitlist" class="nav__cta">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <!-- ============================================================ -->
+  <!-- 2. HERO -->
+  <!-- ============================================================ -->
+  <section id="hero" class="section section--white hero">
+    <div class="container">
+      <div class="hero__content prose">
+        <h1 class="hero__headline">You have a system.<br>You just don't follow through.</h1>
+        <p class="hero__sub">
+          Execution Engine is the working system — Telegram AI check-ins, 12-week cycles,
+          confrontational accountability. Built by a founder. Running in production.
+        </p>
+        <div class="hero__stat">
+          <span class="stat-badge">23% → 87% Execution Rate in 12 weeks</span>
+        </div>
+        <form class="waitlist-form" id="hero-form" novalidate>
+          <input
+            type="email"
+            name="email"
+            placeholder="your@email.com"
+            required
+            autocomplete="email"
+          >
+          <button type="submit">Join Waitlist</button>
+        </form>
+        <div class="form-success" hidden>
+          You're on the list. Watch your inbox.
+        </div>
+        <div class="form-error" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 3. PROBLEM -->
+  <!-- ============================================================ -->
+  <section id="problem" class="section section--off-white">
+    <div class="container prose">
+      <h2>You've tried the systems. They didn't stick.</h2>
+      <p>
+        You bought the Notion template. You set up the dashboard. You watched the
+        productivity video series at 1.5x speed, took notes, and told yourself
+        this time would be different.
+      </p>
+      <p>
+        It lasted two weeks. Maybe three if you count the Sunday you spent
+        reorganizing your workspace instead of doing the actual work.
+      </p>
+      <p>
+        The morning routine is gone. The weekly review never happened consistently.
+        The 90-day goals from last quarter? Still in a document you haven't opened
+        since you wrote them.
+      </p>
+      <p>
+        Life gets busy. The system breaks. And six months later you're starting over.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 4. AGITATION -->
+  <!-- ============================================================ -->
+  <section class="section section--paper agitation">
+    <div class="container prose">
+      <h2>The cost isn't the failed system. It's the years.</h2>
+      <p>
+        The project that's been "in progress" for fourteen months. The business idea
+        you've been refining in your head while never shipping the first version.
+        The fitness goal carried forward for the fourth consecutive year.
+      </p>
+      <p>
+        You're capable. You know this. You think in systems, you understand what
+        needs to happen, you can articulate the strategy clearly. And yet.
+      </p>
+      <p>
+        The gap isn't knowledge. It's execution. And every month that passes is
+        another month where the capable version of you and the executing version of
+        you are still different people.
+      </p>
+      <p class="agitation__challenge">
+        You said you'd do this. The question is whether you actually will.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 5. SOLUTION -->
+  <!-- ============================================================ -->
+  <section id="solution" class="section section--white">
+    <div class="container prose">
+      <h2>Execution Engine is not a course. It's the car — already running.</h2>
+      <p>
+        This isn't instructions on how to build a productivity system. It's the
+        system, pre-built, already running in production. Real n8n workflows (15+
+        active). A real Telegram bot checking in with you every morning. A real
+        Obsidian vault tracking your 12-week cycles.
+      </p>
+      <p>
+        You don't watch videos and build it yourself. You import one file, configure
+        three settings, and the system starts working for you the same day.
+      </p>
+      <p class="solution__compare">
+        LifeOS tells you how to drive. Execution Engine is the car — already running.
+      </p>
+      <p>
+        The methodology is the 12 Week Year: 12 weeks of focused execution, one
+        quarterly reset, no annual planning theatre. Combined with a daily AI
+        check-in that doesn't care about your excuses and a weekly review that
+        forces honest reflection.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 6. HOW IT WORKS -->
+  <!-- ============================================================ -->
+  <section id="how-it-works" class="section section--off-white">
+    <div class="container">
+      <h2 class="section__heading prose">How it works.</h2>
+      <ol class="steps-list">
+        <li class="step">
+          <span class="step__number">1</span>
+          <div class="step__body">
+            <h3 class="step__title">Vision</h3>
+            <p class="step__desc">Set your 12-week vision and 3 goals. Not 12. Not 20. Three — the ones that actually move the needle.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__number">2</span>
+          <div class="step__body">
+            <h3 class="step__title">12-Week Cycle</h3>
+            <p class="step__desc">Break each goal into weekly actions. Concrete, time-bound, measurable. Week by week, not quarter by quarter.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__number">3</span>
+          <div class="step__body">
+            <h3 class="step__title">Daily AI Check-in</h3>
+            <p class="step__desc">Every morning, your Telegram bot asks: "Did you do the work?" It tracks your answer. It remembers. It doesn't let you slide.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__number">4</span>
+          <div class="step__body">
+            <h3 class="step__title">Weekly Review</h3>
+            <p class="step__desc">Rate your week honestly. Adjust next week's actions. Thirty minutes every Sunday — the system walks you through it.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__number">5</span>
+          <div class="step__body">
+            <h3 class="step__title">Quarterly Review</h3>
+            <p class="step__desc">Reflect on the full 12 weeks. What worked. What didn't. Reset and run the next cycle. No annual planning theatre.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 7. DEMO -->
+  <!-- DMND-04: replace with <video> when demo.mp4 is ready -->
+  <!-- ============================================================ -->
+  <section id="demo" class="section section--white">
+    <div class="container">
+      <h2 class="section__heading prose">See it in action.</h2>
+      <div class="telegram-mockup">
+        <div class="telegram-mockup__header">
+          <div class="telegram-mockup__avatar">EE</div>
+          <div class="telegram-mockup__name">
+            <span class="telegram-mockup__bot-name">Execution Engine</span>
+            <span class="telegram-mockup__status">bot</span>
+          </div>
+        </div>
+        <div class="telegram-mockup__messages">
+          <div class="telegram-bubble telegram-bubble--bot">
+            Good morning. Yesterday you planned to work on your landing page copy.
+            Did you do it? Reply <strong>y</strong> or <strong>n</strong>.
+          </div>
+          <div class="telegram-bubble telegram-bubble--user">y</div>
+          <div class="telegram-bubble telegram-bubble--bot">
+            Execution rate this week: <strong>87%</strong>. That's 4 of 5 days.
+            Keep the streak. What's the one thing you're doing today?
+          </div>
+          <div class="telegram-bubble telegram-bubble--user">Writing the FAQ section and pushing to Vercel.</div>
+          <div class="telegram-bubble telegram-bubble--bot">
+            Noted. I'll ask you tomorrow. 12 weeks ago your rate was 23%.
+            This is what a working system looks like.
+          </div>
+        </div>
+      </div>
+      <p class="demo__caption">Your AI check-in, every morning on Telegram.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 8. SOCIAL PROOF -->
+  <!-- ============================================================ -->
+  <section id="social-proof" class="section section--off-white">
+    <div class="container">
+      <h2 class="section__heading prose">I built this for myself. Here's what happened.</h2>
+      <p class="prose social-proof__lead">
+        I'm not a productivity influencer. I'm an operator at Enza Zaden running a
+        side project. I built Execution Engine because I kept failing to follow through
+        on the systems I designed for myself. Then I started using it. Here's what
+        changed.
+      </p>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">23% → 87%</div>
+          <div class="stat-label">Execution Rate</div>
+          <p class="stat-note">Week 1 to Week 12 of the first cycle.</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">12</div>
+          <div class="stat-label">Completed Cycles</div>
+          <p class="stat-note">Each cycle is 12 weeks of structured execution.</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">15+</div>
+          <div class="stat-label">Active Workflows</div>
+          <p class="stat-note">Running in production, daily, without manual intervention.</p>
+        </div>
+      </div>
+      <p class="prose social-proof__caveat">
+        n=1 transparency: I'm selling you the car I drive. These are my numbers,
+        not averaged testimonials or cherry-picked screenshots. Your results will
+        depend on how seriously you engage with the daily check-ins.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 9. VALUE STACK -->
+  <!-- ============================================================ -->
+  <section id="value-stack" class="section section--white">
+    <div class="container">
+      <h2 class="section__heading prose">What you get.</h2>
+      <div class="value-stack-wrapper">
+        <table class="value-stack">
+          <thead>
+            <tr>
+              <th>What's included</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>n8n Morning System (15+ workflows)</td>
+              <td><s>€297</s></td>
+            </tr>
+            <tr>
+              <td>Obsidian Vault Starter</td>
+              <td><s>€97</s></td>
+            </tr>
+            <tr>
+              <td>Setup Guide + Quick Start</td>
+              <td><s>€147</s></td>
+            </tr>
+            <tr>
+              <td>1:1 Setup Call (first 20 buyers only)</td>
+              <td><s>€249</s></td>
+            </tr>
+            <tr class="value-stack__total">
+              <td>Total perceived value</td>
+              <td>€652+</td>
+            </tr>
+            <tr class="value-stack__price">
+              <td>Launch price</td>
+              <td>€2,497</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="value-stack__note">
+          Full price after launch: €4,997. Join the waitlist to lock in launch pricing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 10. GUARANTEE -->
+  <!-- ============================================================ -->
+  <section id="guarantee" class="section section--paper">
+    <div class="container prose">
+      <h2 class="guarantee__heading">Day 1 result or full refund.</h2>
+      <p>
+        Set up your vault, complete your first Telegram check-in. If that doesn't
+        work on Day 1 — if the system doesn't run, the bot doesn't respond, the
+        vault doesn't load — you get every euro back.
+      </p>
+      <p>
+        No questions. No 30-day "did you try hard enough" review. Day 1. It works
+        or it doesn't. If it doesn't, I give you your money back the same day.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 11. SCARCITY -->
+  <!-- ============================================================ -->
+  <section id="scarcity" class="section section--white">
+    <div class="container prose">
+      <h2>First 20 buyers get a free 1:1 setup call.</h2>
+      <p>
+        90 minutes. We set up your vault, connect your Telegram bot, configure your
+        first 12-week cycle. Together. You leave the call with a running system, not
+        a to-do list.
+      </p>
+      <p>
+        €249 value, free for the first 20 buyers. After that, it's available as a
+        paid add-on.
+      </p>
+      <p>
+        <span class="spots-remaining">20 spots available</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 12. FAQ -->
+  <!-- ============================================================ -->
+  <section id="faq" class="section section--off-white">
+    <div class="container prose">
+      <h2>Questions.</h2>
+      <div class="faq-list">
+        <details>
+          <summary>Do I need to know n8n?</summary>
+          <p>No. The workflows are pre-built. You import one JSON file and configure three settings — your Telegram bot token, your Obsidian vault path, and your timezone. That's it. You don't need to understand how the workflows run.</p>
+        </details>
+        <details>
+          <summary>Do I need Obsidian?</summary>
+          <p>Obsidian is part of the system. If you've never used it, the vault starter walks you through setup from scratch. It's free software that runs locally on your machine. Nothing stored in the cloud unless you choose to sync it.</p>
+        </details>
+        <details>
+          <summary>What if I'm not technical?</summary>
+          <p>You need to be comfortable copying and pasting into a config file. That's the technical bar. If you've ever set up a Notion database, connected a Zapier integration, or followed a software installation guide, you can set this up. The guide assumes zero prior knowledge of n8n or self-hosting.</p>
+        </details>
+        <details>
+          <summary>How is this different from LifeOS?</summary>
+          <p>LifeOS tells you how to drive. Execution Engine is the car — already running. LifeOS is a Notion template that teaches you to build a productivity system. This is an automated system that checks in on you every morning whether you like it or not. One is content. The other is infrastructure.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 13. FINAL CTA -->
+  <!-- ============================================================ -->
+  <section id="waitlist" class="section section--white cta-section">
+    <div class="container">
+      <div class="prose cta-section__content">
+        <h2>Join the waitlist.</h2>
+        <p>
+          Get launch pricing when we ship. First 20 buyers get the 1:1 setup call.
+          No spam — one email when the system is ready to ship.
+        </p>
+        <form class="waitlist-form" id="cta-form" novalidate>
+          <input
+            type="email"
+            name="email"
+            placeholder="your@email.com"
+            required
+            autocomplete="email"
+          >
+          <button type="submit">Join Waitlist</button>
+        </form>
+        <div class="form-success" hidden>
+          You're on the list. Watch your inbox.
+        </div>
+        <div class="form-error" hidden></div>
+        <p class="cta-section__guarantee">Day 1 result or full refund.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__tagline">Build systems that actually execute.</p>
+      <p class="footer__copy">&copy; 2026 Execution Engine &middot; Jelle Spek</p>
+    </div>
+  </footer>
+
+  <!-- Supabase CDN (wired in Plan 01-02) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <!-- Main JS (wired in Plan 01-02) -->
+  <script src="main.js" defer></script>
+  <!-- Plausible analytics (configured in Plan 01-02) -->
+  <script defer data-domain="executionengine.vercel.app" src="https://plausible.io/js/script.js"></script>
+
+</body>
+</html>
