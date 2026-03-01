@@ -9,32 +9,32 @@
 
 ### Copy & Structure (Priestley + Hormozi framework)
 
-- [ ] **COPY-01**: Landing page has a hero section with positioning headline that resonates with target audience pain ("not another productivity course — a working system")
-- [ ] **COPY-02**: Hero section has a clear primary CTA (email waitlist capture)
-- [ ] **COPY-03**: Problem section names the specific pain: tried productivity systems before, nothing sticks when life gets busy
-- [ ] **COPY-04**: Agitation section shows the cost of the problem (years of wasted potential, unfulfilled projects)
-- [ ] **COPY-05**: Solution section introduces the system — shows it is already built and running, not a course
-- [ ] **COPY-06**: "How it works" section: Vision → 12-Week Cycle → Daily AI Check-in → Weekly Review → Quarterly Review
-- [ ] **COPY-07**: Social proof section: personal results from using the system (execution score, streaks, completed cycles)
-- [ ] **COPY-08**: Value stack section: Hormozi-style — show perceived component value vs €2,497 launch price (€4,997 full price)
-- [ ] **COPY-09**: Guarantee section: "Day 1 result or full refund" — vault set up + first Telegram check-in on day 1
-- [ ] **COPY-10**: Scarcity/urgency: first 20 buyers get free 1:1 setup call (€249 value)
-- [ ] **COPY-11**: FAQ section answers: "Do I need to know n8n?", "Do I need Obsidian?", "What if I'm not technical?", "How is this different from LifeOS?"
+- [x] **COPY-01**: Landing page has a hero section with positioning headline that resonates with target audience pain ("not another productivity course — a working system")
+- [x] **COPY-02**: Hero section has a clear primary CTA (email waitlist capture)
+- [x] **COPY-03**: Problem section names the specific pain: tried productivity systems before, nothing sticks when life gets busy
+- [x] **COPY-04**: Agitation section shows the cost of the problem (years of wasted potential, unfulfilled projects)
+- [x] **COPY-05**: Solution section introduces the system — shows it is already built and running, not a course
+- [x] **COPY-06**: "How it works" section: Vision → 12-Week Cycle → Daily AI Check-in → Weekly Review → Quarterly Review
+- [x] **COPY-07**: Social proof section: personal results from using the system (execution score, streaks, completed cycles)
+- [x] **COPY-08**: Value stack section: Hormozi-style — show perceived component value vs €2,497 launch price (€4,997 full price)
+- [x] **COPY-09**: Guarantee section: "Day 1 result or full refund" — vault set up + first Telegram check-in on day 1
+- [x] **COPY-10**: Scarcity/urgency: first 20 buyers get free 1:1 setup call (€249 value)
+- [x] **COPY-11**: FAQ section answers: "Do I need to know n8n?", "Do I need Obsidian?", "What if I'm not technical?", "How is this different from LifeOS?"
 
 ### Demand Generation (Priestley method)
 
 - [ ] **DMND-01**: Landing page is live at a URL (custom domain or subdomain) — traffic can be sent to it before product is fully packaged
 - [ ] **DMND-02**: Email capture form POSTs to Supabase via fetch() — table: `execution_engine_waitlist`
 - [ ] **DMND-03**: Thank-you page / confirmation after email capture that sets expectations ("you're on the list, here's what happens next")
-- [ ] **DMND-04**: Landing page includes a "Product Demo" section or embedded short-form video showing the Telegram bot in action
+- [x] **DMND-04**: Landing page includes a "Product Demo" section or embedded short-form video showing the Telegram bot in action
 - [ ] **DMND-05**: Page is shareable — meta tags, og:image, og:title for LinkedIn / WhatsApp previews
 
 ### Design & Build
 
-- [ ] **BUILD-01**: Self-contained pure HTML/CSS/JS page — no framework, no build step, hosted on Vercel or Netlify free tier
-- [ ] **BUILD-02**: Light theme, editorial aesthetic — Georgia + System UI fonts, #1D4ED8 primary, white/off-white backgrounds (per BRAND.md)
-- [ ] **BUILD-03**: Mobile responsive — primary audience is on mobile (Telegram users)
-- [ ] **BUILD-04**: Page loads fast (<3s) — no unnecessary dependencies
+- [x] **BUILD-01**: Self-contained pure HTML/CSS/JS page — no framework, no build step, hosted on Vercel or Netlify free tier
+- [x] **BUILD-02**: Light theme, editorial aesthetic — Georgia + System UI fonts, #1D4ED8 primary, white/off-white backgrounds (per BRAND.md)
+- [x] **BUILD-03**: Mobile responsive — primary audience is on mobile (Telegram users)
+- [x] **BUILD-04**: Page loads fast (<3s) — no unnecessary dependencies
 - [ ] **BUILD-05**: Analytics tracking (Plausible or simple GA4) — know who's visiting and where they came from
 
 ---

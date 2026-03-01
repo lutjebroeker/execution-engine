@@ -12,7 +12,7 @@ Three phases that productize a working system: first make it visible (landing pa
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Landing Page** - High-converting landing page using Priestley demand generation and Hormozi value stacking to capture waitlist before anything ships
+- [ ] **Phase 1: Landing Page** - High-converting landing page using Priestley demand generation and Hormozi value stacking to capture waitlist before anything ships (1/2 plans complete)
 - [ ] **Phase 2: AM Bundle Packaging** - Productize the n8n AM workflow bundle — config cleanup, documentation, Obsidian starter, Gumroad listing
 - [ ] **Phase 3: Web App Pro Tier** - Add Supabase auth, cloud sync, Stripe subscription, and Claude AI coaching to the existing React web app
 
@@ -31,7 +31,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — HTML structure and complete copy: all 13 sections, Hormozi value stack, Telegram demo mockup, mobile-responsive CSS
+- [x] 01-01-PLAN.md — HTML structure and complete copy: all 13 sections, Hormozi value stack, Telegram demo mockup, mobile-responsive CSS
 - [ ] 01-02-PLAN.md — Supabase integration, Vercel deploy, og:image, Plausible analytics
 
 ### Phase 2: AM Bundle Packaging
@@ -76,6 +76,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Landing Page | 0/2 | Not started | - |
+| 1. Landing Page | 1/2 | In progress | - |
 | 2. AM Bundle Packaging | 0/3 | Not started | - |
 | 3. Web App Pro Tier | 0/4 | Not started | - |
