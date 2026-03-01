@@ -24,14 +24,14 @@
 ### Demand Generation (Priestley method)
 
 - [ ] **DMND-01**: Landing page is live at a URL (custom domain or subdomain) — traffic can be sent to it before product is fully packaged
-- [ ] **DMND-02**: Email capture form connected to a list (Mailchimp / Brevo / ConvertKit — TBD)
+- [ ] **DMND-02**: Email capture form POSTs to Listmonk API (self-hosted on Proxmox/Docker, Brevo SMTP for sending)
 - [ ] **DMND-03**: Thank-you page / confirmation after email capture that sets expectations ("you're on the list, here's what happens next")
 - [ ] **DMND-04**: Landing page includes a "Product Demo" section or embedded short-form video showing the Telegram bot in action
 - [ ] **DMND-05**: Page is shareable — meta tags, og:image, og:title for LinkedIn / WhatsApp previews
 
 ### Design & Build
 
-- [ ] **BUILD-01**: Self-contained HTML page or React/Next.js SPA — no backend required for Phase 1
+- [ ] **BUILD-01**: Self-contained pure HTML/CSS/JS page — no framework, no build step, hosted on Vercel or Netlify free tier
 - [ ] **BUILD-02**: Dark theme, modern SaaS aesthetic (consistent with brand direction established in product suite analysis)
 - [ ] **BUILD-03**: Mobile responsive — primary audience is on mobile (Telegram users)
 - [ ] **BUILD-04**: Page loads fast (<3s) — no unnecessary dependencies

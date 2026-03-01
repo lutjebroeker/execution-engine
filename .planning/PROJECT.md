@@ -1,8 +1,8 @@
-# LifeEngine (working title)
+# LifeEngine
 
 ## What This Is
 
-A commercial product suite built around the 12 Week Year methodology — positioned as "not another productivity course, a working system that's already built." Phase 1 is a high-converting landing page using Daniel Priestley's Oversubscribed demand-generation model and Alex Hormozi's $100M Offers value-stacking framework. Later phases productize the n8n AM workflow bundle and upgrade the React web app with a paid Pro tier.
+LifeEngine is a commercial product suite built around the 12 Week Year methodology — positioned as "not another productivity course, a working system that's already built." Phase 1 is a high-converting English-language landing page using Daniel Priestley's Oversubscribed demand-generation model and Alex Hormozi's $100M Offers value-stacking framework. Later phases productize the n8n AM workflow bundle and upgrade the React web app with a paid Pro tier.
 
 ## Core Value
 
@@ -214,11 +214,13 @@ Positioning line: **"LifeOS tells you how to drive. LifeEngine is the car — al
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Start with landing page | Priestley: build demand before shipping. Fastest path to email list. | — Pending |
-| Waitlist vs buy button | AM bundle is shippable now; web app Pro needs Supabase | — Pending (decide: dual CTA?) |
-| Product name | LifeEngine recommended, flow-year-coach is current brand | — Pending |
-| Language (NL / EN) | Dutch = smaller market, authentic; English = 10x audience | — Pending |
-| Hormozi guarantee | "Day 1 result or refund" anchors the offer | — Pending |
+| Start with landing page | Priestley: build demand before shipping. Fastest path to email list. | ✓ Confirmed |
+| CTA: waitlist only | Priestley Oversubscribed: build demand before product is packaged for sale | ✓ Waitlist only |
+| Product name: LifeEngine | Clean, positions product as engine not course; not a personal name | ✓ LifeEngine |
+| Language: English | 10x audience vs Dutch; international market for 12WY + productivity | ✓ English |
+| Email: Listmonk + Brevo SMTP | Self-hosted on existing Proxmox/Docker/Postgres stack; €0/month | ✓ Listmonk |
+| Landing page tech: pure HTML | Static content + single fetch() to Listmonk API; no build tooling needed | ✓ Pure HTML |
+| Hormozi guarantee | "Day 1 result or refund" — vault set up + first Telegram check-in on day 1 | ✓ Confirmed |
 
 ---
-*Last updated: 2026-03-01 after initialization*
+*Last updated: 2026-03-01 after decisions locked*
