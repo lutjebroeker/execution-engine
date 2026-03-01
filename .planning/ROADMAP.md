@@ -1,4 +1,4 @@
-# Roadmap: LifeEngine (working title)
+# Roadmap: Execution Engine
 
 ## Overview
 
@@ -28,11 +28,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Visitor can submit their email and reach a confirmation page that sets expectations for what happens next
   4. Page renders correctly and loads in under 3 seconds on mobile — the primary audience uses Telegram (mobile-first)
   5. Sharing the URL on LinkedIn or WhatsApp renders the correct og:title and og:image preview
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: Copy and page structure (all COPY sections, DMND-04 video embed)
-- [ ] 01-02: Build, deploy, and integrate (BUILD-01–05, DMND-01–03, DMND-05, email capture)
+- [ ] 01-01-PLAN.md — HTML structure and complete copy: all 13 sections, Hormozi value stack, Telegram demo mockup, mobile-responsive CSS
+- [ ] 01-02-PLAN.md — Supabase integration, Vercel deploy, og:image, Plausible analytics
 
 ### Phase 2: AM Bundle Packaging
 **Goal**: The AM workflow bundle is a shippable, self-contained product a buyer can set up in 30 minutes and purchase via Gumroad
