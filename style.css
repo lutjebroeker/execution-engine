@@ -1,0 +1,826 @@
+/* ============================================================ */
+/* style.css — Execution Engine Landing Page                    */
+/* Mobile-first, vanilla CSS, BRAND.md design tokens           */
+/* ============================================================ */
+
+/* ============================================================ */
+/* 1. CSS CUSTOM PROPERTIES (:root) — from BRAND.md verbatim   */
+/* ============================================================ */
+
+:root {
+  /* Primary */
+  --blue-brand:       #1D4ED8;
+  --blue-light:       #3B82F6;
+  --blue-pale:        #DBEAFE;
+  --blue-muted:       #EEF2FF;
+
+  /* Backgrounds */
+  --bg-white:         #FFFFFF;
+  --bg-off-white:     #F5F7FA;
+  --bg-paper:         #F5F1EB;
+  --bg-paper-dark:    #EDE8E1;
+
+  /* Neutrals */
+  --gray-border:      #E5E7EB;
+  --gray-light:       #F3F4F6;
+  --gray-mid:         #9CA3AF;
+  --gray-text:        #6B7280;
+  --gray-dark:        #374151;
+  --gray-heading:     #1a1a2e;
+
+  /* Signals */
+  --green-success:    #34D399;
+  --amber-warning:    #F59E0B;
+  --red-soft:         #F87171;
+
+  /* Type scale */
+  --text-xs:          0.75rem;
+  --text-sm:          0.875rem;
+  --text-base:        1rem;
+  --text-lg:          1.125rem;
+  --text-xl:          1.25rem;
+  --text-2xl:         1.5rem;
+  --text-3xl:         1.875rem;
+  --text-4xl:         2.25rem;
+  --text-5xl:         3rem;
+
+  /* Layout */
+  --max-prose:        680px;
+  --max-ui:           1200px;
+  --max-narrow:       480px;
+
+  /* Radius */
+  --radius-sm:        4px;
+  --radius-md:        8px;
+  --radius-lg:        12px;
+  --radius-xl:        16px;
+  --radius-pill:      9999px;
+
+  /* Shadows */
+  --shadow-card:      0 4px 16px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-soft:      0 2px 8px rgba(29, 78, 216, 0.08);
+  --shadow-lifted:    0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* ============================================================ */
+/* 2. RESET / BASE                                              */
+/* ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--gray-dark);
+  background: var(--bg-white);
+  line-height: 1.6;
+  font-size: var(--text-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--blue-brand);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================ */
+/* 3. TYPOGRAPHY                                                */
+/* ============================================================ */
+
+h1,
+h2,
+h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--gray-heading);
+  line-height: 1.2;
+}
+
+h1 { font-size: var(--text-3xl); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl); }
+
+@media (min-width: 768px) {
+  h1 { font-size: var(--text-4xl); }
+  h2 { font-size: var(--text-3xl); }
+  h3 { font-size: var(--text-2xl); }
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--gray-dark);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+s {
+  color: var(--gray-mid);
+  text-decoration: line-through;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/* Type scale utility classes */
+.text-xs    { font-size: var(--text-xs); }
+.text-sm    { font-size: var(--text-sm); }
+.text-base  { font-size: var(--text-base); }
+.text-lg    { font-size: var(--text-lg); }
+.text-xl    { font-size: var(--text-xl); }
+.text-2xl   { font-size: var(--text-2xl); }
+.text-3xl   { font-size: var(--text-3xl); }
+.text-4xl   { font-size: var(--text-4xl); }
+.text-5xl   { font-size: var(--text-5xl); }
+
+/* ============================================================ */
+/* 4. LAYOUT UTILITIES                                          */
+/* ============================================================ */
+
+.container {
+  max-width: var(--max-ui);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.prose {
+  max-width: var(--max-prose);
+}
+
+.section {
+  padding: 3rem 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 5rem 2rem;
+  }
+}
+
+.section__heading {
+  margin-bottom: 2rem;
+}
+
+/* ============================================================ */
+/* 5. SECTION BACKGROUNDS                                       */
+/* ============================================================ */
+
+.section--white     { background: var(--bg-white); }
+.section--off-white { background: var(--bg-off-white); }
+.section--paper     { background: var(--bg-paper); }
+
+/* ============================================================ */
+/* 6. NAV                                                       */
+/* ============================================================ */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-white);
+  box-shadow: 0 1px 0 var(--gray-border);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.5rem;
+}
+
+.nav__logo {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: var(--text-lg);
+  color: var(--gray-heading);
+  letter-spacing: -0.02em;
+}
+
+.nav__cta {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--blue-brand);
+  border: 1px solid var(--blue-pale);
+  border-radius: var(--radius-md);
+  padding: 0.375rem 0.875rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav__cta:hover {
+  background: var(--blue-pale);
+  text-decoration: none;
+}
+
+/* ============================================================ */
+/* 7. HERO                                                      */
+/* ============================================================ */
+
+.hero {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.hero__content {
+  margin: 0 auto;
+}
+
+.hero__headline {
+  font-size: var(--text-4xl);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .hero__headline {
+    font-size: var(--text-5xl);
+  }
+}
+
+.hero__sub {
+  font-size: var(--text-lg);
+  color: var(--gray-text);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.hero__stat {
+  margin-bottom: 2rem;
+}
+
+.stat-badge {
+  display: inline-block;
+  background: var(--blue-pale);
+  color: var(--blue-brand);
+  border-radius: var(--radius-pill);
+  padding: 0.25rem 1rem;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  letter-spacing: 0.01em;
+}
+
+/* ============================================================ */
+/* 8. WAITLIST FORMS                                            */
+/* ============================================================ */
+
+.waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: var(--max-narrow);
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .waitlist-form {
+    flex-direction: row;
+  }
+}
+
+.waitlist-form input[type="email"] {
+  flex: 1;
+  width: 100%;
+  border: 1px solid var(--gray-border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  font-size: var(--text-base);
+  font-family: system-ui, -apple-system, sans-serif;
+  color: var(--gray-dark);
+  background: var(--bg-white);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.waitlist-form input[type="email"]:focus {
+  border-color: var(--blue-brand);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1);
+}
+
+.waitlist-form input[type="email"]::placeholder {
+  color: var(--gray-mid);
+}
+
+.waitlist-form button[type="submit"] {
+  background: var(--blue-brand);
+  color: var(--bg-white);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.5rem;
+  font-size: var(--text-base);
+  font-weight: 600;
+  font-family: system-ui, -apple-system, sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.waitlist-form button[type="submit"]:hover {
+  background: var(--blue-light);
+}
+
+.waitlist-form button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================================ */
+/* 9. FORM SUCCESS / ERROR STATES                               */
+/* ============================================================ */
+
+.form-success {
+  color: var(--gray-dark);
+  font-weight: 600;
+  padding: 1rem;
+  background: var(--blue-muted);
+  border-radius: var(--radius-md);
+  max-width: var(--max-narrow);
+}
+
+.form-error {
+  color: #991B1B;
+  font-size: var(--text-sm);
+  margin-top: 0.5rem;
+  max-width: var(--max-narrow);
+}
+
+/* ============================================================ */
+/* 10. AGITATION SECTION                                        */
+/* ============================================================ */
+
+.agitation__challenge {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--gray-heading);
+  margin-top: 1.5rem;
+  padding-left: 1rem;
+  border-left: 4px solid var(--blue-brand);
+}
+
+/* ============================================================ */
+/* 11. SOLUTION SECTION                                         */
+/* ============================================================ */
+
+.solution__compare {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: var(--text-lg);
+  color: var(--gray-heading);
+  padding: 1rem 1.25rem;
+  background: var(--blue-muted);
+  border-left: 4px solid var(--blue-brand);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin: 1.5rem 0;
+}
+
+/* ============================================================ */
+/* 12. HOW IT WORKS — STEPS                                     */
+/* ============================================================ */
+
+.steps-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .steps-list {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.step {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .step {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+.step__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--blue-brand);
+  color: var(--bg-white);
+  border-radius: var(--radius-pill);
+  font-family: Georgia, serif;
+  font-weight: 700;
+  font-size: var(--text-lg);
+}
+
+.step__title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--gray-heading);
+  margin-bottom: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .step__title {
+    font-size: var(--text-xl);
+  }
+}
+
+.step__desc {
+  font-size: var(--text-sm);
+  color: var(--gray-text);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ============================================================ */
+/* 13. TELEGRAM MOCKUP                                          */
+/* ============================================================ */
+
+.telegram-mockup {
+  background: #1c2733;
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  max-width: 360px;
+  margin: 2rem auto;
+  box-shadow: var(--shadow-lifted);
+}
+
+.telegram-mockup__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 1rem;
+}
+
+.telegram-mockup__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--blue-brand);
+  color: var(--bg-white);
+  border-radius: var(--radius-pill);
+  font-family: Georgia, serif;
+  font-weight: 700;
+  font-size: var(--text-sm);
+}
+
+.telegram-mockup__name {
+  display: flex;
+  flex-direction: column;
+}
+
+.telegram-mockup__bot-name {
+  color: var(--bg-white);
+  font-weight: 600;
+  font-size: var(--text-sm);
+}
+
+.telegram-mockup__status {
+  color: var(--gray-mid);
+  font-size: var(--text-xs);
+}
+
+.telegram-bubble {
+  max-width: 85%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  border-radius: 12px;
+}
+
+.telegram-bubble:last-child {
+  margin-bottom: 0;
+}
+
+.telegram-bubble--bot {
+  background: #2b5278;
+  color: var(--bg-white);
+  border-radius: 12px 12px 12px 4px;
+  margin-right: auto;
+}
+
+.telegram-bubble--user {
+  background: var(--blue-brand);
+  color: var(--bg-white);
+  border-radius: 12px 12px 4px 12px;
+  text-align: right;
+  margin-left: auto;
+}
+
+.demo__caption {
+  text-align: center;
+  color: var(--gray-text);
+  font-size: var(--text-sm);
+  margin-top: 0.5rem;
+}
+
+/* ============================================================ */
+/* 14. SOCIAL PROOF — STAT CARDS                                */
+/* ============================================================ */
+
+.social-proof__lead {
+  margin: 1.5rem 0 2rem;
+  font-size: var(--text-lg);
+  color: var(--gray-dark);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.stat-card {
+  background: var(--bg-white);
+  border: 1px solid var(--gray-border);
+  border-left: 4px solid var(--blue-brand);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+.stat-value {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: var(--text-4xl);
+  color: var(--blue-brand);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.375rem;
+}
+
+.stat-label {
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--gray-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.stat-note {
+  font-size: var(--text-sm);
+  color: var(--gray-text);
+  margin-bottom: 0;
+}
+
+.social-proof__caveat {
+  font-size: var(--text-sm);
+  color: var(--gray-text);
+  font-style: italic;
+  padding: 1rem;
+  border-left: 3px solid var(--gray-border);
+  margin-top: 1rem;
+}
+
+/* ============================================================ */
+/* 15. VALUE STACK TABLE                                        */
+/* ============================================================ */
+
+.value-stack-wrapper {
+  max-width: var(--max-prose);
+}
+
+.value-stack {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.value-stack thead th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: var(--gray-light);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--gray-heading);
+  border-bottom: 2px solid var(--gray-border);
+}
+
+.value-stack thead th:last-child {
+  text-align: right;
+}
+
+.value-stack tbody tr td {
+  padding: 0.875rem 1rem;
+  font-size: var(--text-base);
+  color: var(--gray-dark);
+  border-bottom: 1px solid var(--gray-border);
+}
+
+.value-stack tbody tr td:last-child {
+  text-align: right;
+  color: var(--gray-mid);
+}
+
+.value-stack tbody tr:nth-child(even) td {
+  background: var(--gray-light);
+}
+
+.value-stack__total td {
+  font-weight: 700;
+  border-top: 2px solid var(--gray-border);
+  color: var(--gray-heading);
+}
+
+.value-stack__total td:last-child {
+  color: var(--gray-heading);
+}
+
+.value-stack__price td {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--blue-brand);
+  padding-top: 1.25rem;
+  border-bottom: none;
+}
+
+.value-stack__price td:last-child {
+  color: var(--blue-brand);
+}
+
+.value-stack__note {
+  font-size: var(--text-sm);
+  color: var(--gray-text);
+  margin-top: 0.5rem;
+}
+
+/* ============================================================ */
+/* 16. GUARANTEE                                                */
+/* ============================================================ */
+
+.guarantee__heading {
+  font-size: var(--text-3xl);
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .guarantee__heading {
+    font-size: var(--text-4xl);
+  }
+}
+
+/* ============================================================ */
+/* 17. SCARCITY                                                 */
+/* ============================================================ */
+
+.spots-remaining {
+  display: inline-block;
+  background: var(--amber-warning);
+  color: #1a1a2e;
+  border-radius: var(--radius-pill);
+  padding: 0.25rem 1rem;
+  font-weight: 700;
+  font-size: var(--text-sm);
+}
+
+/* ============================================================ */
+/* 18. FAQ ACCORDION                                            */
+/* ============================================================ */
+
+.faq-list {
+  margin-top: 1.5rem;
+}
+
+details {
+  border-bottom: 1px solid var(--gray-border);
+  padding: 1rem 0;
+}
+
+details:first-child {
+  border-top: 1px solid var(--gray-border);
+}
+
+summary {
+  font-weight: 600;
+  font-size: var(--text-base);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--gray-heading);
+  gap: 1rem;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::after {
+  content: '+';
+  color: var(--blue-brand);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+details[open] summary::after {
+  content: '\2212';
+}
+
+details p {
+  margin-top: 1rem;
+  color: var(--gray-dark);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  padding-right: 2rem;
+}
+
+/* ============================================================ */
+/* 19. FINAL CTA SECTION                                        */
+/* ============================================================ */
+
+.cta-section__content {
+  margin: 0 auto;
+}
+
+.cta-section h2 {
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  color: var(--gray-text);
+  margin-bottom: 1.5rem;
+}
+
+.cta-section__guarantee {
+  font-size: var(--text-sm);
+  color: var(--gray-mid);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* ============================================================ */
+/* 20. FOOTER                                                   */
+/* ============================================================ */
+
+.footer {
+  background: var(--bg-off-white);
+  padding: 2.5rem 1.25rem;
+  text-align: center;
+  border-top: 1px solid var(--gray-border);
+}
+
+.footer__tagline {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  color: var(--gray-dark);
+  font-size: var(--text-lg);
+  margin-bottom: 0.5rem;
+}
+
+.footer__copy {
+  color: var(--gray-text);
+  font-size: var(--text-sm);
+}
