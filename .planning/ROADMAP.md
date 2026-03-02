@@ -26,7 +26,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Requirements**: COPY-01, COPY-02, COPY-03, COPY-04, COPY-05, COPY-06, COPY-07, COPY-08, COPY-09, COPY-10, COPY-11, DMND-01, DMND-02, DMND-03, DMND-04, DMND-05, BUILD-01, BUILD-02, BUILD-03, BUILD-04, BUILD-05
 **Success Criteria** (what must be TRUE):
   1. Visitor lands on the page and immediately understands what LifeEngine is and who it is for — the headline names the pain and positions the system as already-built
-  2. Visitor can scroll through the full Hormozi value stack (€652 perceived value vs €149 price), the Day 1 guarantee, and the scarcity trigger without hitting a dead link or placeholder
+  2. Visitor can scroll through the full Hormozi value stack (€652 perceived value vs €2,497 launch price), the Day 1 guarantee, and the scarcity trigger without hitting a dead link or placeholder
   3. Visitor can submit their email and reach a confirmation page that sets expectations for what happens next
   4. Page renders correctly and loads in under 3 seconds on mobile — the primary audience uses Telegram (mobile-first)
   5. Sharing the URL on LinkedIn or WhatsApp renders the correct og:title and og:image preview
@@ -44,14 +44,14 @@ Plans:
   1. All 15+ workflows import into a clean n8n instance and only require editing a single Config node to go live — no hunting for hardcoded values
   2. A buyer who has never used Obsidian, Telegram bots, Ollama, or PostgreSQL can follow the setup guide from scratch and reach a working first check-in
   3. The Obsidian Vault Starter ZIP unpacks to the exact folder structure the workflows expect — no manual folder creation required
-  4. The Gumroad product page is live with title, description, value stack, €149 price, and the bundle ZIP attached — a buyer can purchase and download without contacting the seller
+  4. The Gumroad product page is live with title, description, value stack, €2,497 launch price, and the bundle ZIP attached — a buyer can purchase and download without contacting the seller
   5. The landing page links to the Gumroad page once it is live
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: Config extraction and workflow export (CONFIG-01, CONFIG-02, BUNDLE-01)
-- [ ] 02-02: Documentation and vault starter (DOCS-01–06, BUNDLE-02, BUNDLE-03)
-- [ ] 02-03: Gumroad listing and landing page link (SALE-01, SALE-02)
+- [ ] 02-01-PLAN.md — Audit + Config node refactor + workflow export (CONFIG-01, CONFIG-02, BUNDLE-01)
+- [ ] 02-02-PLAN.md — README setup guide + Obsidian Vault Starter + bundle ZIP (DOCS-01–06, BUNDLE-02, BUNDLE-03)
+- [ ] 02-03-PLAN.md — Gumroad purchase workflow + Gumroad listing + landing page link (SALE-01, SALE-02)
 
 ### Phase 3: Web App Pro Tier
 **Goal**: The React web app supports real user accounts, cloud sync across devices, a paid Pro subscription (€19.99/month or one-time unlock), and AI coaching features gated behind that subscription — Pro tier is included automatically for full Execution Engine buyers (€2,497)
@@ -109,7 +109,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Landing Page | 1/2 | In progress | - |
-| 2. AM Bundle Packaging | 0/3 | Not started | - |
+| 2. AM Bundle Packaging | 0/3 | Planned | - |
 | 3. Web App Pro Tier | 0/4 | Not started | - |
 | 4. Obsidian Vault Sync | 0/3 | Not started | - |
 | 5. Hosted VPS Package | 0/0 | Not started | - |
