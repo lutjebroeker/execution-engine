@@ -2,7 +2,7 @@
 
 ## Overview
 
-Four phases that productize a working system: first make it visible (landing page), then make it shippable (AM bundle), then make it scalable (web app Pro tier), then make it sovereign (Obsidian vault sync). Phase 1 builds the demand generation engine before anything is for sale. Phase 2 turns the already-running AM system into a product anyone can buy. Phase 3 upgrades the web app with auth, payments, and AI coaching — completing the commercial product suite. Phase 4 adds local-first data ownership for power users.
+Five phases that productize a working system: first make it visible (landing page), then make it shippable (AM bundle), then make it scalable (web app Pro tier), then make it sovereign (Obsidian vault sync), then make it effortless (hosted VPS). Phase 1 builds the demand generation engine before anything is for sale. Phase 2 turns the already-running AM system into a product anyone can buy. Phase 3 upgrades the web app with auth, payments, and AI coaching — completing the commercial product suite. Phase 4 adds local-first data ownership for power users. Phase 5 removes all self-hosting friction with a ready-to-go VPS.
 
 ## Phases
 
@@ -16,6 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 2: AM Bundle Packaging** - Productize the n8n AM workflow bundle — config cleanup, documentation, Obsidian starter, Gumroad listing
 - [ ] **Phase 3: Web App Pro Tier** - Add Supabase auth, cloud sync, Stripe subscription, and Claude AI coaching to the existing React web app
 - [ ] **Phase 4: Obsidian Vault Sync** - Let Pro users choose between Supabase cloud sync and local Obsidian vault as their data storage backend
+- [ ] **Phase 5: Hosted VPS Package** - Buyer gets a pre-configured Hostinger VPS with n8n, PostgreSQL, Ollama, and all AM workflows pre-installed — zero self-hosting setup required
 
 ## Phase Details
 
@@ -85,10 +86,25 @@ Plans:
 - [ ] 04-02: Settings UI — storage switch and vault path configuration
 - [ ] 04-03: Sync reconciliation — conflict handling when switching modes
 
+### Phase 5: Hosted VPS Package
+**Goal**: A buyer can get a fully pre-configured Hostinger VPS with n8n, PostgreSQL, Ollama, and all AM workflows already installed and running — removing all self-hosting friction for non-technical buyers
+**Depends on**: Phase 2 (bundle and documentation must be finalised — VPS mirrors the self-hosted setup exactly)
+**Success Criteria** (what must be TRUE):
+  1. Buyer receives a Hostinger VPS with all required services running on Day 1 — no manual installation steps
+  2. The VPS setup script reproduces exactly the same state as the Phase 2 self-hosted bundle — same workflows, same folder structure, same Config node
+  3. Buyer can complete their first Telegram check-in within 30 minutes of receiving VPS credentials
+  4. Offered as an upsell at checkout or as a separate higher-tier product — pricing and packaging TBD at planning
+**Plans**: TBD (to be planned after Phase 2 is complete)
+
+Plans:
+- [ ] 05-01: VPS provisioning and automated setup script (Hostinger API or manual + script)
+- [ ] 05-02: Service configuration automation (n8n, PostgreSQL, Ollama, workflow import)
+- [ ] 05-03: Buyer onboarding for hosted tier (credentials delivery, first-run verification)
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -96,3 +112,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 2. AM Bundle Packaging | 0/3 | Not started | - |
 | 3. Web App Pro Tier | 0/4 | Not started | - |
 | 4. Obsidian Vault Sync | 0/3 | Not started | - |
+| 5. Hosted VPS Package | 0/0 | Not started | - |
