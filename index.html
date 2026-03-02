@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Execution Engine — Build systems that actually execute.</title>
 
   <!-- Open Graph -->
@@ -20,411 +20,1541 @@
   <meta name="twitter:description" content="AI-powered accountability for people who think in systems. Execution rate: 23% → 87%.">
   <meta name="twitter:image" content="https://execution-engine-lake.vercel.app/og-image.png">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <!-- Plausible analytics -->
+  <script defer data-domain="execution-engine-lake.vercel.app" src="https://plausible.io/js/script.js"></script>
+
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:        #1D4ED8;
+      --blue-light:  #3B82F6;
+      --blue-pale:   #DBEAFE;
+      --blue-muted:  #EEF2FF;
+      --bg:          #FFFFFF;
+      --bg-off:      #F5F7FA;
+      --bg-paper:    #F5F1EB;
+      --gray-border: #E5E7EB;
+      --gray-light:  #F3F4F6;
+      --gray-mid:    #9CA3AF;
+      --gray-text:   #6B7280;
+      --gray-dark:   #374151;
+      --ink:         #1a1a2e;
+      --green:       #34D399;
+      --amber:       #F59E0B;
+
+      --shadow-card: 0 4px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+      --shadow-lifted: 0 8px 32px rgba(0,0,0,0.09);
+      --radius: 12px;
+      --font-serif: 'Lora', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--gray-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE TEXTURE ────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    }
+
+    /* ─── NAV ──────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-border);
+      padding: 0 40px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--blue); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--gray-text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-cta {
+      background: var(--blue);
+      color: white !important;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+
+    .nav-cta:hover {
+      background: #1638A6 !important;
+      transform: translateY(-1px);
+    }
+
+    /* ─── HERO ─────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--blue);
+      opacity: 0.04;
+      pointer-events: none;
+    }
+
+    .hero-bg-circle.c1 { width: 600px; height: 600px; top: -200px; right: -100px; }
+    .hero-bg-circle.c2 { width: 300px; height: 300px; bottom: -80px; left: -60px; background: var(--bg-paper); opacity: 0.6; }
+    .hero-bg-circle.c3 { width: 180px; height: 180px; top: 30%; right: 25%; opacity: 0.03; }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #1D4ED8 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.035;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-muted);
+      border: 1px solid var(--blue-pale);
+      color: var(--blue);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 99px;
+      margin-bottom: 28px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+      animation-delay: 0.1s;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--blue);
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+      animation-delay: 0.2s;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--blue);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--gray-text);
+      line-height: 1.7;
+      max-width: 460px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+      animation-delay: 0.35s;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(29,78,216,0.25);
+    }
+
+    .btn-primary:hover {
+      background: #1638A6;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(29,78,216,0.35);
+    }
+
+    .btn-ghost {
+      color: var(--gray-dark);
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--blue); }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 52px;
+      padding-top: 32px;
+      border-top: 1px solid var(--gray-border);
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+      animation-delay: 0.65s;
+    }
+
+    .stat-num {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--gray-mid);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── HERO VISUAL ──────────────────────────────────── */
+    .hero-visual {
+      position: relative;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      animation-delay: 0.4s;
+      z-index: 1;
+    }
+
+    .mockup-shell {
+      background: var(--bg-off);
+      border: 1px solid var(--gray-border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--shadow-lifted);
+      position: relative;
+    }
+
+    .mockup-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.r { background: #F87171; }
+    .dot.y { background: #FBBF24; }
+    .dot.g { background: #34D399; }
+
+    .mockup-title {
+      font-size: 0.75rem;
+      color: var(--gray-mid);
+      margin-left: 8px;
+      font-weight: 500;
+    }
+
+    .mini-cards { display: flex; flex-direction: column; gap: 12px; }
+
+    .mini-card {
+      background: white;
+      border: 1px solid var(--gray-border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .mini-card-accent {
+      width: 4px;
+      border-radius: 2px;
+      flex-shrink: 0;
+      align-self: stretch;
+    }
+
+    .mini-card-body { flex: 1; }
+
+    .mini-card-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--gray-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .mini-card-value {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .mini-progress-track {
+      height: 5px;
+      background: var(--gray-border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .mini-progress-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: var(--blue);
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mini-meta {
+      font-size: 0.72rem;
+      color: var(--gray-mid);
+      margin-top: 5px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 99px;
+    }
+
+    .chip.blue { background: var(--blue-pale); color: var(--blue); }
+    .chip.green { background: #D1FAE5; color: #065F46; }
+    .chip.amber { background: #FEF3C7; color: #92400E; }
+
+    .checklist { display: flex; flex-direction: column; gap: 6px; }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--gray-dark);
+    }
+
+    .check-box {
+      width: 14px; height: 14px;
+      border-radius: 4px;
+      border: 1.5px solid var(--blue);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check-box.done {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .check-box.done::after {
+      content: '';
+      width: 5px; height: 3px;
+      border-left: 1.5px solid white;
+      border-bottom: 1.5px solid white;
+      transform: rotate(-45deg) translateY(-1px);
+    }
+
+    .check-text.done { text-decoration: line-through; color: var(--gray-mid); }
+
+    .score-badge {
+      position: absolute;
+      top: -18px; right: -18px;
+      z-index: 10;
+      background: white;
+      border: 1px solid var(--gray-border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      box-shadow: var(--shadow-card);
+      text-align: center;
+      min-width: 90px;
+    }
+
+    .score-num {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--blue);
+      line-height: 1;
+    }
+
+    .score-sub {
+      font-size: 0.68rem;
+      color: var(--gray-mid);
+      margin-top: 3px;
+      font-weight: 500;
+    }
+
+    .streak-badge {
+      position: absolute;
+      bottom: -14px; left: -14px;
+      background: #FFFBEB;
+      border: 1px solid #FEF3C7;
+      border-radius: 10px;
+      padding: 10px 14px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .streak-fire { font-size: 1.1rem; }
+    .streak-text strong { display: block; font-family: var(--font-serif); font-weight: 700; font-size: 1rem; color: var(--amber); line-height: 1; }
+    .streak-text span { font-size: 0.68rem; color: #92400E; font-weight: 500; }
+
+    /* ─── SECTION SHARED ───────────────────────────────── */
+    section { padding: 100px 40px; }
+
+    .section-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--gray-text);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ─── PROBLEM SECTION ──────────────────────────────── */
+    .problem {
+      background: var(--bg-paper);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem::after {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: var(--blue);
+      opacity: 0.04;
+      pointer-events: none;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .pain-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--gray-dark);
+    }
+
+    .pain-icon {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: #FEE2E2;
+      color: #DC2626;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-weight: 700;
+    }
+
+    .before-after {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-border);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .ba-row { display: grid; grid-template-columns: 1fr 1fr; }
+
+    .ba-header {
+      padding: 14px 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .ba-before { background: #FEF2F2; color: #991B1B; }
+    .ba-after  { background: #EFF6FF; color: var(--blue); }
+
+    .ba-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--gray-border);
+    }
+
+    .ba-cell { padding: 14px 20px; font-size: 0.85rem; }
+    .ba-cell.before { background: #FFFBFB; color: var(--gray-text); }
+    .ba-cell.after  { background: white; color: var(--gray-dark); font-weight: 500; }
+
+    .ba-cell .num {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: block;
+    }
+
+    .ba-cell.after .num  { color: var(--blue); }
+    .ba-cell.before .num { color: #EF4444; }
+
+    /* ─── HOW IT WORKS ─────────────────────────────────── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 60px;
+    }
+
+    .step-card {
+      background: white;
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .step-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lifted);
+    }
+
+    .step-num {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--blue-pale);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .step-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .step-desc {
+      font-size: 0.9rem;
+      color: var(--gray-text);
+      line-height: 1.65;
+    }
+
+    .step-tag { margin-top: 20px; }
+
+    /* ─── ABOUT ────────────────────────────────────────── */
+    .about { background: var(--bg-off); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 60px;
+    }
+
+    .about-avatar {
+      background: var(--bg-paper);
+      border-radius: 16px;
+      border: 1px solid var(--gray-border);
+      aspect-ratio: 4/5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .avatar-initials {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--blue);
+      opacity: 0.4;
+      letter-spacing: -0.02em;
+    }
+
+    .avatar-label {
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      margin-top: 8px;
+      font-weight: 500;
+    }
+
+    .avatar-deco-1 {
+      position: absolute;
+      bottom: 20px; right: 20px;
+      background: white;
+      border: 1px solid var(--gray-border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .avatar-deco-1 strong {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--blue);
+      display: block;
+      line-height: 1;
+    }
+
+    .avatar-deco-1 span { font-size: 0.68rem; color: var(--gray-mid); font-weight: 500; }
+
+    .about-body {
+      font-size: 0.95rem;
+      color: var(--gray-dark);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .about-body strong { color: var(--ink); font-weight: 600; }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+
+    .about-tag {
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 6px;
+      background: var(--gray-light);
+      color: var(--gray-dark);
+      border: 1px solid var(--gray-border);
+    }
+
+    .about-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .about-link {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .about-link:hover { opacity: 0.75; }
+
+    /* ─── PRICING ──────────────────────────────────────── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 28px;
+      margin-top: 60px;
+      max-width: 800px;
+    }
+
+    .price-card {
+      background: white;
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .price-card.featured {
+      background: var(--ink);
+      border-color: var(--ink);
+      position: relative;
+    }
+
+    .price-card.featured * { color: white; }
+
+    .featured-badge {
+      position: absolute;
+      top: -12px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--blue);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 99px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .price-tier {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-bottom: 12px;
+    }
+
+    .price-card.featured .price-tier { color: rgba(255,255,255,0.5); }
+
+    .price-amount {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .price-card.featured .price-amount { color: white; }
+
+    .price-note {
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      margin-bottom: 28px;
+    }
+
+    .price-card.featured .price-note { color: rgba(255,255,255,0.5); }
+
+    .price-divider {
+      height: 1px;
+      background: var(--gray-border);
+      margin-bottom: 24px;
+    }
+
+    .price-card.featured .price-divider { background: rgba(255,255,255,0.1); }
+
+    .price-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .price-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--gray-dark);
+    }
+
+    .price-card.featured .price-features li { color: rgba(255,255,255,0.85); }
+
+    .pf-check {
+      width: 16px; height: 16px;
+      border-radius: 4px;
+      background: var(--blue-pale);
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-size: 0.55rem;
+      font-weight: 700;
+    }
+
+    .price-card.featured .pf-check {
+      background: rgba(29,78,216,0.3);
+      color: white;
+    }
+
+    .btn-price {
+      display: block;
+      text-align: center;
+      padding: 13px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: var(--font-sans);
+    }
+
+    .btn-price.outline {
+      border: 1.5px solid var(--gray-border);
+      color: var(--gray-dark);
+      background: transparent;
+    }
+
+    .btn-price.outline:hover { border-color: var(--blue); color: var(--blue); }
+
+    .btn-price.solid {
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 4px 14px rgba(29,78,216,0.3);
+    }
+
+    .btn-price.solid:hover { background: #1638A6; transform: translateY(-1px); }
+
+    /* ─── RESULTS ──────────────────────────────────────── */
+    .results {
+      background: var(--ink);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .results::before {
+      content: '';
+      position: absolute;
+      top: -200px; left: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: var(--blue);
+      opacity: 0.08;
+    }
+
+    .results h2 { color: white; }
+    .results .eyebrow { color: var(--blue-light); }
+    .results .section-sub { color: rgba(255,255,255,0.6); }
+
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-top: 60px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .metric-num {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .metric-num span { color: var(--blue-light); }
+
+    .metric-label {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* ─── CTA ──────────────────────────────────────────── */
+    .cta-section {
+      background: var(--bg-off);
+      text-align: center;
+    }
+
+    .cta-box {
+      background: white;
+      border: 1px solid var(--gray-border);
+      border-radius: 20px;
+      padding: 72px 60px;
+      box-shadow: var(--shadow-lifted);
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-light));
+    }
+
+    .cta-box h2 { margin-bottom: 16px; }
+
+    .cta-box .section-sub {
+      max-width: 100%;
+      text-align: center;
+      margin: 0 auto 36px;
+    }
+
+    .cta-form {
+      display: flex;
+      gap: 10px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .cta-input {
+      flex: 1;
+      padding: 13px 16px;
+      border: 1.5px solid var(--gray-border);
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--gray-dark);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .cta-input:focus { border-color: var(--blue); }
+    .cta-input::placeholder { color: var(--gray-mid); }
+
+    .cta-note {
+      font-size: 0.75rem;
+      color: var(--gray-mid);
+      margin-top: 14px;
+    }
+
+    /* ─── FOOTER ───────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--gray-border);
+      padding: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+
+    .footer-logo span { color: var(--blue); }
+
+    .footer-text { font-size: 0.8rem; color: var(--gray-mid); }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--blue); }
+
+    /* ─── ANIMATIONS ───────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .animate-progress .mini-progress-fill { width: 0 !important; }
+    .animate-progress.done .mini-progress-fill.w87 { width: 87% !important; }
+    .animate-progress.done .mini-progress-fill.w60 { width: 60% !important; }
+    .animate-progress.done .mini-progress-fill.w40 { width: 40% !important; }
+
+    /* ─── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 60px; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 460px; }
+      .metrics-row { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .hero-visual { order: -1; }
+      .cta-form { flex-direction: column; }
+      .cta-box { padding: 48px 28px; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 72px 24px; }
+      footer { flex-direction: column; gap: 20px; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ============================================================ -->
-  <!-- 1. NAV -->
-  <!-- ============================================================ -->
-  <nav class="nav">
-    <div class="nav__inner container">
-      <span class="nav__logo">Execution Engine</span>
-      <a href="#waitlist" class="nav__cta">Join Waitlist</a>
-    </div>
+  <!-- ─── NAV ──────────────────────────────────── -->
+  <nav>
+    <a href="#" class="nav-logo">Execution<span>Engine</span></a>
+    <ul class="nav-links">
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#waitlist" class="nav-cta">Join waitlist</a></li>
+    </ul>
   </nav>
 
-  <!-- ============================================================ -->
-  <!-- 2. HERO -->
-  <!-- ============================================================ -->
-  <section id="hero" class="section section--white hero">
-    <div class="container">
-      <div class="hero__content prose">
-        <h1 class="hero__headline">You have a system.<br>You just don't follow through.</h1>
-        <p class="hero__sub">
-          Execution Engine is the working system — Telegram AI check-ins, 12-week cycles,
-          confrontational accountability. Built by a founder. Running in production.
-        </p>
-        <div class="hero__stat">
-          <span class="stat-badge">23% → 87% Execution Rate in 12 weeks</span>
+  <!-- ─── HERO ─────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-bg-circle c1"></div>
+    <div class="hero-bg-circle c2"></div>
+    <div class="hero-bg-circle c3"></div>
+
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-badge">Launching June 2026</div>
+        <h1>Build systems that<br/><em>actually execute.</em></h1>
+        <p class="hero-sub">AI-powered accountability for people who think in systems. Not another productivity app — a confrontational daily check-in engine that closes the gap between planning and execution.</p>
+        <div class="hero-actions">
+          <a href="#waitlist" class="btn-primary">Join the waitlist</a>
+          <a href="#how" class="btn-ghost">See how it works →</a>
         </div>
-        <form class="waitlist-form" id="hero-form" novalidate>
-          <input
-            type="email"
-            name="email"
-            placeholder="your@email.com"
-            required
-            autocomplete="email"
-          >
-          <button type="submit">Join Waitlist</button>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num" data-target="87" data-suffix="%">87%</div>
+            <div class="stat-label">avg. execution rate</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">23→87</div>
+            <div class="stat-label">% in 12 weeks</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">12w</div>
+            <div class="stat-label">year methodology</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="score-badge">
+          <div class="score-num">87%</div>
+          <div class="score-sub">Execution Rate</div>
+        </div>
+        <div class="mockup-shell animate-progress" id="mockup">
+          <div class="mockup-bar">
+            <div class="dot r"></div>
+            <div class="dot y"></div>
+            <div class="dot g"></div>
+            <span class="mockup-title">Execution Engine · Week 8</span>
+          </div>
+          <div class="mini-cards">
+
+            <div class="mini-card">
+              <div class="mini-card-accent" style="background:#1D4ED8"></div>
+              <div class="mini-card-body">
+                <div class="mini-card-label">Weekly Focus</div>
+                <div class="mini-card-value">Launch content pipeline</div>
+                <div class="mini-progress-track"><div class="mini-progress-fill w87" style="width:87%"></div></div>
+                <div class="mini-meta">3 of 5 milestones · <span class="chip blue">On track</span></div>
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-card-accent" style="background:#34D399"></div>
+              <div class="mini-card-body">
+                <div class="mini-card-label">Daily Check-in</div>
+                <div class="checklist">
+                  <div class="check-item">
+                    <div class="check-box done"></div>
+                    <span class="check-text done">Write 500 words for launch post</span>
+                  </div>
+                  <div class="check-item">
+                    <div class="check-box done"></div>
+                    <span class="check-text done">Review n8n automation flow</span>
+                  </div>
+                  <div class="check-item">
+                    <div class="check-box"></div>
+                    <span class="check-text">Record demo walkthrough</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mini-card" style="background:#F0F4FF; border-color:#DBEAFE;">
+              <div class="mini-card-accent" style="background:#93C5FD"></div>
+              <div class="mini-card-body">
+                <div class="mini-card-label" style="color:#1D4ED8">Evening Reflection</div>
+                <div style="font-size:0.8rem; color:#374151; line-height:1.55;">You completed 2 of 3 priorities today. The skipped task — what got in the way?</div>
+                <div class="mini-meta" style="margin-top:6px">Today · 9:00 PM</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="streak-badge">
+          <div class="streak-fire">🔥</div>
+          <div class="streak-text">
+            <strong>23</strong>
+            <span>day streak</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROBLEM ───────────────────────────────── -->
+  <section class="problem" id="problem">
+    <div class="section-inner">
+      <div class="problem-grid">
+        <div class="problem-text reveal">
+          <span class="eyebrow">The real problem</span>
+          <h2>You don't have a planning problem. You have an execution problem.</h2>
+          <p style="font-size:0.95rem; color:var(--gray-text); line-height:1.7; margin-bottom:24px;">Most knowledge workers can plan. They have Notion pages, weekly reviews, goal-setting rituals. What breaks down is the daily follow-through — and no productivity app has fixed that. Because apps don't hold you accountable. They just track your failures quietly.</p>
+          <ul class="pain-list">
+            <li><div class="pain-icon">✕</div><span>You set a 12-week goal and forget it by week 3</span></li>
+            <li><div class="pain-icon">✕</div><span>Your system works perfectly — until it doesn't, and no one notices</span></li>
+            <li><div class="pain-icon">✕</div><span>Motivation-based tools feel good but don't move the needle</span></li>
+            <li><div class="pain-icon">✕</div><span>You end the week busier than ever, with less done than planned</span></li>
+          </ul>
+        </div>
+
+        <div class="reveal" style="transition-delay:0.15s">
+          <div class="before-after">
+            <div class="ba-row">
+              <div class="ba-header ba-before">Before</div>
+              <div class="ba-header ba-after">After 12 weeks</div>
+            </div>
+            <div class="ba-item">
+              <div class="ba-cell before"><span class="num">23%</span>Execution rate</div>
+              <div class="ba-cell after"><span class="num">87%</span>Execution rate</div>
+            </div>
+            <div class="ba-item">
+              <div class="ba-cell before">Vague weekly reviews</div>
+              <div class="ba-cell after">Structured daily accountability</div>
+            </div>
+            <div class="ba-item">
+              <div class="ba-cell before">Motivation-dependent</div>
+              <div class="ba-cell after">System-driven</div>
+            </div>
+            <div class="ba-item">
+              <div class="ba-cell before">Data scattered across tools</div>
+              <div class="ba-cell after">Local-first, fully yours</div>
+            </div>
+            <div class="ba-item">
+              <div class="ba-cell before">AI as chatbot</div>
+              <div class="ba-cell after">AI as accountability partner</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HOW IT WORKS ──────────────────────────── -->
+  <section id="how">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="eyebrow">How it works</span>
+        <h2>Three rituals. One engine.</h2>
+        <p class="section-sub">The Execution Engine runs on a simple daily loop — no dashboards to curate, no streaks to protect. Just three moments that keep you honest.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card reveal" style="transition-delay:0.1s">
+          <div class="step-num">01</div>
+          <div class="step-title">Morning Check-in</div>
+          <p class="step-desc">Every morning, your AI partner asks one question: what are your three priorities today, and how do they connect to your 12-week goal? No fluff. Three decisions. Full stop.</p>
+          <div class="step-tag"><span class="chip blue">Daily · 5 min</span></div>
+        </div>
+        <div class="step-card reveal" style="transition-delay:0.2s">
+          <div class="step-num">02</div>
+          <div class="step-title">Evening Reflection</div>
+          <p class="step-desc">At day's end, the engine asks what you completed — and what you didn't. If something slipped, it asks why. Not to judge. To pattern-match. Over time, you stop lying to yourself.</p>
+          <div class="step-tag"><span class="chip blue">Daily · 5 min</span></div>
+        </div>
+        <div class="step-card reveal" style="transition-delay:0.3s">
+          <div class="step-num">03</div>
+          <div class="step-title">Weekly Score</div>
+          <p class="step-desc">Every Sunday, your execution rate for the week is calculated. Not as a metric to optimize — but as a mirror. 87% means something. So does 34%. The number doesn't lie.</p>
+          <div class="step-tag"><span class="chip amber">Weekly · 15 min</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── RESULTS ────────────────────────────────── -->
+  <section class="results">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="eyebrow">What changes</span>
+        <h2>The system works.<br/>You just need to use it.</h2>
+        <p class="section-sub">Built from 47 productivity books, years of system experimentation, and one uncomfortable truth: information was never the problem.</p>
+      </div>
+
+      <div class="metrics-row">
+        <div class="metric-item reveal" style="transition-delay:0.1s">
+          <div class="metric-num">23 <span>→</span> 87%</div>
+          <div class="metric-label">execution rate<br/>in 12 weeks</div>
+        </div>
+        <div class="metric-item reveal" style="transition-delay:0.2s">
+          <div class="metric-num">12w</div>
+          <div class="metric-label">year cycles,<br/>not annual goals</div>
+        </div>
+        <div class="metric-item reveal" style="transition-delay:0.3s">
+          <div class="metric-num">100%</div>
+          <div class="metric-label">local-first,<br/>your data stays yours</div>
+        </div>
+        <div class="metric-item reveal" style="transition-delay:0.4s">
+          <div class="metric-num">3</div>
+          <div class="metric-label">daily inputs.<br/>no dashboards to maintain</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ──────────────────────────────────── -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="about-avatar">
+            <div class="avatar-initials">JS</div>
+            <div class="avatar-label">Jelle Spek</div>
+            <div class="avatar-deco-1">
+              <strong>87%</strong>
+              <span>Execution Rate</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content reveal" style="transition-delay:0.15s">
+          <span class="eyebrow">About</span>
+          <h2>Built by someone who tried every system first.</h2>
+          <p class="about-body">I'm Jelle — IT professional by day, obsessive systems builder always. I've read <strong>47 productivity books</strong>, used every tool from Notion to Todoist, and kept hitting the same wall: great planning, terrible execution.</p>
+          <p class="about-body">The Execution Engine is what I built for myself when nothing else worked. It runs on my own infrastructure — <strong>local-first, private, no subscriptions</strong>. It uses AI not to motivate me, but to hold me accountable. There's a difference.</p>
+          <p class="about-body">I'm based in Enkhuizen, NL. My background is in <strong>IT and process automation</strong> — I think in systems, automate obsessively, and believe most productivity problems are really just feedback loop problems.</p>
+
+          <div class="about-tags">
+            <span class="about-tag">12 Week Year</span>
+            <span class="about-tag">n8n automation</span>
+            <span class="about-tag">Obsidian</span>
+            <span class="about-tag">Proxmox homelab</span>
+            <span class="about-tag">Local-first AI</span>
+            <span class="about-tag">Home Assistant</span>
+            <span class="about-tag">V60 coffee</span>
+          </div>
+
+          <div class="about-links">
+            <a href="https://linkedin.com/in/jellespek" target="_blank" class="about-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRICING ────────────────────────────────── -->
+  <section id="pricing">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2>One price. One system.<br/>No subscriptions.</h2>
+        <p class="section-sub">The Execution Engine is sold as a complete system, not a monthly lease. You get everything — implementation, setup, and the full methodology.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="price-card reveal" style="transition-delay:0.1s">
+          <div class="price-tier">Standard</div>
+          <div class="price-amount">€4,997</div>
+          <div class="price-note">Full price · one-time</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li><div class="pf-check">✓</div>Complete system implementation</li>
+            <li><div class="pf-check">✓</div>12 Week Year methodology setup</li>
+            <li><div class="pf-check">✓</div>AI accountability engine</li>
+            <li><div class="pf-check">✓</div>n8n automation workflows</li>
+            <li><div class="pf-check">✓</div>Obsidian vault integration</li>
+            <li><div class="pf-check">✓</div>Local-first, fully private</li>
+          </ul>
+          <a href="#waitlist" class="btn-price outline">Join waitlist</a>
+        </div>
+
+        <div class="price-card featured reveal" style="transition-delay:0.2s">
+          <div class="featured-badge">Launch price</div>
+          <div class="price-tier">Launch offer</div>
+          <div class="price-amount">€2,497</div>
+          <div class="price-note">Founding member · limited spots</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li><div class="pf-check">✓</div>Everything in Standard</li>
+            <li><div class="pf-check">✓</div>Priority onboarding</li>
+            <li><div class="pf-check">✓</div>Direct access to Jelle</li>
+            <li><div class="pf-check">✓</div>Founding member status</li>
+            <li><div class="pf-check">✓</div>Feedback shapes v2</li>
+            <li><div class="pf-check">✓</div>Payment plan available</li>
+          </ul>
+          <a href="#waitlist" class="btn-price solid">Claim launch price</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA / WAITLIST ────────────────────────── -->
+  <section class="cta-section" id="waitlist">
+    <div class="section-inner">
+      <div class="cta-box reveal">
+        <span class="eyebrow" style="display:block; text-align:center">Launching June 1, 2026</span>
+        <h2>You said you'd do this.<br/>Now's the time.</h2>
+        <p class="section-sub">Join the waitlist. Get early access, founding member pricing, and a system built around execution — not motivation.</p>
+        <form class="cta-form waitlist-form" id="waitlist-form">
+          <input class="cta-input" type="email" name="email" placeholder="your@email.com" required autocomplete="email"/>
+          <button type="submit" class="btn-primary" style="white-space:nowrap">Join waitlist</button>
         </form>
-        <div class="form-success" hidden>
-          You're on the list. Watch your inbox.
-        </div>
-        <div class="form-error" hidden></div>
+        <p class="cta-note">No spam. No weekly newsletters. Just a ping when it's ready.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- 3. PROBLEM -->
-  <!-- ============================================================ -->
-  <section id="problem" class="section section--off-white">
-    <div class="container prose">
-      <h2>You've tried the systems. They didn't stick.</h2>
-      <p>
-        You bought the Notion template. You set up the dashboard. You watched the
-        productivity video series at 1.5x speed, took notes, and told yourself
-        this time would be different.
-      </p>
-      <p>
-        It lasted two weeks. Maybe three if you count the Sunday you spent
-        reorganizing your workspace instead of doing the actual work.
-      </p>
-      <p>
-        The morning routine is gone. The weekly review never happened consistently.
-        The 90-day goals from last quarter? Still in a document you haven't opened
-        since you wrote them.
-      </p>
-      <p>
-        Life gets busy. The system breaks. And six months later you're starting over.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 4. AGITATION -->
-  <!-- ============================================================ -->
-  <section class="section section--paper agitation">
-    <div class="container prose">
-      <h2>The cost isn't the failed system. It's the years.</h2>
-      <p>
-        The project that's been "in progress" for fourteen months. The business idea
-        you've been refining in your head while never shipping the first version.
-        The fitness goal carried forward for the fourth consecutive year.
-      </p>
-      <p>
-        You're capable. You know this. You think in systems, you understand what
-        needs to happen, you can articulate the strategy clearly. And yet.
-      </p>
-      <p>
-        The gap isn't knowledge. It's execution. And every month that passes is
-        another month where the capable version of you and the executing version of
-        you are still different people.
-      </p>
-      <p class="agitation__challenge">
-        You said you'd do this. The question is whether you actually will.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 5. SOLUTION -->
-  <!-- ============================================================ -->
-  <section id="solution" class="section section--white">
-    <div class="container prose">
-      <h2>Execution Engine is not a course. It's the car — already running.</h2>
-      <p>
-        This isn't instructions on how to build a productivity system. It's the
-        system, pre-built, already running in production. Real n8n workflows (15+
-        active). A real Telegram bot checking in with you every morning. A real
-        Obsidian vault tracking your 12-week cycles.
-      </p>
-      <p>
-        You don't watch videos and build it yourself. You import one file, configure
-        three settings, and the system starts working for you the same day.
-      </p>
-      <p class="solution__compare">
-        LifeOS tells you how to drive. Execution Engine is the car — already running.
-      </p>
-      <p>
-        The methodology is the 12 Week Year: 12 weeks of focused execution, one
-        quarterly reset, no annual planning theatre. Combined with a daily AI
-        check-in that doesn't care about your excuses and a weekly review that
-        forces honest reflection.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 6. HOW IT WORKS -->
-  <!-- ============================================================ -->
-  <section id="how-it-works" class="section section--off-white">
-    <div class="container">
-      <h2 class="section__heading prose">How it works.</h2>
-      <ol class="steps-list">
-        <li class="step">
-          <span class="step__number">1</span>
-          <div class="step__body">
-            <h3 class="step__title">Vision</h3>
-            <p class="step__desc">Set your 12-week vision and 3 goals. Not 12. Not 20. Three — the ones that actually move the needle.</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="step__number">2</span>
-          <div class="step__body">
-            <h3 class="step__title">12-Week Cycle</h3>
-            <p class="step__desc">Break each goal into weekly actions. Concrete, time-bound, measurable. Week by week, not quarter by quarter.</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="step__number">3</span>
-          <div class="step__body">
-            <h3 class="step__title">Daily AI Check-in</h3>
-            <p class="step__desc">Every morning, your Telegram bot asks: "Did you do the work?" It tracks your answer. It remembers. It doesn't let you slide.</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="step__number">4</span>
-          <div class="step__body">
-            <h3 class="step__title">Weekly Review</h3>
-            <p class="step__desc">Rate your week honestly. Adjust next week's actions. Thirty minutes every Sunday — the system walks you through it.</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="step__number">5</span>
-          <div class="step__body">
-            <h3 class="step__title">Quarterly Review</h3>
-            <p class="step__desc">Reflect on the full 12 weeks. What worked. What didn't. Reset and run the next cycle. No annual planning theatre.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 7. DEMO -->
-  <!-- DMND-04: replace with <video> when demo.mp4 is ready -->
-  <!-- ============================================================ -->
-  <section id="demo" class="section section--white">
-    <div class="container">
-      <h2 class="section__heading prose">See it in action.</h2>
-      <div class="telegram-mockup">
-        <div class="telegram-mockup__header">
-          <div class="telegram-mockup__avatar">EE</div>
-          <div class="telegram-mockup__name">
-            <span class="telegram-mockup__bot-name">Execution Engine</span>
-            <span class="telegram-mockup__status">bot</span>
-          </div>
-        </div>
-        <div class="telegram-mockup__messages">
-          <div class="telegram-bubble telegram-bubble--bot">
-            Good morning. Yesterday you planned to work on your landing page copy.
-            Did you do it? Reply <strong>y</strong> or <strong>n</strong>.
-          </div>
-          <div class="telegram-bubble telegram-bubble--user">y</div>
-          <div class="telegram-bubble telegram-bubble--bot">
-            Execution rate this week: <strong>87%</strong>. That's 4 of 5 days.
-            Keep the streak. What's the one thing you're doing today?
-          </div>
-          <div class="telegram-bubble telegram-bubble--user">Writing the FAQ section and pushing to Vercel.</div>
-          <div class="telegram-bubble telegram-bubble--bot">
-            Noted. I'll ask you tomorrow. 12 weeks ago your rate was 23%.
-            This is what a working system looks like.
-          </div>
-        </div>
-      </div>
-      <p class="demo__caption">Your AI check-in, every morning on Telegram.</p>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 8. SOCIAL PROOF -->
-  <!-- ============================================================ -->
-  <section id="social-proof" class="section section--off-white">
-    <div class="container">
-      <h2 class="section__heading prose">I built this for myself. Here's what happened.</h2>
-      <p class="prose social-proof__lead">
-        I'm not a productivity influencer. I'm an operator at Enza Zaden running a
-        side project. I built Execution Engine because I kept failing to follow through
-        on the systems I designed for myself. Then I started using it. Here's what
-        changed.
-      </p>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-value">23% → 87%</div>
-          <div class="stat-label">Execution Rate</div>
-          <p class="stat-note">Week 1 to Week 12 of the first cycle.</p>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">12</div>
-          <div class="stat-label">Completed Cycles</div>
-          <p class="stat-note">Each cycle is 12 weeks of structured execution.</p>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">15+</div>
-          <div class="stat-label">Active Workflows</div>
-          <p class="stat-note">Running in production, daily, without manual intervention.</p>
-        </div>
-      </div>
-      <p class="prose social-proof__caveat">
-        n=1 transparency: I'm selling you the car I drive. These are my numbers,
-        not averaged testimonials or cherry-picked screenshots. Your results will
-        depend on how seriously you engage with the daily check-ins.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 9. VALUE STACK -->
-  <!-- ============================================================ -->
-  <section id="value-stack" class="section section--white">
-    <div class="container">
-      <h2 class="section__heading prose">What you get.</h2>
-      <div class="value-stack-wrapper">
-        <table class="value-stack">
-          <thead>
-            <tr>
-              <th>What's included</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>n8n Morning System (15+ workflows)</td>
-              <td><s>€297</s></td>
-            </tr>
-            <tr>
-              <td>Obsidian Vault Starter</td>
-              <td><s>€97</s></td>
-            </tr>
-            <tr>
-              <td>Setup Guide + Quick Start</td>
-              <td><s>€147</s></td>
-            </tr>
-            <tr>
-              <td>1:1 Setup Call (first 20 buyers only)</td>
-              <td><s>€249</s></td>
-            </tr>
-            <tr class="value-stack__total">
-              <td>Total perceived value</td>
-              <td>€652+</td>
-            </tr>
-            <tr class="value-stack__price">
-              <td>Launch price</td>
-              <td>€2,497</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="value-stack__note">
-          Full price after launch: €4,997. Join the waitlist to lock in launch pricing.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 10. GUARANTEE -->
-  <!-- ============================================================ -->
-  <section id="guarantee" class="section section--paper">
-    <div class="container prose">
-      <h2 class="guarantee__heading">Day 1 result or full refund.</h2>
-      <p>
-        Set up your vault, complete your first Telegram check-in. If that doesn't
-        work on Day 1 — if the system doesn't run, the bot doesn't respond, the
-        vault doesn't load — you get every euro back.
-      </p>
-      <p>
-        No questions. No 30-day "did you try hard enough" review. Day 1. It works
-        or it doesn't. If it doesn't, I give you your money back the same day.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 11. SCARCITY -->
-  <!-- ============================================================ -->
-  <section id="scarcity" class="section section--white">
-    <div class="container prose">
-      <h2>First 20 buyers get a free 1:1 setup call.</h2>
-      <p>
-        90 minutes. We set up your vault, connect your Telegram bot, configure your
-        first 12-week cycle. Together. You leave the call with a running system, not
-        a to-do list.
-      </p>
-      <p>
-        €249 value, free for the first 20 buyers. After that, it's available as a
-        paid add-on.
-      </p>
-      <p>
-        <span class="spots-remaining">20 spots available</span>
-      </p>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 12. FAQ -->
-  <!-- ============================================================ -->
-  <section id="faq" class="section section--off-white">
-    <div class="container prose">
-      <h2>Questions.</h2>
-      <div class="faq-list">
-        <details>
-          <summary>Do I need to know n8n?</summary>
-          <p>No. The workflows are pre-built. You import one JSON file and configure three settings — your Telegram bot token, your Obsidian vault path, and your timezone. That's it. You don't need to understand how the workflows run.</p>
-        </details>
-        <details>
-          <summary>Do I need Obsidian?</summary>
-          <p>Obsidian is part of the system. If you've never used it, the vault starter walks you through setup from scratch. It's free software that runs locally on your machine. Nothing stored in the cloud unless you choose to sync it.</p>
-        </details>
-        <details>
-          <summary>What if I'm not technical?</summary>
-          <p>You need to be comfortable copying and pasting into a config file. That's the technical bar. If you've ever set up a Notion database, connected a Zapier integration, or followed a software installation guide, you can set this up. The guide assumes zero prior knowledge of n8n or self-hosting.</p>
-        </details>
-        <details>
-          <summary>How is this different from LifeOS?</summary>
-          <p>LifeOS tells you how to drive. Execution Engine is the car — already running. LifeOS is a Notion template that teaches you to build a productivity system. This is an automated system that checks in on you every morning whether you like it or not. One is content. The other is infrastructure.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 13. FINAL CTA -->
-  <!-- ============================================================ -->
-  <section id="waitlist" class="section section--white cta-section">
-    <div class="container">
-      <div class="prose cta-section__content">
-        <h2>Join the waitlist.</h2>
-        <p>
-          Get launch pricing when we ship. First 20 buyers get the 1:1 setup call.
-          No spam — one email when the system is ready to ship.
-        </p>
-        <form class="waitlist-form" id="cta-form" novalidate>
-          <input
-            type="email"
-            name="email"
-            placeholder="your@email.com"
-            required
-            autocomplete="email"
-          >
-          <button type="submit">Join Waitlist</button>
-        </form>
-        <div class="form-success" hidden>
-          You're on the list. Watch your inbox.
-        </div>
-        <div class="form-error" hidden></div>
-        <p class="cta-section__guarantee">Day 1 result or full refund.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- FOOTER -->
-  <!-- ============================================================ -->
-  <footer class="footer">
-    <div class="container">
-      <p class="footer__tagline">Build systems that actually execute.</p>
-      <p class="footer__copy">&copy; 2026 Execution Engine &middot; Jelle Spek</p>
-    </div>
+  <!-- ─── FOOTER ────────────────────────────────── -->
+  <footer>
+    <div class="footer-logo">Execution<span>Engine</span></div>
+    <p class="footer-text">Built by Jelle Spek · Enkhuizen, NL · © 2026</p>
+    <ul class="footer-links">
+      <li><a href="https://linkedin.com/in/jellespek" target="_blank">LinkedIn</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#waitlist">Waitlist</a></li>
+    </ul>
   </footer>
 
-  <!-- Supabase CDN (wired in Plan 01-02) -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
-  <!-- Main JS (wired in Plan 01-02) -->
-  <script src="main.js" defer></script>
-  <!-- Plausible analytics (configured in Plan 01-02) -->
-  <script defer data-domain="execution-engine-lake.vercel.app" src="https://plausible.io/js/script.js"></script>
+  <script>
+    // ─── SCROLL REVEAL ──────────────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) el.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
 
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ─── PROGRESS BAR ANIMATION ─────────────────────
+    const mockup = document.getElementById('mockup');
+    if (mockup) {
+      const mockupObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => mockup.classList.add('done'), 600);
+          }
+        });
+      }, { threshold: 0.3 });
+      mockupObserver.observe(mockup);
+    }
+
+    // ─── WAITLIST FORM ───────────────────────────────
+    const SUPABASE_URL = 'https://iezciovqfjfvxivgczrc.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_X7qmCmL4mkCH7i5_xmef8g_NDeXMhuJ';
+
+    document.querySelectorAll('.waitlist-form').forEach(form => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const input = form.querySelector('input[type="email"]');
+        const email = input.value.trim();
+
+        if (btn.disabled) return;
+        btn.textContent = 'Joining...';
+        btn.disabled = true;
+        input.disabled = true;
+
+        try {
+          const res = await fetch(`${SUPABASE_URL}/rest/v1/execution_engine_waitlist`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'apikey': SUPABASE_KEY,
+              'Authorization': `Bearer ${SUPABASE_KEY}`,
+              'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify({ email })
+          });
+
+          if (res.ok || res.status === 409) {
+            const msg = res.status === 409
+              ? "You're already on the list. Watch your inbox."
+              : "You're on the list. Watch your inbox.";
+            form.innerHTML = `<p style="font-family:var(--font-serif);font-size:1.05rem;color:#059669;font-weight:600;">${msg}</p>`;
+          } else {
+            throw new Error('Server error');
+          }
+        } catch (err) {
+          btn.textContent = 'Try again';
+          btn.style.background = '#EF4444';
+          btn.disabled = false;
+          input.disabled = false;
+        }
+      });
+    });
+
+    // ─── SMOOTH NAV ──────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ─── COUNTER ANIMATION ───────────────────────────
+    function animateCounter(el, start, end, duration, suffix = '') {
+      let startTime = null;
+      const step = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(start + (end - start) * eased) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        if (el.dataset.animated) return;
+        el.dataset.animated = true;
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.dataset.suffix || '';
+        if (target) animateCounter(el, 0, target, 1200, suffix);
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-num[data-target]').forEach(el => statObserver.observe(el));
+  </script>
 </body>
 </html>
