@@ -134,12 +134,9 @@
 
     /* ─── HERO ─────────────────────────────────────────── */
     .hero {
-      min-height: 100vh;
       display: flex;
-      align-items: center;
-      padding: 100px 40px 80px;
+      padding: 120px 40px 100px;
       position: relative;
-      overflow: hidden;
     }
 
     .hero-bg-circle {
@@ -154,14 +151,14 @@
     .hero-bg-circle.c2 { width: 300px; height: 300px; bottom: -80px; left: -60px; background: var(--bg-paper); opacity: 0.6; }
     .hero-bg-circle.c3 { width: 180px; height: 180px; top: 30%; right: 25%; opacity: 0.03; }
 
-    .hero::before {
-      content: '';
+    .hero-dots {
       position: absolute;
       inset: 0;
       background-image: radial-gradient(circle, #1D4ED8 1px, transparent 1px);
       background-size: 40px 40px;
       opacity: 0.035;
       pointer-events: none;
+      overflow: hidden;
     }
 
     .hero-inner {
@@ -529,6 +526,7 @@
     /* ─── PROBLEM SECTION ──────────────────────────────── */
     .problem {
       background: var(--bg-paper);
+      border-top: 1px solid #E8E3DC;
       position: relative;
       overflow: hidden;
     }
@@ -1103,7 +1101,6 @@
       .about-grid { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 460px; }
       .metrics-row { grid-template-columns: repeat(2, 1fr); gap: 32px; }
-      .hero-visual { order: -1; }
       .cta-form { flex-direction: column; }
       .cta-box { padding: 48px 28px; }
       nav { padding: 0 20px; }
@@ -1128,6 +1125,7 @@
 
   <!-- ─── HERO ─────────────────────────────────── -->
   <section class="hero">
+    <div class="hero-dots"></div>
     <div class="hero-bg-circle c1"></div>
     <div class="hero-bg-circle c2"></div>
     <div class="hero-bg-circle c3"></div>
