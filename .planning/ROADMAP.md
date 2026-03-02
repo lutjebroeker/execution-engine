@@ -2,7 +2,7 @@
 
 ## Overview
 
-Three phases that productize a working system: first make it visible (landing page), then make it shippable (AM bundle), then make it scalable (web app Pro tier). Phase 1 builds the demand generation engine before anything is for sale. Phase 2 turns the already-running AM system into a product anyone can buy. Phase 3 upgrades the web app with auth, payments, and AI coaching — completing the commercial product suite.
+Four phases that productize a working system: first make it visible (landing page), then make it shippable (AM bundle), then make it scalable (web app Pro tier), then make it sovereign (Obsidian vault sync). Phase 1 builds the demand generation engine before anything is for sale. Phase 2 turns the already-running AM system into a product anyone can buy. Phase 3 upgrades the web app with auth, payments, and AI coaching — completing the commercial product suite. Phase 4 adds local-first data ownership for power users.
 
 ## Phases
 
@@ -15,6 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 1: Landing Page** - High-converting landing page using Priestley demand generation and Hormozi value stacking to capture waitlist before anything ships (1/2 plans complete)
 - [ ] **Phase 2: AM Bundle Packaging** - Productize the n8n AM workflow bundle — config cleanup, documentation, Obsidian starter, Gumroad listing
 - [ ] **Phase 3: Web App Pro Tier** - Add Supabase auth, cloud sync, Stripe subscription, and Claude AI coaching to the existing React web app
+- [ ] **Phase 4: Obsidian Vault Sync** - Let Pro users choose between Supabase cloud sync and local Obsidian vault as their data storage backend
 
 ## Phase Details
 
@@ -52,13 +53,13 @@ Plans:
 - [ ] 02-03: Gumroad listing and landing page link (SALE-01, SALE-02)
 
 ### Phase 3: Web App Pro Tier
-**Goal**: The React web app supports real user accounts, cloud sync across devices, a paid Pro subscription, and AI coaching features gated behind that subscription
+**Goal**: The React web app supports real user accounts, cloud sync across devices, a paid Pro subscription (€19.99/month or one-time unlock), and AI coaching features gated behind that subscription — Pro tier is included automatically for full Execution Engine buyers (€2,497)
 **Depends on**: Phase 2
 **Requirements**: AUTH-01, AUTH-02, AUTH-03, AUTH-04, AUTH-05, DATA-01, DATA-02, DATA-03, DATA-04, PAY-01, PAY-02, PAY-03, PAY-04, AI-01, AI-02, AI-03, DEPLOY-01, DEPLOY-02, DEPLOY-03
 **Success Criteria** (what must be TRUE):
   1. User can create an account with email/password or Google OAuth, stay logged in across browser sessions and devices, and reset a forgotten password — without touching localStorage
   2. Free tier user sees their data in localStorage as before; Pro tier user sees the same data synced to Supabase and accessible from any device after login
-  3. User can subscribe to Pro for €9/month via Stripe, see their subscription status in settings, and cancel without contacting support — subscription state updates automatically via webhook
+  3. User can subscribe to Pro for €19.99/month via Stripe OR unlock via one-time payment (exact price TBD at planning), see their subscription status in settings, and cancel without contacting support — subscription state updates automatically via webhook; full Execution Engine buyers (€2,497) are granted Pro access automatically
   4. Pro user opens the weekly reflection view and sees an AI-generated analysis of their week; opens the dashboard and sees an AI morning nudge based on today's goals
   5. App is live at a custom domain, passes production build with no console errors, and all routes work in the deployed environment
 **Plans**: TBD
@@ -69,13 +70,29 @@ Plans:
 - [ ] 03-03: Claude AI coaching features (AI-01–03)
 - [ ] 03-04: Deployment and environment setup (DEPLOY-01–03)
 
+### Phase 4: Obsidian Vault Sync
+**Goal**: Pro users can choose between Supabase cloud storage (default) and local Obsidian vault sync — ensuring data ownership is preserved for the power user audience
+**Depends on**: Phase 3 (auth and data model must exist)
+**Success Criteria** (what must be TRUE):
+  1. Pro user can switch between "Cloud sync" and "Obsidian vault" in Settings without losing data
+  2. In Obsidian mode: all check-ins, reflections, and plannings are written as Markdown files to a configured vault folder
+  3. The Obsidian Vault Starter from Phase 2 determines the folder structure — no manual setup required
+  4. Cloud mode and Obsidian mode are fully interchangeable with no data loss when switching
+**Plans**: TBD
+
+Plans:
+- [ ] 04-01: Obsidian file writer — data export to Markdown per vault structure
+- [ ] 04-02: Settings UI — storage switch and vault path configuration
+- [ ] 04-03: Sync reconciliation — conflict handling when switching modes
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3
+Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Landing Page | 1/2 | In progress | - |
 | 2. AM Bundle Packaging | 0/3 | Not started | - |
 | 3. Web App Pro Tier | 0/4 | Not started | - |
+| 4. Obsidian Vault Sync | 0/3 | Not started | - |
