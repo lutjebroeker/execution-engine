@@ -49,7 +49,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Audit + Config node refactor + workflow export (CONFIG-01, CONFIG-02, BUNDLE-01)
+- [x] 02-01-PLAN.md — Audit + Config node refactor + workflow export (CONFIG-01, CONFIG-02, BUNDLE-01)
 - [ ] 02-02-PLAN.md — README setup guide + Obsidian Vault Starter + bundle ZIP (DOCS-01–06, BUNDLE-02, BUNDLE-03)
 - [ ] 02-03-PLAN.md — Gumroad purchase workflow + Gumroad listing + landing page link (SALE-01, SALE-02)
 
@@ -109,7 +109,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Landing Page | 2/2 | Complete | 2026-03-01 |
-| 2. AM Bundle Packaging | 0/3 | Planned | - |
+| 2. AM Bundle Packaging | 1/3 | In Progress | - |
 | 3. Web App Pro Tier | 0/4 | Not started | - |
 | 4. Obsidian Vault Sync | 0/3 | Not started | - |
 | 5. Hosted VPS Package | 0/0 | Not started | - |
