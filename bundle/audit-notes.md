@@ -191,3 +191,50 @@ The Config node template should use these fields (removing Postgres, replacing O
 
 Note: Telegram bot token is handled via n8n Telegram credential (not Config node).
 Note: Ollama connection is handled via n8n Ollama credential (not Config node).
+
+---
+
+## Config Node Refactor Results (Plan 02-01 Task 2)
+
+**Completed:** 2026-03-12
+
+All 22 workflows have been refactored to use the `CONFIG — Edit These Values` Set node pattern.
+
+### Final Config node field set
+
+```json
+{
+  "telegramChatId": "YOUR_TELEGRAM_CHAT_ID",
+  "botToken": "YOUR_BOT_TOKEN",
+  "nodeRedBaseUrl": "http://YOUR_NODERED_HOST:1880",
+  "vaultRootPath": "/path/to/your/vault",
+  "claudeApiKey": "sk-ant-YOUR_CLAUDE_API_KEY",
+  "n8nHost": "https://YOUR_N8N_HOST"
+}
+```
+
+Note on botToken: Several workflows call the Telegram Bot API directly via HTTP Request nodes (inline bot menus, callback answers) and require the bot token in the URL. These are now referenced via `{{$node["CONFIG — Edit These Values"].json["botToken"]}}` rather than the n8n Telegram credential.
+
+Note on n8nHost: Two workflows (`AM - Telegram - Message trigger - Weekly Review` and `AM - Telegram - Message trigger - weekly_struggles`) call back into the n8n instance itself via webhook-waiting URLs. These require the buyer's n8n public URL.
+
+Note on ollamaBaseUrl: NOT included in Config node — Ollama connection is managed via n8n's built-in Ollama LangChain credential. Buyer configures this in Credentials, not the Config node.
+
+### Dual-trigger workflows fixed
+
+- **AM - Quarter - Review**: Had Schedule trigger + Manual trigger. Manual trigger previously bypassed Config. Fixed: both triggers now route to Config, Config fans out to both downstream branches.
+- **AM - Telegram - Message trigger - ap_morning**: Had Execute Workflow trigger that bypassed Config. Fixed.
+
+### Expression pattern used
+
+```
+{{$node["CONFIG — Edit These Values"].json["fieldName"]}}
+```
+
+All HTTP Request URLs, Telegram chatId fields, and Code node `basePath` variables updated to use this pattern.
+
+### Exported file
+
+- Path: `bundle/workflows/am-workflows-v1.json`
+- Size: ~470KB
+- Workflows: 22
+- No personal values in output (verified: no Telegram chat ID, bot token, vault path, Node-RED IP, Claude API key, or n8n hostname)
