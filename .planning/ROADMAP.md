@@ -34,7 +34,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01-PLAN.md — HTML structure and complete copy: all 13 sections, Hormozi value stack, Telegram demo mockup, mobile-responsive CSS
-- [ ] 01-02-PLAN.md — Supabase integration, Vercel deploy, og:image, Plausible analytics
+- [x] 01-02-PLAN.md — Supabase integration, Vercel deploy, og:image, Plausible analytics
 
 ### Phase 2: AM Bundle Packaging
 **Goal**: The AM workflow bundle is a shippable, self-contained product a buyer can set up in 30 minutes and purchase via Gumroad
@@ -108,7 +108,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Landing Page | 1/2 | In progress | - |
+| 1. Landing Page | 2/2 | Complete | 2026-03-01 |
 | 2. AM Bundle Packaging | 0/3 | Planned | - |
 | 3. Web App Pro Tier | 0/4 | Not started | - |
 | 4. Obsidian Vault Sync | 0/3 | Not started | - |
