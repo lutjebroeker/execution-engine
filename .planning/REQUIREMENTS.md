@@ -63,8 +63,8 @@
 
 ### Sales
 
-- [ ] **SALE-01**: Gumroad product page live with title, description, value stack, price (€2,497 launch / €4,997 full), and bundle ZIP attached
-- [ ] **SALE-02**: Gumroad page linked from landing page (waitlist → Gumroad when ready)
+- [x] **SALE-01**: Gumroad product page live with title, description, value stack, price (€2,497 launch / €4,997 full), and bundle ZIP attached
+- [x] **SALE-02**: Gumroad page linked from landing page (waitlist → Gumroad when ready)
 
 ---
 
