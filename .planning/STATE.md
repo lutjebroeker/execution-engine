@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: in-progress
-stopped_at: "Completed 02-01-PLAN.md"
-last_updated: "2026-03-12T00:00:00Z"
+status: unknown
+stopped_at: Completed 02-02-PLAN.md
+last_updated: "2026-03-13T08:13:32.160Z"
 progress:
-  total_phases: 3
+  total_phases: 2
   completed_phases: 1
   total_plans: 5
-  completed_plans: 3
+  completed_plans: 5
 ---
 
 # Project State
@@ -61,6 +61,9 @@ Goal: Visitors can discover, understand, and join the waitlist for Execution Eng
 - **2026-03-12, Plan 02-01:** ollamaBaseUrl excluded from Config node — managed via n8n Ollama LangChain credential
 - **2026-03-12, Plan 02-01:** Vault access via Node-RED bridge (not Obsidian Local REST API) — documentation in Plan 02-02 must reflect this
 - **2026-03-12, Plan 02-01:** No PostgreSQL required — n8n Data Tables used for all memory/state
+- [Phase 02-02]: Step 5 is n8n Data Table setup (not Postgres) — Message table with 3 columns required before workflow import
+- [Phase 02-02]: Config node README table includes botToken and n8nHost — required fields not in original plan spec but confirmed in audit refactor results
+- [Phase 02-02]: Node-RED flow JSON included verbatim in README — reduces buyer setup friction
 
 ## Performance Metrics
 
@@ -68,10 +71,11 @@ Goal: Visitors can discover, understand, and join the waitlist for Execution Eng
 |-------|------|----------|-------|-------|
 | 01 | 01-01 | ~4 min | 2/2 | 2 |
 | 02 | 02-01 | ~45 min | 2/2 | 6 |
+| Phase 02-am-bundle-packaging P02-02 | 20 | 2 tasks | 12 files |
 
 ## Last Session
 
-**Stopped at:** Completed 02-01-PLAN.md
+**Stopped at:** Completed 02-02-PLAN.md
 **Last updated:** 2026-03-12T00:00:00Z
 **Live URL:** https://execution-engine-lake.vercel.app
 

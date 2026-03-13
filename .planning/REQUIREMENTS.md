@@ -48,18 +48,18 @@
 
 ### Documentation
 
-- [ ] **DOCS-01**: Obsidian vault folder structure documented — exact folder names, which templates go where, daily/weekly/quarterly note naming conventions
-- [ ] **DOCS-02**: Setup guide written for Telegram bot creation (BotFather, set commands, webhook URL)
-- [ ] **DOCS-03**: Setup guide written for Obsidian Local REST API plugin installation + configuration
-- [ ] **DOCS-04**: Setup guide written for Ollama — model download (which models), API endpoint setup
-- [ ] **DOCS-05**: Setup guide written for PostgreSQL — database creation, table schema for AI Agent memory
-- [ ] **DOCS-06**: Workflows listed by name with one-line description — buyer knows what they're getting
+- [x] **DOCS-01**: Obsidian vault folder structure documented — exact folder names, which templates go where, daily/weekly/quarterly note naming conventions
+- [x] **DOCS-02**: Setup guide written for Telegram bot creation (BotFather, set commands, webhook URL)
+- [x] **DOCS-03**: Setup guide written for Obsidian Local REST API plugin installation + configuration
+- [x] **DOCS-04**: Setup guide written for Ollama — model download (which models), API endpoint setup
+- [x] **DOCS-05**: Setup guide written for PostgreSQL — database creation, table schema for AI Agent memory
+- [x] **DOCS-06**: Workflows listed by name with one-line description — buyer knows what they're getting
 
 ### Deliverables
 
 - [ ] **BUNDLE-01**: All 15+ AM workflows exported as a single JSON file importable into n8n
-- [ ] **BUNDLE-02**: Obsidian Vault Starter ZIP — pre-built folder structure + template files matching the workflow expectations
-- [ ] **BUNDLE-03**: README.md in bundle — quick start, prerequisites checklist, "you'll be live in 30 min" promise
+- [x] **BUNDLE-02**: Obsidian Vault Starter ZIP — pre-built folder structure + template files matching the workflow expectations
+- [x] **BUNDLE-03**: README.md in bundle — quick start, prerequisites checklist, "you'll be live in 30 min" promise
 
 ### Sales
 
