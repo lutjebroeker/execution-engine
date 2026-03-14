@@ -54,22 +54,22 @@ Plans:
 - [ ] 02-03-PLAN.md — Gumroad purchase workflow + Gumroad listing + landing page link (SALE-01, SALE-02)
 
 ### Phase 3: Web App Pro Tier
-**Goal**: The React web app supports real user accounts, cloud sync across devices, a paid Pro subscription (€19.99/month or one-time unlock), and AI coaching features gated behind that subscription — Pro tier is included automatically for full Execution Engine buyers (€2,497)
+**Goal**: The React web app supports real user accounts, cloud sync across devices, a paid Pro subscription (€19.99/month), and AI coaching features gated behind that subscription — Pro tier is included automatically for full Execution Engine buyers (€2,497) via manual DB update
 **Depends on**: Phase 2
 **Requirements**: AUTH-01, AUTH-02, AUTH-03, AUTH-04, AUTH-05, DATA-01, DATA-02, DATA-03, DATA-04, PAY-01, PAY-02, PAY-03, PAY-04, AI-01, AI-02, AI-03, DEPLOY-01, DEPLOY-02, DEPLOY-03
 **Success Criteria** (what must be TRUE):
   1. User can create an account with email/password or Google OAuth, stay logged in across browser sessions and devices, and reset a forgotten password — without touching localStorage
   2. Free tier user sees their data in localStorage as before; Pro tier user sees the same data synced to Supabase and accessible from any device after login
-  3. User can subscribe to Pro for €19.99/month via Stripe OR unlock via one-time payment (exact price TBD at planning), see their subscription status in settings, and cancel without contacting support — subscription state updates automatically via webhook; full Execution Engine buyers (€2,497) are granted Pro access automatically
+  3. User can subscribe to Pro for €19.99/month via Stripe Checkout, see their subscription status in settings, and cancel without contacting support — subscription state updates automatically via webhook; full Execution Engine buyers (€2,497) are granted Pro access via manual DB update
   4. Pro user opens the weekly reflection view and sees an AI-generated analysis of their week; opens the dashboard and sees an AI morning nudge based on today's goals
   5. App is live at a custom domain, passes production build with no console errors, and all routes work in the deployed environment
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 03-01: Supabase auth and data migration (AUTH-01–05, DATA-01–04)
-- [ ] 03-02: Stripe subscription and Pro paywall (PAY-01–04)
-- [ ] 03-03: Claude AI coaching features (AI-01–03)
-- [ ] 03-04: Deployment and environment setup (DEPLOY-01–03)
+- [~] 03-01-PLAN.md — Auth extension (email+password, Google OAuth, password reset) + 4 Supabase data migrations (AUTH-01–05, DATA-01–04) — Tasks 1-3 done; checkpoint pending SQL migration + Google OAuth
+- [ ] 03-02-PLAN.md — Stripe subscription + ProGate component + Billing Portal (PAY-01–04)
+- [ ] 03-03-PLAN.md — Claude AI coaching: weekly reflection analysis, morning nudge, cycle review (AI-01–03)
+- [ ] 03-04-PLAN.md — Vercel production deploy + custom domain + env vars (DEPLOY-01–03)
 
 ### Phase 4: Obsidian Vault Sync
 **Goal**: Pro users can choose between Supabase cloud storage (default) and local Obsidian vault sync — ensuring data ownership is preserved for the power user audience
@@ -110,6 +110,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 |-------|----------------|--------|-----------|
 | 1. Landing Page | 2/2 | Complete | 2026-03-01 |
 | 2. AM Bundle Packaging | 3/3 | Complete   | 2026-03-13 |
-| 3. Web App Pro Tier | 0/4 | Not started | - |
+| 3. Web App Pro Tier | 0/4 | In Progress | - |
 | 4. Obsidian Vault Sync | 0/3 | Not started | - |
 | 5. Hosted VPS Package | 0/0 | Not started | - |
