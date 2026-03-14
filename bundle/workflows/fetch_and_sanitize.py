@@ -5,12 +5,13 @@ and save as bundle/workflows/am-workflows-v1.json
 """
 
 import json
+import os
 import urllib.request
 import urllib.error
 import re
 
-N8N_BASE = "https://n8n.jellespek.nl"
-API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkNjNlNjgzZS0yZmRjLTQwYWYtODlkNi1jODI1MmMxNmNkYTciLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzcyMTMwODk5LCJleHAiOjE3Nzk4NTQ0MDB9.NIQPhuNOyjmqArVCStiAx-tCQeTh6ga9yDuzYdyTKCo"
+N8N_BASE = os.environ.get("N8N_BASE_URL", "https://YOUR_N8N_HOST")
+API_KEY = os.environ.get("N8N_API_KEY", "")
 
 WORKFLOW_IDS = [
     "njsE67iI52fQX4hL",       # AM - Morning - Start routine
