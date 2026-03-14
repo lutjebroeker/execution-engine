@@ -1,0 +1,4 @@
+{
+  "plugins": ["obsidian-local-rest-api"],
+  "enabled": ["obsidian-local-rest-api"]
+}
