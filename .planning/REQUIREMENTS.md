@@ -94,9 +94,9 @@
 
 ### AI Coaching (Pro)
 
-- [ ] **AI-01**: Weekly reflection view shows AI-generated analysis of the week via Claude API (Pro only)
-- [ ] **AI-02**: Dashboard shows AI-generated morning nudge based on today's goals and yesterday's completion (Pro only)
-- [ ] **AI-03**: 12-week review page shows AI cycle analysis — patterns, wins, growth areas
+- [x] **AI-01**: Weekly reflection view shows AI-generated analysis of the week via Claude API (Pro only)
+- [x] **AI-02**: Dashboard shows AI-generated morning nudge based on today's goals and yesterday's completion (Pro only)
+- [x] **AI-03**: 12-week review page shows AI cycle analysis — patterns, wins, growth areas
 
 ### Deployment
 
@@ -166,7 +166,7 @@
 | AUTH-01 through AUTH-05 | Phase 3 | Pending |
 | DATA-01 through DATA-04 | Phase 3 | Pending |
 | PAY-01 through PAY-04 | Phase 3 | Pending |
-| AI-01 through AI-03 | Phase 3 | Pending |
+| AI-01 through AI-03 | Phase 3 | Complete (03-03) |
 | DEPLOY-01 through DEPLOY-03 | Phase 3 | Pending |
 
 **Coverage:**

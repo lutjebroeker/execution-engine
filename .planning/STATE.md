@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-stopped_at: Checkpoint 03-01 Task 4 — awaiting human SQL migration + Google OAuth setup
-last_updated: "2026-03-14T08:35:00Z"
+status: in-progress
+stopped_at: Completed 03-03-PLAN.md — AI coaching integration
+last_updated: "2026-03-17T16:19:17Z"
 progress:
   total_phases: 3
   completed_phases: 1
   total_plans: 9
-  completed_plans: 5
+  completed_plans: 6
 ---
 
 # Project State
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 **Phase 3: Web App Pro Tier**
 Goal: Extend flow-year-coach with Pro subscription gating, Stripe payments, AI coaching, and production deployment
 
-Status: In Progress — awaiting human checkpoint (SQL migration + Google OAuth)
-Plans complete: 0/4 (03-01 Tasks 1-3 done; checkpoint 4 pending human setup)
-Current plan: 03-01
+Status: In Progress
+Plans complete: 3/4 (03-01, 03-02, 03-03 done; 03-04 production deployment pending)
+Current plan: 03-04
 
 ## Phase Plan Status
 
@@ -42,9 +42,9 @@ Current plan: 03-01
 
 | Plan | Description | Status |
 |------|-------------|--------|
-| 03-01 | Auth extension + data migration | In Progress (checkpoint — SQL + Google OAuth) |
-| 03-02 | Stripe payments + Pro gating | Pending |
-| 03-03 | AI coaching integration | Pending |
+| 03-01 | Auth extension + data migration | Complete |
+| 03-02 | Stripe payments + Pro gating | Complete |
+| 03-03 | AI coaching integration | Complete |
 | 03-04 | Production deployment | Pending |
 
 ## Completed Phases
@@ -79,6 +79,10 @@ Goal: Visitors can discover, understand, and join the waitlist for Execution Eng
 - **2026-03-14, Plan 03-01:** isPro gated strictly on profiles.subscription_status === 'active' — never hardcoded
 - **2026-03-14, Plan 03-01:** useIsPro() uses 5-min TanStack Query staleTime to avoid N+1 Supabase calls
 - **2026-03-14, Plan 03-01:** Dual-write pattern: isPro && user -> Supabase; else -> localStorage (same public API)
+- **2026-03-17, Plan 03-03:** Morning nudge is ephemeral — not persisted to DB; refreshes each page load for freshness
+- **2026-03-17, Plan 03-03:** Weekly reflection and cycle analysis saved via admin (service role) client to bypass JWT write limitations
+- **2026-03-17, Plan 03-03:** model: claude-opus-4-5, max_tokens: 1024 for all three AI Edge Functions
+- **2026-03-17, Plan 03-03:** ai_analysis field added to WeeklyReflection and TwelveWeekReview TypeScript interfaces to enable cached display without re-calling Claude
 
 ## Performance Metrics
 
@@ -89,11 +93,12 @@ Goal: Visitors can discover, understand, and join the waitlist for Execution Eng
 | Phase 02-am-bundle-packaging P02-02 | 20 | 2 tasks | 12 files |
 | 02 | 02-03 | ~8 min | 2/3 tasks | 2 files |
 | 03 | 03-01 | 7 min | 3/3 tasks (checkpoint pending) | 18 files |
+| 03 | 03-03 | 4 min | 2/2 tasks | 9 files |
 
 ## Last Session
 
-**Stopped at:** Checkpoint 03-01 Task 4 — human must run SQL migration, enable Google OAuth in Supabase, verify 3-tab login
-**Last updated:** 2026-03-14T08:35:00Z
+**Stopped at:** Completed 03-03-PLAN.md — AI coaching integration complete
+**Last updated:** 2026-03-17T16:19:17Z
 **Live URL:** https://execution-engine-lake.vercel.app
 
 ---

@@ -66,9 +66,9 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [~] 03-01-PLAN.md — Auth extension (email+password, Google OAuth, password reset) + 4 Supabase data migrations (AUTH-01–05, DATA-01–04) — Tasks 1-3 done; checkpoint pending SQL migration + Google OAuth
-- [ ] 03-02-PLAN.md — Stripe subscription + ProGate component + Billing Portal (PAY-01–04)
-- [ ] 03-03-PLAN.md — Claude AI coaching: weekly reflection analysis, morning nudge, cycle review (AI-01–03)
+- [x] 03-01-PLAN.md — Auth extension (email+password, Google OAuth, password reset) + 4 Supabase data migrations (AUTH-01–05, DATA-01–04)
+- [x] 03-02-PLAN.md — Stripe subscription + ProGate component + Billing Portal (PAY-01–04)
+- [x] 03-03-PLAN.md — Claude AI coaching: weekly reflection analysis, morning nudge, cycle review (AI-01–03)
 - [ ] 03-04-PLAN.md — Vercel production deploy + custom domain + env vars (DEPLOY-01–03)
 
 ### Phase 4: Obsidian Vault Sync
@@ -110,6 +110,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 |-------|----------------|--------|-----------|
 | 1. Landing Page | 2/2 | Complete | 2026-03-01 |
 | 2. AM Bundle Packaging | 3/3 | Complete   | 2026-03-13 |
-| 3. Web App Pro Tier | 0/4 | In Progress | - |
+| 3. Web App Pro Tier | 3/4 | In Progress | - |
 | 4. Obsidian Vault Sync | 0/3 | Not started | - |
 | 5. Hosted VPS Package | 0/0 | Not started | - |
