@@ -100,9 +100,9 @@
 
 ### Deployment
 
-- [ ] **DEPLOY-01**: App deployed to Vercel (or Lovable publish) with custom domain
-- [ ] **DEPLOY-02**: Environment variables set for Supabase, Stripe, Claude API
-- [ ] **DEPLOY-03**: Production build passes — no console errors, all routes work
+- [x] **DEPLOY-01**: App deployed to Vercel (or Lovable publish) with custom domain
+- [x] **DEPLOY-02**: Environment variables set for Supabase, Stripe, Claude API
+- [x] **DEPLOY-03**: Production build passes — no console errors, all routes work
 
 ---
 
