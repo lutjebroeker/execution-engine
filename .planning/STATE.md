@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 04-02-PLAN.md
-last_updated: "2026-03-21T10:38:15.973Z"
+stopped_at: Completed 04-03-PLAN.md
+last_updated: "2026-03-21T10:43:12.938Z"
 progress:
   total_phases: 4
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 12
-  completed_plans: 12
+  completed_plans: 13
 ---
 
 # Project State
@@ -90,6 +90,8 @@ Goal: Visitors can discover, understand, and join the waitlist for Execution Eng
 - [Phase 04]: needsReconnect flag set on mount when queryPermission returns prompt — avoids requestPermission outside user gesture
 - [Phase 04]: Vault Sync card placed after Subscription card in Settings — logical Pro feature ordering
 - [Phase 04]: backfill() is fire-and-forget in handleConnect — not awaited to avoid blocking UI on large datasets
+- [Phase 04]: insertMutation in useFlowSessions upgraded to return row via .select().single() for vault path generation
+- [Phase 04]: Async onSuccess pattern used in 4 hooks for cycle start_date lookup — TanStack Query handles async onSuccess natively
 
 ## Performance Metrics
 
@@ -104,10 +106,11 @@ Goal: Visitors can discover, understand, and join the waitlist for Execution Eng
 | Phase 03 P04 | 5min | 1 tasks | 0 files |
 | Phase 04 P01 | 8 | 2 tasks | 6 files |
 | Phase 04 P02 | 2min | 2 tasks | 2 files |
+| Phase 04 P03 | 3 | 2 tasks | 7 files |
 
 ## Last Session
 
-**Stopped at:** Completed 04-02-PLAN.md
+**Stopped at:** Completed 04-03-PLAN.md
 **Last updated:** 2026-03-17T16:19:17Z
 **Live URL:** https://execution-engine-lake.vercel.app
 
