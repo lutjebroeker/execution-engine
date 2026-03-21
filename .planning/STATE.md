@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 04-01-PLAN.md
-last_updated: "2026-03-21T10:34:56.265Z"
+stopped_at: Completed 04-02-PLAN.md
+last_updated: "2026-03-21T10:38:15.973Z"
 progress:
   total_phases: 4
   completed_phases: 3
   total_plans: 12
-  completed_plans: 11
+  completed_plans: 12
 ---
 
 # Project State
@@ -88,6 +88,8 @@ Goal: Visitors can discover, understand, and join the waitlist for Execution Eng
 - [Phase 04]: obsidianMode stored in localStorage (ee-obsidian-mode) as device preference, not cross-device
 - [Phase 04]: writeNote uses try/finally to ensure writable.close() always runs
 - [Phase 04]: needsReconnect flag set on mount when queryPermission returns prompt — avoids requestPermission outside user gesture
+- [Phase 04]: Vault Sync card placed after Subscription card in Settings — logical Pro feature ordering
+- [Phase 04]: backfill() is fire-and-forget in handleConnect — not awaited to avoid blocking UI on large datasets
 
 ## Performance Metrics
 
@@ -101,10 +103,11 @@ Goal: Visitors can discover, understand, and join the waitlist for Execution Eng
 | 03 | 03-03 | 4 min | 2/2 tasks | 9 files |
 | Phase 03 P04 | 5min | 1 tasks | 0 files |
 | Phase 04 P01 | 8 | 2 tasks | 6 files |
+| Phase 04 P02 | 2min | 2 tasks | 2 files |
 
 ## Last Session
 
-**Stopped at:** Completed 04-01-PLAN.md
+**Stopped at:** Completed 04-02-PLAN.md
 **Last updated:** 2026-03-17T16:19:17Z
 **Live URL:** https://execution-engine-lake.vercel.app
 
