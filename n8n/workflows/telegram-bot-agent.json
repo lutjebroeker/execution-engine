@@ -103,7 +103,7 @@
       "position": [1120, 300],
       "parameters": {
         "method": "GET",
-        "url": "={{ $env.SUPABASE_URL }}/rest/v1/conversations?tenant_id=eq.{{ $json[0].id }}&order=created_at.desc&limit=20&select=role,content",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/conversations?tenant_id=eq.{{ $json.tenant?.id }}&order=created_at.desc&limit=20&select=role,content",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -819,7 +819,51 @@
       "typeVersion": 2,
       "position": [1120, 380],
       "parameters": {
-        "jsCode": "// This runs when tenant EXISTS and we need to check if /start was sent again\nconst text = $('Extract Message Data').item.json.text;\nconst isStart = text.trim().startsWith('/start');\nconst tenant = $('Lookup Tenant').all()[0]?.json;\n\nif (isStart && tenant) {\n  return [{ json: { _returning_start: true, chat_id: $('Extract Message Data').item.json.chat_id, tenant } }];\n}\nreturn [{ json: { _returning_start: false, tenant } }];"
+        "jsCode": "// Runs when tenant EXISTS — check if /start was sent again\nconst text = $('Extract Message Data').item.json.text;\nconst isStart = text.trim().startsWith('/start');\nconst tenantItems = $('Lookup Tenant').all();\nconst tenant = tenantItems[0]?.json;\n\nreturn [{ json: { _returning_start: isStart, chat_id: $('Extract Message Data').item.json.chat_id, tenant } }];"
+      }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000039",
+      "name": "Returning /start Check",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1340, 380],
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict" },
+          "conditions": [
+            {
+              "id": "condition-returning-start",
+              "leftValue": "={{ $json._returning_start }}",
+              "rightValue": true,
+              "operator": { "type": "boolean", "operation": "equals" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000040",
+      "name": "Send Already Set Up Reply",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [1560, 300],
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.telegram.org/bot{{ $env.TELEGRAM_BOT_TOKEN }}/sendMessage",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"chat_id\": {{ $json.chat_id }},\n  \"text\": \"You're already set up. Use /help to see what I can do.\"\n}",
+        "options": {}
       }
     }
   ],
@@ -849,10 +893,27 @@
     "Tenant Exists?": {
       "main": [
         [
-          { "node": "Get Conversation History", "type": "main", "index": 0 }
+          { "node": "Handle Returning Tenant /start", "type": "main", "index": 0 }
         ],
         [
           { "node": "Is /start?", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Handle Returning Tenant /start": {
+      "main": [
+        [
+          { "node": "Returning /start Check", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Returning /start Check": {
+      "main": [
+        [
+          { "node": "Send Already Set Up Reply", "type": "main", "index": 0 }
+        ],
+        [
+          { "node": "Get Conversation History", "type": "main", "index": 0 }
         ]
       ]
     },
