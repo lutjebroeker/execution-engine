@@ -1,11 +1,11 @@
-# ENGINE ECOSYSTEM — MASTER PLAN v4.1
+# ENGINE ECOSYSTEM — MASTER PLAN v5
 
-> Single source of truth. Every decision. Every engine. Every repo.
-> Date: 2026-04-03 | Status: DEFINITIVE
-> Supersedes: all prior versions (v1–v4), CLAUDE-CODE-BUILD.md, SCORECARD-BUILD.md, Publish Engine research
-> Reviewed: 4-agent debate (Pragmatist, Strateeg, Contrarian, Klantadvocaat)
+> Single source of truth. Rewritten for speed, scale, and self-learning.
+> Date: 2026-04-04 | Status: DEFINITIVE
+> Supersedes: all prior versions (v1–v4.1)
+> Architecture shift: multi-tenant SaaS. No per-client VPS. One system, all clients.
 > Frameworks: Hormozi $100M Offers + Priestley Oversubscribed/Scorecard
-> Constraint: full-time job. Max 10 hours/week.
+> Constraint: full-time job. Max 10 hours/week (first 6 weeks: 15 hrs/week sprint).
 
 ---
 
@@ -16,6 +16,8 @@
 **What we sell:** Execution consistency.
 **What we DON'T sell:** Motivation, AI tools, coaching, privacy ideology.
 **Language:** English product. Dutch sales & content.
+
+**Architecture principle:** One system. All clients. Every new client makes the system smarter for everyone. Self-hosted is a premium upsell for enterprise, not the default.
 
 ---
 
@@ -34,7 +36,7 @@
 - "I know what I should focus on but the day takes over."
 - "I've tried every productivity app. I use them for 2 weeks then stop."
 
-**Why he pays €997-2,497:** Already pays €150/hour for a personal trainer (body). This is that, for execution (mind). Time-poor, money-comfortable. Done-for-you is the only thing that works.
+**Why he pays:** Already pays €150/hour for a personal trainer (body). This is that, for execution (mind). Time-poor, money-comfortable. Done-for-you is the only thing that works.
 
 **Where to find him:** LinkedIn, HBR, productivity podcasts, Slack communities.
 
@@ -46,57 +48,45 @@
 
 Thomas has options. Here's why he picks the Execution Engine:
 
-**Vs. executive coach (€150-300/hour):** A coach meets you once a week. Between sessions, nothing measures your execution. The EE confronts you every single day with a number. A coach is opinion-based. The EE is data-based. A coach costs €7,000-15,000/year. The EE costs €997 once.
+**Vs. executive coach (€150-300/hour):** A coach meets you once a week. Between sessions, nothing measures your execution. The EE confronts you every single day with a number. A coach is opinion-based. The EE is data-based. A coach costs €7,000-15,000/year. The EE costs a fraction.
 
-**Vs. productivity apps (Notion, Todoist, Sunsama):** Apps track tasks. They don't measure execution rate. They don't confront you when you drift. They don't pattern-match across weeks to show you why you keep failing on Wednesdays. And when you stop using the app after 2 weeks (like Thomas always does), nobody notices.
+**Vs. productivity apps (Notion, Todoist, Sunsama):** Apps track tasks. They don't measure execution rate. They don't confront you when you drift. They don't pattern-match across weeks to show you why you keep failing on Wednesdays. And when you stop using the app after 2 weeks, nobody notices.
 
-**Vs. accountability platforms (Coach.me, Focusmate):** Generic check-ins with strangers. No personalization. No vault extraction. No cross-engine intelligence. No execution score.
+**Vs. accountability platforms (Coach.me, Focusmate):** Generic check-ins with strangers. No personalization. No cross-engine intelligence. No execution score.
 
-**The "only we" statement:** The Execution Engine is the only system that gives you an objective, daily execution score — a number, not a feeling — powered by an AI that knows your goals, reads your patterns, and confronts you when your behavior contradicts your stated priorities. It runs on your own infrastructure, it's built for you specifically, and it remembers everything.
+**The "only we" statement:** The Execution Engine is the only system that gives you an objective, daily execution score — a number, not a feeling — powered by an AI that knows your goals, reads your patterns, and confronts you when your behavior contradicts your stated priorities. It learns from every client interaction and gets smarter over time.
 
-**The real differentiator is the execution score.** Not self-hosted. Not AI. The number. Nobody else gives Thomas a weekly percentage that says "you executed 34% of your strategic priorities this week." That number is the product.
-
----
-
-## 4. SELF-HOSTED FRAMING
-
-The client never hears "VPS", "Docker", "n8n", or "Supabase." They hear:
-
-**"Your system. Your data. Always yours."**
-
-1. **Private by design.** Your data lives on a dedicated server, not a SaaS platform.
-2. **You own it.** If you stop working with me, the system keeps running.
-3. **Built for you.** Configured around YOUR goals, YOUR schedule, YOUR patterns.
-
-**What we NEVER say:** self-hosted, VPS, Docker, open source, n8n, Supabase.
-**What we DO say:** dedicated system, private infrastructure, you own everything, no vendor lock-in.
+**The real differentiator is the execution score.** Not AI. Not self-hosted. The number. Nobody else gives Thomas a weekly percentage that says "you executed 34% of your strategic priorities this week."
 
 ---
 
-## 5. THE ENGINE ECOSYSTEM
+## 4. THE ENGINE ECOSYSTEM
 
 Four engines. Execution Engine is the core. The others are add-ons or internal tools.
 
-### 5.1 Execution Engine (THE CORE — for clients)
+### 4.1 Execution Engine (THE CORE — for clients)
 
 **Problem:** "I know what to do. I just don't do it consistently."
-**Solution:** Done-for-you AI accountability system. Measures what you do vs. what you said. Every day. Every week. For 12 weeks.
+**Solution:** AI accountability system that measures what you do vs. what you said. Every day. Every week. For 12 weeks.
+
+**Delivery:** Telegram/Slack bot. Client signs up, answers intake questions, system is live within the hour. No setup call needed for the base tier.
 
 Core features:
-- Keystone extraction (AI reads your notes → personal operating system)
 - 12-week goal tracking with milestones
 - Daily morning priorities (AI-generated, aligned to goals)
 - Daily accountability check-in (facts, not feelings)
 - Weekly review with execution score (% lead actions completed)
+- Pattern detection across weeks ("you consistently miss Wednesdays")
 - Contradiction detector (behavior vs. stated values)
+- Cross-client insights: system learns from all users what patterns predict failure
 
 What makes it different:
 - It confronts. No "great job!" when you didn't do the work.
 - It measures. Execution score is a number, not a feeling.
-- It's yours. Runs on your dedicated server. You own your data.
-- It's done for you. You don't build anything. We set it up.
+- It learns. Every client interaction makes the system smarter.
+- It's instant. Sign up → live in minutes, not days.
 
-### 5.2 Intelligence Engine (ADD-ON — for clients + own use)
+### 4.2 Intelligence Engine (ADD-ON — for clients + own use)
 
 **Problem:** "I spend hours reading news and still miss what matters."
 **Solution:** Personalized signal-vs-noise filter. Scans 500+ sources, AI-scores relevance, delivers only what survived a 30-day hype filter.
@@ -109,7 +99,7 @@ Core features:
 - Weekly intelligence briefing
 - Hype-ratio stats ("74% of trending news was noise")
 
-### 5.3 Personal Engine (ADD-ON — for clients)
+### 4.3 Personal Engine (ADD-ON — for clients)
 
 **Problem:** "My ideas, notes, and tasks are scattered across 12 tools."
 **Solution:** AI second brain via Telegram/Slack. Remembers everything, manages calendar, retrieves anything in seconds.
@@ -120,54 +110,17 @@ Core features:
 - Cross-engine morning briefing (combines all engines)
 - On-demand knowledge retrieval
 
-### 5.4 Publish Engine (INTERNAL TOOLING — for own GTM, not a client product)
+### 4.4 Publish Engine (INTERNAL TOOLING — for own GTM)
 
-**Problem:** "I have IE signals and content ideas but publishing is manual and fragmented."
-**Solution:** Self-hosted multi-platform publishing pipeline. Takes IE output + own content, generates drafts via Claude, publishes after human review.
-
-**Why it's not scope creep:** Without consistent content, there are no pilots. This turns "2 hours writing LinkedIn posts" into "10 minutes approving AI drafts." It's a GTM accelerator.
-
-Core features:
-- Content queue with status tracking: draft → pending_review → approved → scheduled → published
-- Claude API draft generation per platform (tone, length, format adapted per channel)
-- Human review via Telegram notification with approve/reject
-- Scheduled publishing via n8n crons + Postiz (or direct API calls)
-- Engagement tracking (build when you have 4+ weeks of posting data)
+**Problem:** "I need consistent content to acquire clients but writing is a time sink."
+**Solution:** Self-hosted publishing pipeline. IE signals + own ideas → Claude drafts → Telegram review → publish to LinkedIn, X, later YouTube/Instagram/TikTok.
 
 **Phased platform rollout:**
+1. LinkedIn + X (Phase 2)
+2. YouTube Shorts + Instagram (after pilots)
+3. TikTok (when broader reach needed)
 
-| Phase | Platforms | When |
-|-------|----------|------|
-| First | LinkedIn + X | Phase 2 (parallel with EE dogfooding) |
-| Second | YouTube Shorts + Instagram | After pilots, when video content makes sense |
-| Third | TikTok | When broader reach beyond Thomas is needed |
-
-**All five platforms supported. Build LinkedIn + X first. The rest when needed.**
-
-**Platform API summary:**
-
-| Platform | Post via API | Cost | Auth/Review | n8n support |
-|----------|-------------|------|-------------|-------------|
-| LinkedIn | Yes | Free | "Share on LinkedIn" (auto-approved, 60-day tokens) or Community Management API (business entity, refresh tokens) | Native node |
-| X/Twitter | Yes | Free tier ~500 posts/mo. Pay-per-use ~$0.01/post | Developer account | Native node + HTTP |
-| YouTube | Yes (incl. Shorts) | Free (quota-based, ~100 uploads/day) | OAuth verification 2-4 weeks | HTTP Request node |
-| Instagram | Yes (Business/Creator only) | Free | Meta app review 2-4 weeks, Facebook Page required | Community nodes + HTTP |
-| TikTok | Yes (Direct Post + Draft) | Free | Compliance audit for public visibility | HTTP Request node |
-
-**Publishing middleware:** Postiz (open-source, AGPL-3.0, 30+ platforms, Docker). Pin to v2.11.3. Alternative: skip Postiz, use direct API calls via n8n HTTP nodes — less elegant but zero extra infra.
-
-**Content pipeline:**
-
-```
-IE signal (scored ≥7) OR own content idea
-    → n8n: Claude API generates platform-specific drafts
-    → Supabase: content_items (status: draft)
-    → n8n: Telegram notification with approve/reject webhooks
-    → Human approves → status: approved
-    → n8n cron: publishes at optimal time via Postiz or direct API
-```
-
-### 5.5 Execution Engine App (FREEMIUM WEB APP)
+### 4.5 Execution Engine App (FREEMIUM WEB APP)
 
 **What:** The current Flow Year Coach React app, rebranded.
 **Purpose:** Free entry point for mass market.
@@ -175,181 +128,292 @@ IE signal (scored ≥7) OR own content idea
 | Tier | Price | Features |
 |------|-------|----------|
 | Free | €0 | Core 12-week tracking, localStorage, no AI |
-| Pro | €19/mo | Supabase sync, AI nudges, AI reflections, Obsidian sync |
+| Pro | €19/mo | Supabase sync, AI nudges, AI reflections |
 
-**Conversion path:** Free app → hits ceiling → sees premium offer → buys done-for-you setup.
+**Conversion path:** Free app → hits ceiling → sees premium offer → subscribes to EE.
 
 ---
 
-## 6. PRICING
+## 5. PRICING — MULTI-TENANT MODEL
 
-### Value ladder
+The architecture shift changes the pricing fundamentally. No VPS setup cost. Monthly subscriptions.
+
+### The value ladder
 
 ```
-FREE        Execution Score Assessment (scorecard)
+FREE        Execution Score Assessment (scorecard at /score)
             → Lead magnet, LinkedIn funnel
             → "Your execution score is 34/100"
 
 €0/mo       Execution Engine App — Free tier
             → Self-service web app
-            → Core 12-week tracking, localStorage, no AI
+            → Core 12-week tracking, no AI
 
 €19/mo      Execution Engine App — Pro
-            → Supabase sync, AI nudges, AI reflections
-            → THE BRIDGE between free and premium
+            → AI nudges, AI reflections, sync
 
-€997        Execution Engine — System Setup (PILOT PRICE)
-one-time    → Done-for-you setup on dedicated server
-            → 1× 60-min intake + goal planning session
-            → 2× 30-min training sessions (week 1 and week 4)
-            → System runs autonomously after training
+€97/mo      Execution Engine — CORE
+            → Full AI accountability system via Telegram/Slack
+            → Self-service onboarding (intake via bot, live in minutes)
+            → Daily check-ins, weekly reviews, execution score
+            → Pattern detection, contradiction detector
+            → Email support
 
-€2,497      Execution Engine — System Setup (FULL PRICE, post-pilots)
-one-time    → 1× 90-min goal planning session
-            → 3× 30-min training sessions (week 1, 4, 8)
-            → Priority Telegram support during 12 weeks
+€197/mo     Execution Engine — GUIDED
+            → Everything in CORE
+            → 1× 60-min intake + goal planning call (Zoom)
+            → 2× 30-min training calls (week 1 + week 4)
+            → Priority Telegram support
+            → System fine-tuned to your patterns by Jelle personally
 
-€97/mo      Intelligence Engine add-on
-            → Signal-vs-noise for your topics
-            → Weekly briefing, hype filter
-
-€147/mo     Personal Engine add-on
-            → Second brain, calendar, memory
+€497/mo     Execution Engine — FULL STACK
+            → Everything in GUIDED
+            → Intelligence Engine (signal-vs-noise, weekly briefing)
+            → Personal Engine (second brain, calendar, memory)
             → Cross-engine intelligence
+            → Monthly 30-min strategy call
 
-€197/mo     Full Engine Pack (IE + PE bundle)
-            → Both add-ons at discount (€244 separately)
+€2,497      DEDICATED — Cloud VPS (one-time + €97/mo hosting)
+one-time    → Everything in FULL STACK
+            → Dedicated Hetzner VPS (your data, isolated server)
+            → Own Supabase project (no shared database)
+            → Claude API (data leaves server for AI processing)
+            → Jelle manages infrastructure remotely
+            → Custom integrations + quarterly strategy sessions
 
-€50/mo      Managed hosting
-            → Server maintenance, updates, monitoring, backups
+€3,997      DEDICATED — Managed Hardware (one-time + €147/mo)
+one-time    → Everything in FULL STACK
+            → Mac Mini (M4 Pro, 24GB+) in Jelle's rack
+            → Local LLM via Ollama (optional: zero data to external APIs)
+            → Dedicated Supabase or local PostgreSQL
+            → Full data sovereignty if combined with local LLM
+            → Custom integrations + quarterly strategy sessions
+
+€4,997+     DEDICATED — On-Premise (one-time + €197/mo support)
+one-time    → Everything in FULL STACK
+            → Hardware at client's location (client provides or purchases)
+            → Full air-gap possible (local LLM + local DB)
+            → Remote support via VPN/tunnel
+            → For enterprise/compliance: SOC2, GDPR, sector-specific reqs
+            → Quarterly on-site or video strategy sessions
 ```
 
-### Billing: two models only
+### DEDICATED tier notes
 
-1. One-time: setup fee (€997 or €2,497)
-2. Monthly: add-ons + hosting (€50-247/mo total)
+**Don't build any of this until someone asks for it.** The multi-tenant SaaS handles 95% of clients. DEDICATED exists as an answer to "what if I need more privacy?" — not as a build priority.
 
-### Revenue per client (realistic)
+**Infrastructure comparison:**
+
+| Aspect | Cloud VPS | Managed Hardware | On-Premise |
+|--------|-----------|-----------------|------------|
+| Hardware | Hetzner CX22-CX32 (€5-15/mo) | Mac Mini M4 Pro (~€1,800 one-time) | Client provides |
+| Location | Hetzner datacenter (EU) | Your rack (NL) | Client's office |
+| LLM | Claude API only | Ollama + Claude API (or Ollama only) | Ollama only possible |
+| Data leaves building | Yes (API calls) | Optional (can go full local) | No |
+| Your access | Full remote (SSH) | Full physical + remote | VPN/tunnel |
+| Setup time | 30 min | 2-3 hours | 4-8 hours + site visit |
+| Client profile | "I want my own server" | "No data to third parties" | Enterprise/compliance |
+
+**Mac Mini economics:** One-time hardware cost ~€1,800. You charge €3,997 setup (covers hardware + config + margin). Monthly €147 covers your time + remote management. If the client churns, you repurpose the Mac Mini for the next client or add it to your Proxmox cluster. Hardware is an asset, not a sunk cost.
+
+### Why monthly > one-time
+
+**For the client:** Lower barrier to entry. €97/mo is an easy "yes" vs. €997 one-time. If it doesn't work after month 1, cancel. No risk.
+
+**For you:** Predictable recurring revenue. 10 clients × €97 = €970 MRR from day one. Every month. No feast-famine launch cycles.
+
+**For the product:** Monthly clients give continuous data. The self-learning loop only works if clients stay engaged month over month.
+
+### Revenue projections
 
 ```
-Conservative: €997 + (€50 × 11) = €1,547 year 1
-Average:      €997 + (€147 × 10) + (€50 × 11) = €3,017 year 1
-Best case:    €2,497 + (€197 × 10) + (€50 × 11) = €5,017 year 1
-10 clients at average = €30,170 / year
+Month 3:   10 CORE clients = €970/mo
+Month 6:   20 CORE + 5 GUIDED = €2,925/mo
+Month 12:  30 CORE + 10 GUIDED + 3 FULL STACK = €6,401/mo
+           = €76,812 ARR
+
+DEDICATED upside: each client adds €2,497-4,997 one-time + €97-197/mo recurring.
+One DEDICATED client per quarter = €10,000-20,000 bonus/year.
+
+Year 1 realistic: €30,000-50,000
+(ramp-up from month 3-4 onward, DEDICATED is gravy on top)
 ```
 
-### Hormozi offer stack (€997 pilot)
+### Hormozi Value Equation check
 
-| Component | Value |
-|-----------|-------|
-| Done-for-you dedicated server setup | €500 |
-| Keystone extraction | €300 |
-| 12-week goal structure with milestones | €200 |
-| Daily AI check-ins via Telegram/Slack | €400 |
-| Weekly AI review + execution score | €300 |
-| Contradiction detector | €200 |
-| Lifetime system access | Priceless |
-| **Total value / Your investment** | **€1,900 / €997** |
+**€97/mo CORE:**
 
-**Risk reversal:** "If you don't see measurable improvement by week 4, full refund."
+| Factor | Score | Why |
+|--------|-------|-----|
+| Dream outcome | 8/10 | "85%+ execution rate in 12 weeks" |
+| Perceived likelihood | 6/10 | System learns from all clients — social proof builds fast |
+| Time delay | 10/10 | "Live in minutes. First check-in tomorrow morning." |
+| Effort & sacrifice | 9/10 | "5 minutes per day. Nothing to install." |
+
+**Risk reversal:** "First 14 days free. Cancel anytime. No contracts."
 
 ---
 
-## 7. CAPACITY-HONEST DELIVERY
+## 6. CAPACITY-HONEST DELIVERY
 
-### Hard limits
+### The multi-tenant advantage
+
+| Aspect | Old (per-client VPS) | New (multi-tenant) |
+|--------|---------------------|-------------------|
+| Setup time per client | 3-4 hours | 15 minutes (GUIDED) / 0 (CORE) |
+| Max onboardings/week | 1 | Unlimited (CORE) / 3 (GUIDED) |
+| Ongoing time per client | 30 min/month | 0 (CORE) / 30 min/month (GUIDED) |
+| Infra to manage | N × VPS | 1 × Proxmox |
+| Break-even clients | 3 | 1 |
+
+### Hard limits (still apply)
 
 | Constraint | Limit |
 |-----------|-------|
-| Weekly hours on Engine business | Max 10 |
-| Active training-phase clients | Max 5 |
-| New onboardings per week | Max 1 |
-| System-only clients (past training) | Max 15 |
+| Weekly hours on Engine business | Max 10 (steady-state) |
+| Active GUIDED/FULL STACK clients | Max 10 at any time |
+| CORE clients | Unlimited (system handles it) |
 | LinkedIn content | 2-3 posts/week |
 
-**Circuit breaker:** >12 hrs/week for 3 consecutive weeks → stop new clients.
+**Sprint reality:** First 6 weeks = 15 hrs/week. Deliberate investment with end date.
 
-**Sprint reality check:** The first 6 weeks (Phase 1 + 2) will exceed 10 hrs/week. This is a deliberate investment with an end date, not the steady-state. Budget 15 hrs/week for 6 weeks, then drop back to 10. If you can't do 15 for 6 weeks, delay launch — don't half-build.
+**Circuit breaker:** >12 hrs/week for 3 consecutive weeks after sprint → stop taking GUIDED clients.
 
-### Client delivery: training, not coaching
+### Client experience per tier
 
+**CORE (€97/mo) — fully self-service:**
 ```
-Day 0:    Payment received
-Day 1:    60-min intake call → 3 goals, vault/notes, channel choice
-Day 2-3:  Setup (Hetzner VPS, Docker, Supabase, bot, keystone extraction)
-Day 4:    "Your system is live" → 30-min training call
-Week 4:   30-min check-in → refund checkpoint
-Week 8:   30-min check-in (€2,497 tier only)
-Week 12:  Cycle complete → automated "cyclus compleet" message with:
-          → Execution score trajectory (week 1 vs week 12)
-          → Top 3 patterns detected
-          → Add-on recommendations (IE/PE) based on usage
-          → Option: renew cycle, add modules, or graduate
+Signup:    Stripe payment → Telegram bot link
+Minute 1:  /start → bot asks intake questions (3 goals, work schedule, challenges)
+Minute 5:  System generates 12-week plan with milestones
+Minute 6:  "Your system is live. First morning briefing tomorrow at 07:00."
+Day 1+:    Daily morning priorities + 17:00 accountability check-in
+Sunday:    Weekly review with execution score
+Week 12:   Cycle complete → auto-renewal or adjust goals
 ```
 
-**Time per client: ~6-8 hours total.**
+**GUIDED (€197/mo) — human + AI:**
+```
+Day 0:     Stripe payment → onboarding email
+Day 1-2:   60-min intake call (Zoom) → Jelle configures goals + system prompt tweaks
+Day 3:     "Your system is live" + 30-min training call
+Week 4:    30-min check-in → refund checkpoint
+Week 12:   Cycle complete message with data + upsell options
+```
 
-### Thomas' first week (the experience, not the features)
+### Thomas' first week (the product experience)
 
-This is what Thomas actually sees and feels. This is the sales narrative.
+**Day 1 (signup — CORE):** Thomas clicks the Telegram link from the scorecard results page. The bot asks: "What are your 3 strategic priorities for this quarter?" He types them. "What time do you start work?" "08:00." "What time do you usually lose focus to reactive tasks?" "Around 10:00." The bot responds: "I'll send your strategic priorities at 07:30, before the chaos starts. First briefing tomorrow."
 
-**Day 1 (intake call):** Thomas tells you about his 3 strategic priorities for the quarter. You ask him to share his Obsidian vault (or just his weekly planning notes). He's skeptical but curious.
+**Day 2, 07:30:** "Goedemorgen Thomas. Week 1/12. Je hebt 3 strategische prioriteiten. Welke ga je vandaag aanpakken? Kies er één en beschrijf de eerste concrete stap."
 
-**Day 4 (system is live):** Thomas gets a Telegram message at 07:00: "Goedemorgen Thomas. Week 1/12. Je hebt 3 strategische prioriteiten deze week. Welke ga je vandaag aanpakken, en wat is de eerste concrete stap?" This is the first time a system has asked him this specific question, tied to HIS goals, at the start of HIS day.
+**Day 2, 17:00:** "Thomas, je zei vanochtend dat je de hiring pipeline zou reviewen. Heb je dat gedaan?" He hasn't. He types "Nee, werd gebeld door operations." The system responds: "Dat is de eerste keer deze week dat operations je strategische blok heeft geconsumeerd. Wat kun je morgen anders doen om dat te beschermen?"
 
-**Day 4, 17:00:** "Thomas, je zei vanochtend dat je de hiring pipeline zou reviewen. Heb je dat gedaan?" He hasn't. He types "Nee, werd gebeld door operations." The system responds: "Dat is de derde keer deze week dat operations je strategische blok heeft gekaapt. Patroon: je beschermt je deep work niet. Wat kun je morgen anders doen?"
+**Day 7 (eerste weekly review), zondag 18:00:** "Week 1 samenvatting. Execution score: 40%. Je hebt 2 van 5 lead actions voltooid. Wins: hiring pipeline review afgerond. Patroon: dinsdag was je beste dag — maandag en woensdag werden geconsumeerd door reactief werk. Suggestie: bescherm dinsdag-ochtend als vast strategisch blok."
 
-**Day 7 (eerste weekly review):** Sunday 18:00. The system sends: "Week 1 samenvatting. Execution score: 40%. Je hebt 2 van 5 lead actions voltooid. Wins: hiring pipeline review afgerond. Patroon: dinsdag en donderdag waren je beste dagen — maandag en woensdag werden geconsumeerd door reactief werk. Volgende week: bescherm dinsdag-ochtend als strategisch blok."
+**Day 7, 18:01 — Thomas' reactie:** "40%." Dat is de eerste keer dat iemand hem een getal geeft. Niet "hoe voel je je over je week" maar veertig procent. Dat is het moment waarop hij weet dat dit anders is.
 
-**THIS is the product.** Not a VPS. Not n8n. Not Supabase. The moment Thomas sees "40%" and realizes he has a number — not a feeling — that's when he knows this is different from every app he's tried.
+### Week 12→13 transition
+
+The system automatically sends at week 12:
+```
+"Thomas, je 12-week cyclus is compleet.
+
+📊 Je trajectory: 40% → 78% execution score
+📈 Beste week: week 9 (91%)
+📉 Slechtste week: week 3 (28%)
+🎯 Patroon: je scoort 25% hoger in weken waar je dinsdag-ochtend beschermt
+
+Opties:
+1. Nieuwe cyclus starten (nieuwe doelen, zelfde systeem)
+2. Intelligence Engine toevoegen (€497/mo Full Stack)
+3. Pauzeren
+
+Reply met 1, 2, of 3."
+```
+
+---
+
+## 7. SELF-LEARNING SYSTEM
+
+This is the moat. No per-client VPS model can do this.
+
+### How it works
+
+All client data lives in one Supabase project (with tenant isolation via `tenant_id` + RLS). This means:
+
+**Pattern detection across all clients:**
+- "Clients who set 5+ goals in week 1 have 60% lower execution scores than those who set 3"
+- "Wednesday is the lowest execution day across 78% of clients"
+- "Clients who respond to the 17:00 check-in within 30 minutes have 2.3× higher weekly scores"
+
+**Feedback loop into the system prompt:**
+- Monthly: aggregate anonymized patterns from all clients
+- Update the Claude system prompt with proven nudges
+- A/B test different accountability styles (confrontational vs. supportive)
+- Track which morning briefing formats lead to higher execution
+
+**For the client:** "This system has helped 47 professionals improve their execution score by an average of 34 points." That's social proof you can only build with multi-tenant data.
+
+**For you:** Every client makes every other client's experience better. That's a compounding advantage no coach or per-client VPS can match.
+
+### Data isolation
+
+- Every table has `tenant_id` column
+- Supabase Row Level Security (RLS) ensures clients only see their own data
+- Aggregate analytics are anonymized (no PII in cross-client patterns)
+- Client can request full data export at any time (GDPR compliance)
+- Client can request deletion at any time
 
 ---
 
 ## 8. GO-TO-MARKET — PRIESTLEY CAMPAIGN MODEL
 
-**No "always-on" marketing.** Build in silence, launch in bursts.
-
-### Phase 0: VALIDATE (current — scorecard + LinkedIn)
+### Phase 0: VALIDATE (current)
 - Landing page live at engine-site-six.vercel.app
 - Scorecard quiz live at /score
 - LinkedIn: 2-3 posts/week, Dutch, build in public
 - Priestley 30/150 test running
 
-### Phase 1: BUILD & USE (next — system on Proxmox)
-- Build the EE system for yourself
-- Use it 2+ weeks, collect execution score data
-- This data becomes content
+### Phase 1: BUILD & USE (4-6 weeks)
+- Build multi-tenant EE system on Proxmox
+- Use it yourself for 2+ weeks
+- Collect execution score data (this becomes content)
 
-### Phase 2: PRODUCTIZE & MARKET
-- Client onboarding script
-- Deploy Publish Engine for own content (LinkedIn + X first)
-- Content flowing via Publish Engine
+### Phase 2: PUBLISH ENGINE (parallel with Phase 1 dogfooding)
+- Postiz or direct API: LinkedIn + X
+- Draft generation (Workflow 2) + scheduled publishing (Workflow 4)
+- Content flowing semi-automatically
 
-### Validation scorecard (Priestley 30/150 test — go/no-go)
+### Phase 3: PRODUCTIZE & MARKET
+- Wire scorecard (Supabase + Vercel env vars + n8n webhook)
+- Self-service Telegram onboarding flow built
+- Stripe integration for €97/mo CORE tier
+- Landing page updated with new pricing
 
-Measure these numbers during Phase 0-2. If you don't hit the thresholds, stop building and re-examine your positioning before Phase 3.
+### Phase 4: PILOT
+- 5-10 CORE clients @ €97/mo (lower barrier = faster validation)
+- 2-3 GUIDED clients @ €197/mo
+- Collect data + quotes + execution score trajectories
+
+### Phase 5: SCALE (ongoing)
+- Content buildup with real client data (anonymized)
+- Quarterly pushes for GUIDED/FULL STACK upgrades
+- Self-learning loop producing ever-better results
+
+### Validation scorecard (Priestley 30/150 — go/no-go)
 
 ```
 150  LinkedIn connections who regularly see your content
  30  People who complete the Execution Score Assessment
- 10  Conversations (DM, call, or reply) about execution/accountability
-  3  People who say "I'd pay for that" or "When can I start?"
+ 10  Conversations about execution/accountability
+  3  People who say "I'd pay for that"
 ```
 
-**Timeline:** 6-8 weeks from first LinkedIn post to go/no-go decision.
-**If you hit 30 scorecard + 3 "I'd pay":** proceed to Phase 3 (pilots).
-**If you hit 30 scorecard + 0 "I'd pay":** the problem isn't reach, it's the offer. Revisit pricing, messaging, or target client.
-**If you don't hit 30 scorecard:** the problem is content or audience. Revisit content strategy or expand network.
-
-### Phase 3: PILOT
-- 3-5 pilots @ €997
-- Collect execution score data + quotes
-- IE MVP for yourself
-
-### Phase 4: LAUNCH & SCALE (quarterly)
-- Case studies published
-- Cart open 2 weeks: €2,497
-- Repeat next quarter
+**Timeline:** 6-8 weeks from first LinkedIn post.
+**If 30 scorecard + 3 "I'd pay":** proceed to pilots.
+**If 30 scorecard + 0 "I'd pay":** revisit offer, not reach.
+**If <30 scorecard:** revisit content strategy or network.
 
 ---
 
@@ -375,193 +439,475 @@ Measure these numbers during Phase 0-2. If you don't hit the thresholds, stop bu
 - 25-49: "Operationally Trapped" — IDEAL CLIENT
 - 0-24: "In Survival Mode"
 
-**Tech:** Vanilla JS state machine, Supabase storage, n8n webhook, email optional. No React.
+**Results page for "Operationally Trapped" (25-49):**
+"Your execution score is 38/100. You're not unproductive — you're operationally trapped. This isn't a willpower problem. It's a systems problem. [CTA: Start your 14-day free trial]"
 
 ---
 
 ## 10. TECHNICAL ARCHITECTURE
 
-### 10.1 Repos
-
-| Repo | Purpose | Status |
-|------|---------|--------|
-| `lutjebroeker/engine-site` | Landing page + scorecard (Astro + Tailwind) | ✅ Live at engine-site-six.vercel.app |
-| `lutjebroeker/execution-engine` | Old landing page (different pricing, Gumroad) | ⚠️ Archive or redirect |
-| `lutjebroeker/engine-app` | EE App (React, ex-Flow Year Coach) | Later |
-| `lutjebroeker/engine-infra` | Docker, n8n, client deploy scripts | Phase 1 |
-| `lutjebroeker/engine-intelligence` | IE workflows + Publish Engine | Phase 2-3 |
-
-### 10.2 Per client: managed server
+### 10.1 Overview — one system, all clients
 
 ```
-Hetzner CX22 (€5/mo)
-├── Docker Compose
-│   ├── n8n (webhook handler + cron triggers)
-│   └── Caddy (auto-SSL)
-├── Claude API (for EE/PE reasoning)
-├── Supabase Cloud (1 project per client, free tier)
-└── Telegram/Slack Bot
+                    MULTI-TENANT (your Proxmox)
+                    ─────────────────────────────
+                    ├── n8n (webhook handler + cron triggers)
+                    ├── Ollama (IE scoring, shared)
+                    ├── Postiz (social publishing, Phase 2)
+                    └── Cloudflare Tunnel (public webhooks)
+
+                    CLOUD SERVICES
+                    ─────────────────────────────
+                    ├── Supabase (ONE project, multi-tenant via RLS)
+                    ├── Claude API (shared, per-request billing)
+                    ├── Stripe (billing)
+                    ├── Telegram Bot API (one bot, routes by chat_id)
+                    └── Vercel (engine-site + engine-app)
 ```
 
-### 10.3 Your Proxmox development setup
+No per-client VPS. No per-client Supabase project. No per-client n8n instance.
+
+### 10.2 Why this is better
+
+| Aspect | Per-client VPS (v4.1) | Multi-tenant (v5) |
+|--------|----------------------|-------------------|
+| New client setup | 3-4 hours | 0 (CORE) / 15 min (GUIDED) |
+| Infra to maintain | N servers | 1 server |
+| Feature update | Deploy to N instances | Deploy once |
+| Cross-client learning | Impossible | Built-in |
+| Cost per client | €26-71/mo infra | ~€5-10/mo (API costs only) |
+| Client capacity | Max 15 | Hundreds |
+| Time to first value | 4 days | 5 minutes |
+
+### 10.3 Agent architecture
+
+Same principle as v4.1. Claude agent with tool-use. n8n for webhooks and crons.
 
 ```
-Proxmox server
-├── LXC: n8n + Docker (your own EE instance)
-├── LXC: Ollama (shared, for IE scoring)
-├── LXC: Postiz (social media publishing — add when PE starts)
-├── Cloudflare Tunnel (publishes webhooks)
-└── Supabase Cloud (your own project)
-```
-
-### 10.4 Docker Compose (per client)
-
-```yaml
-services:
-  n8n:
-    image: n8nio/n8n:latest
-    restart: unless-stopped
-    environment:
-      - WEBHOOK_URL=${WEBHOOK_URL}
-      - N8N_BASIC_AUTH_ACTIVE=true
-      - N8N_BASIC_AUTH_USER=${N8N_USER}
-      - N8N_BASIC_AUTH_PASSWORD=${N8N_PASSWORD}
-      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
-      - GENERIC_TIMEZONE=Europe/Amsterdam
-    volumes:
-      - n8n_data:/home/node/.n8n
-    ports:
-      - "5678:5678"
-    networks:
-      - engine-network
-
-  tunnel:
-    image: cloudflare/cloudflared:latest
-    profiles: ["local"]
-    command: tunnel run
-    environment:
-      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
-    networks:
-      - engine-network
-
-  caddy:
-    image: caddy:2-alpine
-    profiles: ["production"]
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-    networks:
-      - engine-network
-
-volumes:
-  n8n_data:
-  caddy_data:
-
-networks:
-  engine-network:
-```
-
-### 10.5 Agent architecture
-
-No workflow spaghetti. One Claude agent with tools. n8n only for webhooks and crons.
-
-```
-Message in (Telegram/Slack)
-    → n8n webhook (3 nodes)
-    → Claude API with tools
-    → Claude decides what to do
-    → Tool calls: save_memory, manage_goal, search_knowledge, etc.
-    → n8n executes tools (Supabase queries)
+Telegram message (any client)
+    → n8n webhook
+    → Extract chat_id → lookup tenant_id
+    → Load tenant config (goals, schedule, system prompt overrides)
+    → Claude API with tools + tenant context
+    → Tool calls: manage_goal, log_progress, etc. (all scoped to tenant_id)
     → Claude generates response
-    → n8n sends response back
+    → n8n sends response back to that client's chat
 ```
 
-New features = edit system prompt + optionally add a tool. No new workflows.
+**Multi-tenant routing is just one lookup.** The chat_id maps to a tenant. Every subsequent Supabase query includes `WHERE tenant_id = X`. That's it.
 
-Cron workflows (minimal):
-1. Morning briefing (07:00) — 3 nodes
-2. Accountability check-in (17:00) — 3 nodes
-3. Weekly review (Sunday 18:00) — 3 nodes
-4. IE scan (Sunday 06:00 + Wednesday 06:00) — uses Ollama
-5. Publish Engine: scheduled posting (cron per platform) — 5 nodes
-
-### 10.6 Supabase schema (per client)
+### 10.4 Supabase schema (multi-tenant)
 
 ```sql
--- Core
-conversations (id, channel, role, content, metadata, created_at)
-config (key, value, updated_at)
+-- Enable vector search
+create extension if not exists vector;
 
--- Execution Engine
-goals (id, title, description, deadline, status, progress_pct, milestones, created_at, updated_at)
-goal_logs (id, goal_id, log_type, content, created_at)
-daily_priorities (id, date, priorities, reflection, created_at)
-weekly_reviews (id, week_start, summary, wins, blockers, execution_score, created_at)
+-- =====================
+-- TENANTS
+-- =====================
+create table tenants (
+  id uuid default gen_random_uuid() primary key,
+  name text not null,
+  email text,
+  telegram_chat_id bigint unique,
+  slack_channel_id text,
+  tier text default 'core' check (tier in ('core', 'guided', 'full_stack', 'dedicated')),
+  stripe_customer_id text,
+  stripe_subscription_id text,
+  status text default 'active' check (status in ('trial', 'active', 'paused', 'cancelled')),
+  trial_ends_at timestamptz,
+  config jsonb default '{}',
+  system_prompt_overrides jsonb default '{}',
+  created_at timestamptz default now()
+);
 
--- Intelligence Engine
-topics (id, name, description, sources, active, created_at)
-knowledge (id, topic_id, title, content, source_url, relevance_score, embedding, created_at)
-staging_items (id, title, url, source, pillar, original_score, reval1_score, reval1_date, reval2_score, reval2_date, verdict, created_at)
-briefings (id, date, type, content, items_count, created_at)
+-- =====================
+-- CORE: Conversations
+-- =====================
+create table conversations (
+  id uuid default gen_random_uuid() primary key,
+  tenant_id uuid references tenants(id) on delete cascade,
+  channel text not null check (channel in ('telegram', 'slack')),
+  role text not null check (role in ('user', 'assistant')),
+  content text not null,
+  metadata jsonb default '{}',
+  created_at timestamptz default now()
+);
+create index idx_conversations_tenant on conversations(tenant_id, created_at desc);
 
--- Personal Engine
-memory (id, category, content, tags, embedding, created_at)
+-- =====================
+-- EXECUTION ENGINE
+-- =====================
+create table goals (
+  id uuid default gen_random_uuid() primary key,
+  tenant_id uuid references tenants(id) on delete cascade,
+  title text not null,
+  description text,
+  deadline date,
+  status text default 'active' check (status in ('active', 'completed', 'paused', 'abandoned')),
+  progress_pct integer default 0 check (progress_pct between 0 and 100),
+  milestones jsonb default '[]',
+  cycle_number integer default 1,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+create index idx_goals_tenant on goals(tenant_id, status);
 
--- Publish Engine (your Supabase project only — build these tables when PE is live, not before)
--- content_items (id, source_type, source_id, platform, content, media_urls, status, scheduled_at, published_at, created_at)
--- published_posts (id, content_item_id, platform, platform_post_id, url, created_at)
--- engagement_metrics (id, published_post_id, impressions, likes, comments, shares, clicks, fetched_at)
+create table goal_logs (
+  id uuid default gen_random_uuid() primary key,
+  tenant_id uuid references tenants(id) on delete cascade,
+  goal_id uuid references goals(id) on delete cascade,
+  log_type text not null check (log_type in ('progress', 'reflection', 'blocker', 'win')),
+  content text not null,
+  created_at timestamptz default now()
+);
+create index idx_goal_logs_tenant on goal_logs(tenant_id, created_at desc);
 
--- Functions
-search_knowledge(query_embedding, threshold, count)
-search_memory(query_embedding, threshold, count)
+create table daily_priorities (
+  id uuid default gen_random_uuid() primary key,
+  tenant_id uuid references tenants(id) on delete cascade,
+  date date default current_date,
+  priorities jsonb not null default '[]',
+  completed jsonb default '[]',
+  reflection text,
+  execution_score integer,
+  created_at timestamptz default now(),
+  unique(tenant_id, date)
+);
+
+create table weekly_reviews (
+  id uuid default gen_random_uuid() primary key,
+  tenant_id uuid references tenants(id) on delete cascade,
+  week_start date not null,
+  summary text not null,
+  wins jsonb default '[]',
+  blockers jsonb default '[]',
+  next_week_focus jsonb default '[]',
+  execution_score integer,
+  created_at timestamptz default now()
+);
+
+-- =====================
+-- INTELLIGENCE ENGINE (tenants with IE access)
+-- =====================
+create table topics (
+  id uuid default gen_random_uuid() primary key,
+  tenant_id uuid references tenants(id) on delete cascade,
+  name text not null,
+  description text,
+  sources jsonb default '[]',
+  active boolean default true,
+  created_at timestamptz default now()
+);
+
+create table knowledge (
+  id uuid default gen_random_uuid() primary key,
+  tenant_id uuid references tenants(id) on delete cascade,
+  topic_id uuid references topics(id) on delete set null,
+  title text not null,
+  content text not null,
+  source_url text,
+  relevance_score integer check (relevance_score between 1 and 10),
+  embedding vector(1536),
+  created_at timestamptz default now()
+);
+
+create table staging_items (
+  id uuid default gen_random_uuid() primary key,
+  tenant_id uuid references tenants(id) on delete cascade,
+  title text not null,
+  url text,
+  source text,
+  pillar text,
+  original_score integer,
+  reval1_score integer,
+  reval1_date date,
+  reval2_score integer,
+  reval2_date date,
+  verdict text check (verdict in ('pending', 'signal', 'noise')),
+  created_at timestamptz default now()
+);
+
+create table briefings (
+  id uuid default gen_random_uuid() primary key,
+  tenant_id uuid references tenants(id) on delete cascade,
+  date date default current_date,
+  type text not null check (type in ('morning', 'weekly', 'on_demand')),
+  content text not null,
+  items_count integer,
+  created_at timestamptz default now()
+);
+
+-- =====================
+-- PERSONAL ENGINE (tenants with PE access)
+-- =====================
+create table memory (
+  id uuid default gen_random_uuid() primary key,
+  tenant_id uuid references tenants(id) on delete cascade,
+  category text not null check (category in ('idea', 'note', 'task', 'contact', 'decision', 'other')),
+  content text not null,
+  tags text[] default '{}',
+  embedding vector(1536),
+  created_at timestamptz default now()
+);
+
+-- =====================
+-- CROSS-CLIENT ANALYTICS (anonymized, no PII)
+-- =====================
+create table system_patterns (
+  id uuid default gen_random_uuid() primary key,
+  pattern_type text not null,
+  description text not null,
+  confidence float,
+  sample_size integer,
+  data jsonb default '{}',
+  active boolean default true,
+  discovered_at timestamptz default now()
+);
+
+-- =====================
+-- PUBLISH ENGINE (your tenant only)
+-- =====================
+create table content_items (
+  id uuid default gen_random_uuid() primary key,
+  source_type text check (source_type in ('ie_signal', 'manual', 'pattern_insight')),
+  source_id uuid,
+  platform text not null,
+  content text,
+  media_urls jsonb default '[]',
+  status text default 'draft' check (status in ('draft', 'pending_review', 'approved', 'scheduled', 'published', 'rejected')),
+  scheduled_at timestamptz,
+  published_at timestamptz,
+  created_at timestamptz default now()
+);
+
+create table engagement_metrics (
+  id uuid default gen_random_uuid() primary key,
+  content_item_id uuid references content_items(id) on delete cascade,
+  platform text not null,
+  impressions integer default 0,
+  likes integer default 0,
+  comments integer default 0,
+  shares integer default 0,
+  clicks integer default 0,
+  fetched_at timestamptz default now()
+);
+
+-- =====================
+-- SCORECARD SUBMISSIONS
+-- =====================
+create table score_submissions (
+  id uuid default gen_random_uuid() primary key,
+  email text,
+  answers jsonb not null,
+  total_score integer not null,
+  tier text not null,
+  source text default 'website',
+  converted boolean default false,
+  created_at timestamptz default now()
+);
+
+-- =====================
+-- ROW LEVEL SECURITY
+-- =====================
+alter table conversations enable row level security;
+alter table goals enable row level security;
+alter table goal_logs enable row level security;
+alter table daily_priorities enable row level security;
+alter table weekly_reviews enable row level security;
+alter table topics enable row level security;
+alter table knowledge enable row level security;
+alter table staging_items enable row level security;
+alter table briefings enable row level security;
+alter table memory enable row level security;
+
+-- RLS policies: service role bypasses, anon key blocked
+-- n8n uses service role key, so RLS doesn't block it
+-- But if you ever expose the API to clients directly, add policies per tenant
+
+-- =====================
+-- SEMANTIC SEARCH FUNCTIONS
+-- =====================
+create or replace function search_knowledge(
+  p_tenant_id uuid,
+  query_embedding vector(1536),
+  match_threshold float default 0.7,
+  match_count int default 5
+)
+returns table (id uuid, title text, content text, source_url text, similarity float)
+language sql stable as $$
+  select id, title, content, source_url,
+    1 - (embedding <=> query_embedding) as similarity
+  from knowledge
+  where tenant_id = p_tenant_id
+    and 1 - (embedding <=> query_embedding) > match_threshold
+  order by embedding <=> query_embedding
+  limit match_count;
+$$;
+
+create or replace function search_memory(
+  p_tenant_id uuid,
+  query_embedding vector(1536),
+  match_threshold float default 0.7,
+  match_count int default 5
+)
+returns table (id uuid, category text, content text, tags text[], similarity float)
+language sql stable as $$
+  select id, category, content, tags,
+    1 - (embedding <=> query_embedding) as similarity
+  from memory
+  where tenant_id = p_tenant_id
+    and 1 - (embedding <=> query_embedding) > match_threshold
+  order by embedding <=> query_embedding
+  limit match_count;
+$$;
 ```
 
-### 10.7 Publish Engine — n8n workflow architecture
+### 10.5 n8n workflows
 
-**Start with Workflow 2 + 4 only. Add 1, 3, and 5 as needed.**
+**Core (4 workflows):**
 
-**Workflow 2: Draft Generation** (trigger: manual or IE signal)
-- Reads content idea or IE signal context
-- Claude API generates LinkedIn + X variants (expand to other platforms later)
-- Stores drafts in Supabase content_items
+1. **Telegram Handler** — webhook, routes by chat_id → tenant_id, Claude API with tools, responds
+2. **Morning Briefing** — cron 07:00, loops all active tenants, generates + sends personalized briefing
+3. **Accountability Check-in** — cron 17:00, loops all active tenants, asks about today's priorities
+4. **Weekly Review** — cron Sunday 18:00, generates execution score + patterns + sends
 
-**Workflow 4: Scheduled Publishing** (cron, every 15 min)
-- Reads approved content_items where scheduled_at <= now
-- Publishes via Postiz or direct API
-- Updates status → 'published'
+**Publish Engine (2 workflows — start here, add more later):**
+
+5. **Draft Generation** — IE signal or manual trigger → Claude API → content_items
+6. **Scheduled Publishing** — cron every 15 min → publishes approved items via Postiz or direct API
 
 **Later additions:**
-- Workflow 1 (Signal Ingestion): auto-polls IE for high-scoring signals → content_items. Build when IE is running.
-- Workflow 3 (Human Review): Telegram approve/reject with n8n Wait node. Build when volume exceeds what you can do manually.
-- Workflow 5 (Engagement Tracking): poll platform analytics. Build when you have 4+ weeks of data and want to close the feedback loop.
+- IE scan (RSS + Ollama scoring) — when IE is running
+- Engagement tracking — when 4+ weeks of posting data exists
+- Self-learning aggregator — monthly, analyzes cross-client patterns → updates system_patterns table
+- Telegram approval workflow — when publishing volume exceeds manual review
 
-### 10.8 Cost structure
+### 10.6 Claude API tool definitions
 
-**Per client:**
+```json
+[
+  {
+    "name": "manage_goal",
+    "description": "Create, update, or complete a 12-week goal",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "action": {"type": "string", "enum": ["create", "update", "complete"]},
+        "goal_id": {"type": "string"},
+        "title": {"type": "string"},
+        "description": {"type": "string"},
+        "deadline": {"type": "string", "description": "YYYY-MM-DD"},
+        "progress_pct": {"type": "integer", "minimum": 0, "maximum": 100},
+        "milestones": {"type": "array", "items": {"type": "object"}}
+      },
+      "required": ["action"]
+    }
+  },
+  {
+    "name": "log_progress",
+    "description": "Log progress, reflection, blocker, or win for a goal",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "goal_id": {"type": "string"},
+        "log_type": {"type": "string", "enum": ["progress", "reflection", "blocker", "win"]},
+        "content": {"type": "string"}
+      },
+      "required": ["goal_id", "log_type", "content"]
+    }
+  },
+  {
+    "name": "get_goals_overview",
+    "description": "Get overview of all active goals with progress and milestones",
+    "input_schema": {"type": "object", "properties": {}}
+  },
+  {
+    "name": "save_memory",
+    "description": "Save an idea, note, task, contact, or decision to memory",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "category": {"type": "string", "enum": ["idea", "note", "task", "contact", "decision", "other"]},
+        "content": {"type": "string"},
+        "tags": {"type": "array", "items": {"type": "string"}}
+      },
+      "required": ["category", "content"]
+    }
+  },
+  {
+    "name": "search_memory",
+    "description": "Search memory for relevant notes, ideas, or tasks",
+    "input_schema": {
+      "type": "object",
+      "properties": {"query": {"type": "string"}},
+      "required": ["query"]
+    }
+  },
+  {
+    "name": "save_knowledge",
+    "description": "Save a relevant article or insight to the knowledge base (IE)",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "topic_id": {"type": "string"},
+        "title": {"type": "string"},
+        "content": {"type": "string"},
+        "source_url": {"type": "string"},
+        "relevance_score": {"type": "integer", "minimum": 1, "maximum": 10}
+      },
+      "required": ["title", "content"]
+    }
+  },
+  {
+    "name": "search_knowledge",
+    "description": "Search knowledge base for information on a topic",
+    "input_schema": {
+      "type": "object",
+      "properties": {"query": {"type": "string"}},
+      "required": ["query"]
+    }
+  },
+  {
+    "name": "web_search",
+    "description": "Search the web for current information",
+    "input_schema": {
+      "type": "object",
+      "properties": {"query": {"type": "string"}},
+      "required": ["query"]
+    }
+  }
+]
+```
 
-| Component | Monthly |
-|-----------|---------|
-| Hetzner VPS | €5 |
-| Claude API (~30 req/day) | €20-40 |
-| OpenAI embeddings | €0.50 |
-| Supabase (free → €25) | €0-25 |
-| Telegram/Slack | €0 |
-| **Total** | **€26-71** |
+### 10.7 Cost structure
 
-**Own infrastructure (Publish Engine + IE):**
+**Your infrastructure (fixed, regardless of client count):**
 
 | Component | Monthly |
 |-----------|---------|
 | Proxmox (already owned) | €0 |
-| Claude API (draft generation, ~€5-10/mo) | €5-10 |
+| Supabase (Pro when >50k rows) | €0-25 |
 | Postiz (self-hosted) | €0 |
-| MinIO (self-hosted) | €0 |
-| X API (Free tier for posting) | €0 |
-| **Total** | **€5-10** |
+| Domain + Vercel | €0 |
+| **Total fixed** | **€0-25** |
+
+**Per client (variable):**
+
+| Component | Monthly |
+|-----------|---------|
+| Claude API (~30 req/day per client) | €10-25 |
+| OpenAI embeddings | €0.50 |
+| Telegram | €0 |
+| **Total per client** | **€10-26** |
+
+**Margins:**
+
+| Tier | Revenue | Cost | Margin |
+|------|---------|------|--------|
+| CORE (€97/mo) | €97 | ~€15 | 85% |
+| GUIDED (€197/mo) | €197 | ~€15 + 1.5hr time | 75% |
+| FULL STACK (€497/mo) | €497 | ~€25 + 0.5hr/mo | 90% |
 
 ---
 
@@ -569,70 +915,30 @@ search_memory(query_embedding, threshold, count)
 
 ~70% of needed workflows already exist in Starfleet.
 
-### Direct reuse (16 items)
-- AM Telegram hub (26 nodes) — central router
-- Morning/Evening routines — reflection questions via Telegram
-- Weekly Review/Planning (Claude) — Sunday/Monday
-- Quarterly Review/Create Cycle
-- IE RSS/Reddit scrapers
-- IE Score & Summarize (Ollama)
-- IE Rank & Filter
-- IE Daily Digest
-- Slack agent router
-- ScoreApp webhook → adapt for /score submissions
-- Waitlist handlers
-- Error handling
-- Vault Guardian
-- Session management
+**Direct reuse:** AM Telegram hub, morning/evening routines, weekly review/planning, quarterly review, IE RSS/Reddit scrapers, IE score & summarize (Ollama), Slack agent router, waitlist handlers.
 
-### Adapt (4 items)
-- Claude via SSH → direct Claude API with tool-use
-- Obsidian datastore → Supabase for clients
-- AI Agent chat memory → Supabase pgvector
-- Morning + IE digest → combined cross-engine briefing
+**Adapt:** Claude via SSH → direct Claude API with tool-use + tenant routing. Obsidian datastore → Supabase multi-tenant queries. AI Agent chat memory → Supabase pgvector. Morning + IE digest → combined cross-engine briefing.
 
-### New build (7 items)
-- Contradiction detector (EE feature)
-- Hype filter staging + revalidation pipeline (IE)
-- Calendar + email integration (PE)
-- Publish Engine: draft generation workflow
-- Publish Engine: human review workflow
-- Publish Engine: scheduled publishing workflow
-- Publish Engine: engagement tracking workflow
+**New build:** Tenant routing (chat_id → tenant_id lookup). Multi-tenant cron loops (morning/check-in/review for ALL tenants). Stripe webhook handler (new tenant on payment). Self-service Telegram onboarding flow. Contradiction detector. Publish Engine workflows (2 + 4). Self-learning pattern aggregator.
 
 ---
 
 ## 12. LANDING PAGES & WEB PROPERTIES
 
-### engine-site (PRIMARY — Astro + Tailwind)
-
+### engine-site (PRIMARY)
 **URL:** https://engine-site-six.vercel.app/
 **Repo:** lutjebroeker/engine-site
-**Status:** ✅ Live, deployed on Vercel
+**Status:** ✅ Live, needs scorecard wiring + pricing update
 
-**Pages:**
-- `/` — Landing page (Hero, Problem, HowItWorks, Transformation, About, Pricing, SocialProof, CTA, Footer)
-- `/score` — Execution Score Assessment (10 questions, 4 tiers, email capture, Supabase + n8n webhook)
+**Updates needed for v5:**
+- [ ] Update pricing section to reflect monthly tiers (€97/€197/€497)
+- [ ] Change CTA from "Book a call" to "Start 14-day free trial"
+- [ ] Add Stripe checkout integration (or link to Stripe payment page)
+- [ ] Wire scorecard: Supabase table + Vercel env vars + n8n webhook
+- [ ] Add Telegram bot link to post-signup flow
 
-**Brand tokens:**
-- Cream: #FDFBF7
-- Forest Green: #2D5A3D
-- Amber: #B45309
-- Charcoal: #1C1917
-- Fonts: Playfair Display (headings), Inter (body), JetBrains Mono (stats)
-
-**Outstanding items:**
-- [ ] Supabase CREATE TABLE score_submissions + env vars in Vercel
-- [ ] n8n webhook for score submissions
-- [ ] Calendly/Cal.com link in config.ts
-- [ ] Remove developer note in SocialProof section
-
-### execution-engine (OLD — archive)
-
-**URL:** https://execution-engine-lake.vercel.app/
-**Repo:** lutjebroeker/execution-engine
-**Status:** ⚠️ Different pricing (€4,997/€2,497), Gumroad AM Bundle links
-**Action:** Archive repo. Redirect domain to engine-site or take down.
+### execution-engine (OLD)
+**Status:** ⚠️ Archive. Redirect to engine-site.
 
 ---
 
@@ -648,81 +954,64 @@ search_memory(query_embedding, threshold, count)
 | Lead magnet | Execution Score | "What's your execution score?" |
 | Ecosystem | The Engine Ecosystem | — |
 
-Visual identity: Calm, direct, monochrome, measurement-focused. Anti: neon, AI clichés, corporate buzzwords.
+Visual identity: Calm, direct, monochrome, measurement-focused.
 
 ---
 
 ## 14. BUILD SEQUENCE
 
-Five phases. No phase starts until the previous one is done.
+Four phases. Faster than v4.1 because no per-client infra to build.
 
-### Phase 1: BUILD & USE (4-6 weeks)
-**Milestone: Your own EE + PE system running daily, 2+ weeks, with real execution scores.**
+### Phase 1: BUILD & USE (3-4 weeks)
+**Milestone: Multi-tenant EE running on Proxmox. You've used it 2+ weeks with real execution scores.**
 
-- [ ] Docker Compose on Proxmox (n8n + Cloudflare Tunnel)
-- [ ] Supabase project + full schema
-- [ ] Telegram bot configured
-- [ ] Core n8n workflow: Telegram → Claude API (tools) → Telegram
-- [ ] System prompt: EE section
-- [ ] Tools: manage_goal, log_progress, get_goals_overview
-- [ ] Crons: morning (07:00), check-in (17:00), weekly review (zo 18:00)
+- [ ] Supabase project + multi-tenant schema (section 10.4)
+- [ ] Telegram bot created (@BotFather)
+- [ ] n8n workflow: Telegram → tenant lookup → Claude API (tools) → Telegram
+- [ ] System prompt: EE section (goals, accountability, weekly review)
+- [ ] Tool implementations: manage_goal, log_progress, get_goals_overview
+- [ ] Crons: morning (07:00), check-in (17:00), weekly review (Sunday 18:00)
 - [ ] PE basics: save_memory, search_memory
-- [ ] Keystone extraction: vault → operating system
+- [ ] Self-service onboarding: /start → intake questions → tenant created → system live
 - [ ] **USE IT YOURSELF 2+ WEEKS. Screenshot everything.**
 
-Definition of done: 2 weeks of daily check-ins + execution scores + weekly review. System works without touching n8n.
+Definition of done: 2 weeks of daily check-ins + execution scores + weekly review. System works without touching n8n. You can add a second "client" (friend/beta tester) by just giving them the Telegram link.
 
-### Phase 2: PUBLISH ENGINE (2-3 weeks, parallel with Phase 1 dogfooding)
-**Milestone: Content pipeline running. IE signals → Claude drafts → Telegram review → scheduled publish to LinkedIn + X.**
+### Phase 2: PUBLISH ENGINE + SCORECARD WIRING (2-3 weeks, parallel with dogfooding)
+**Milestone: Content flowing. Scorecard capturing leads.**
 
-- [ ] Deploy Postiz on Proxmox (Docker, pin v2.11.3)
-- [ ] Connect LinkedIn + X via Postiz OAuth
-- [ ] PostgreSQL content_items + published_posts tables (in your Supabase project)
-- [ ] n8n Workflow 2: draft generation (IE signal → Claude → content_items)
-- [ ] n8n Workflow 3: human review (Telegram approve/reject)
-- [ ] n8n Workflow 4: scheduled publishing (cron → Postiz API)
-- [ ] Migrate from Ziplined: export brand voice data, replicate in Claude system prompt
-- [ ] YouTube + Instagram + TikTok: setup later after LinkedIn + X work
-
-Definition of done: You can approve a post via Telegram and it publishes to LinkedIn and X automatically.
-
-### Phase 3: PRODUCTIZE & MARKET (3-4 weeks)
-**Milestone: Can onboard a client in <4 hours. Scorecard wired. Content flowing via Publish Engine.**
-
-- [ ] Wire scorecard: Supabase table + Vercel env vars + n8n webhook
-- [ ] Client onboarding script (VPS → Docker → Supabase → bot)
-- [ ] Templatized system prompt with {{variables}}
-- [ ] Test: deploy for one friend, time the process
-- [ ] Onboarding playbook (step-by-step)
+- [ ] Wire scorecard: Supabase score_submissions + Vercel env vars + n8n webhook
+- [ ] Cal.com/Calendly link in config.ts (for GUIDED tier intake calls)
+- [ ] Postiz on Proxmox (or direct API calls) — LinkedIn + X
+- [ ] n8n Workflow 5: draft generation
+- [ ] n8n Workflow 6: scheduled publishing
+- [ ] Migrate brand voice from Ziplined → Claude system prompt
 - [ ] Archive old execution-engine site
-- [ ] LinkedIn content via Publish Engine (2-3×/week, Dutch, own execution data)
-- [ ] IE MVP for yourself (RSS + Ollama + briefing → feeds into Publish Engine)
 
-Definition of done: "yes" to a pilot client → live within 48 hours. Content publishes semi-automatically.
+Definition of done: Scorecard submissions land in Supabase. You can approve a post via Telegram and it publishes.
 
-### Phase 4: PILOT (6-8 weeks)
-**Milestone: 3-5 clients running, collecting data and quotes.**
+### Phase 3: PRODUCTIZE & LAUNCH (2-3 weeks)
+**Milestone: Stripe live. First paying clients.**
 
-- [ ] Scorecard CTA on LinkedIn
-- [ ] Email waitlist with pilot offer (€997)
-- [ ] Personal outreach to 10-20 scorecard respondents
-- [ ] Onboard 1 per week
-- [ ] Week 4 check-ins + refund checkpoint
-- [ ] Week 12: case studies with before/after execution scores
-- [ ] Expand Publish Engine: YouTube Shorts, Instagram, TikTok
+- [ ] Stripe integration: checkout → webhook → create tenant → send Telegram link
+- [ ] Landing page updated: monthly pricing, "Start 14-day free trial" CTA
+- [ ] 14-day trial logic in tenant management
+- [ ] GUIDED tier: intake call booking flow (Cal.com)
+- [ ] Test: sign up as a new user end-to-end
+- [ ] LinkedIn content campaign: scorecard CTA + own execution data
+- [ ] Validation scorecard: track 150 → 30 → 10 → 3
 
-Definition of done: 3+ pilots with measurable improvement. 2+ testimonials.
+Definition of done: Someone can go from LinkedIn post → scorecard → free trial → paying client without you doing anything manually (CORE tier).
 
-### Phase 5: LAUNCH & SCALE (ongoing, quarterly)
-**Milestone: First client at €2,497. Repeatable quarterly launches.**
+### Phase 4: SCALE & LEARN (ongoing)
+**Milestone: 10+ clients. Self-learning loop active.**
 
-- [ ] Case studies published
-- [ ] Launch campaign: 4-week buildup → cart open 2 weeks
-- [ ] Price: €2,497 (payment plan: €997 + 3× €550)
-- [ ] Offer add-ons to existing clients
-- [ ] IE hype filter revalidation pipeline
-- [ ] Engagement tracking workflow (Publish Engine Workflow 5)
-- [ ] Close cart. Deliver. Rest. Repeat.
+- [ ] IE MVP for yourself (RSS + Ollama + briefing)
+- [ ] Self-learning aggregator: monthly cross-client pattern analysis
+- [ ] System prompt updates based on proven patterns
+- [ ] FULL STACK tier available (IE + PE)
+- [ ] Case studies with real execution score trajectories
+- [ ] DEDICATED tiers available on request (Cloud VPS / Managed Hardware / On-Premise)
 
 ---
 
@@ -730,57 +1019,64 @@ Definition of done: 3+ pilots with measurable improvement. 2+ testimonials.
 
 | Risk | Mitigation |
 |------|------------|
-| No pilots sign up | Lower to €497. Personal outreach to 20+. |
-| Clients don't engage | System escalates after 3 days silence. Week 4 training call. |
-| Claude API costs spike | Use Sonnet. Fall back to Ollama for non-critical. |
-| Too many features, nothing ships | Phase 1 = EE only. Publish Engine parallel because it's for YOU. |
-| Capacity crunch | Circuit breaker: >12 hrs/week for 3 weeks → stop new clients. |
-| TikTok audit rejection | Start with Direct Post to drafts. Public posting after audit. |
-| LinkedIn token expiry (60 days) | n8n reminder workflow. Move to Community Management API when business entity registered. |
-| Ziplined dependency during migration | Run both parallel. Cut Ziplined after 4 weeks of stable Publish Engine. |
+| No signups at €97/mo | 14-day free trial. Lower to €67/mo if needed. The bar is low. |
+| Clients don't engage | System escalates after 3 days silence. Pattern: non-responders churn by week 3 — address proactively. |
+| Claude API costs spike | Use Sonnet (cheap). Batch non-critical operations. Fall back to Ollama for IE. |
+| Multi-tenant data concern | RLS + clear privacy policy. Data export on request. Three DEDICATED tiers for clients who need more. |
+| DEDICATED hardware management | Mac Mini's are assets — repurpose on churn. Don't buy hardware speculatively. First client pays for first Mini. |
+| Supabase free tier limits | Upgrade to Pro (€25/mo) when >50k rows. That's ~50 active clients — a good problem. |
+| Too many CORE clients, no time | CORE is fully automated. Only GUIDED costs time. Cap GUIDED at 10. |
+| Telegram bot rate limits | 30 msg/sec is plenty. 100 clients × 3 messages/day = 300/day. No issue. |
+| Feature bloat | CORE tier is frozen after Phase 1. New features go to GUIDED/FULL STACK only. |
 
 ---
 
 ## 16. WHAT NOT TO BUILD (YET)
 
-- ❌ Multi-tenant dashboard (not until 10+ clients)
-- ❌ WhatsApp integration (costs money)
-- ❌ Automated provisioning portal
+- ❌ WhatsApp integration (costs money, Telegram is free)
 - ❌ Mobile app (Telegram IS the mobile app)
-- ❌ Custom branding per client
+- ❌ Custom branding per client (DEDICATED tier only)
 - ❌ Lead nurture email sequences
-- ❌ In-app premium upsell triggers
-- ❌ Publish Engine for clients (keep internal until proven)
-- ❌ TikTok/Instagram before LinkedIn + X work
+- ❌ Admin dashboard (manage via Supabase UI until 20+ clients)
+- ❌ YouTube/Instagram/TikTok publishing (until LinkedIn + X work)
+- ❌ IE hype filter revalidation (until IE MVP works)
+- ❌ Publish Engine for clients (internal only)
+- ❌ Keystone extraction via vault (nice-to-have for GUIDED, not MVP)
+- ❌ DEDICATED infrastructure (don't buy hardware or provision VPS until a client pays for it)
 
 ---
 
 ## 17. SUCCESS METRICS
 
 ### You (the product IS the proof)
-- Execution score: ≥85% for 4+ consecutive weeks before taking pilots
+- Execution score: ≥85% for 4+ consecutive weeks before marketing
 - Morning briefing delivered every day
 - System running 2+ weeks without manual intervention
-- Publish Engine: 2-3 posts/week published automatically after approval
+- Publish Engine: 2-3 posts/week published after approval
 
-### Validation gate (before pilots)
-- 150 LinkedIn connections seeing content regularly
+### Validation gate (before scaling)
+- 150 LinkedIn connections seeing content
 - 30 Execution Score assessments completed
 - 10 conversations about execution/accountability
 - 3 people who express willingness to pay
 
 ### Business (Year 1)
-- Execution Score assessments taken: 200+
-- Pilot clients: 3-5 @ €997
-- Full-price clients: 5+ @ €2,497
-- Add-on adoption: 40%+
-- Year 1 revenue: €15,000-€30,000
-- Year 1 profit: €12,000-€25,000
+- CORE clients: 20-30
+- GUIDED clients: 5-10
+- FULL STACK clients: 2-5
+- MRR by month 12: €3,000-6,000
+- Year 1 revenue: €25,000-50,000
+- Churn rate: <10% monthly
 
 ### Client success
 - Execution score: from <40% to >75% in 12 weeks
-- Retention: >70% continue with hosting + add-ons
-- 3+ case studies with real numbers
+- Retention: >80% continue after first 12-week cycle
+- Average client lifetime: 6+ months
+
+### Self-learning metrics
+- Cross-client patterns identified: 10+ actionable insights by month 6
+- System prompt improvements: monthly updates based on data
+- Execution score improvement rate: increases with each cohort
 
 ---
 
@@ -790,16 +1086,20 @@ This plan is built by someone who builds plans.
 
 **The confrontation:**
 
-Phase 1: build it, use it, prove it works on yourself.
-Phase 2: Publish Engine runs parallel because it's YOUR GTM tool, not procrastination.
-Validation scorecard: 150 → 30 → 10 → 3. If the numbers don't hit, stop building and fix your positioning.
+Phase 1 is simpler than v4.1. No VPS provisioning. No Caddy configs. No per-client Docker deploys. One Supabase schema, one n8n instance, one Telegram bot. The multi-tenant architecture removes 60% of the build work.
 
-Everything that isn't Phase 1 or content creation is procrastination dressed up as planning.
+**What you're actually building in Phase 1:**
+1. A Supabase schema (copy-paste from section 10.4)
+2. A Telegram bot (5 minutes via @BotFather)
+3. One n8n workflow (Telegram → Claude API → Telegram, with tenant routing)
+4. Three cron workflows (morning, check-in, weekly review)
 
-**The test:** If you're working on something and Thomas wouldn't care about it, you're working on the wrong thing. Thomas cares about his execution score. Build that.
+That's it. That's the product. Everything else is growth.
+
+**The test:** If Thomas can't go from "I'm interested" to "I have an execution score" in under 10 minutes, the product isn't ready.
 
 Ship Phase 1. Then we talk about Phase 3.
 
 ---
 
-*This document supersedes all prior versions (v1–v4), CLAUDE-CODE-BUILD.md, SCORECARD-BUILD.md, PA Platform spec, all Publish Engine research artifacts, and all prior masterplan documents. Four engines. One plan. One sequence. Reviewed by 4-agent debate.*
+*This document supersedes all prior versions (v1–v4.1). One system, all clients, self-learning. Reviewed and rebuilt after 4-agent debate.*
