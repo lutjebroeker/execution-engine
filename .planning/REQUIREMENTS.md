@@ -14,10 +14,10 @@ Requirements for milestone v2.0 (Phases 6–9).
 
 ### Telegram Bot — EE Core
 
-- [ ] **BOT-01**: Telegram bot created via @BotFather and connected to n8n webhook trigger
-- [ ] **BOT-02**: Every inbound Telegram message is routed to the correct tenant via chat_id → tenant_id lookup in Supabase
-- [ ] **BOT-03**: Claude API tool-use agent processes tenant messages with tools: manage_goal, log_progress, get_goals_overview, save_memory, search_memory, web_search
-- [ ] **BOT-04**: Self-service /start onboarding: bot asks intake questions (3 goals, work schedule, preferred check-in time) → tenant row created in Supabase → "Your system is live. First briefing tomorrow at 07:30."
+- [x] **BOT-01**: Telegram bot created via @BotFather and connected to n8n webhook trigger
+- [x] **BOT-02**: Every inbound Telegram message is routed to the correct tenant via chat_id → tenant_id lookup in Supabase
+- [x] **BOT-03**: Claude API tool-use agent processes tenant messages with tools: manage_goal, log_progress, get_goals_overview, save_memory, search_memory, web_search
+- [x] **BOT-04**: Self-service /start onboarding: bot asks intake questions (3 goals, work schedule, preferred check-in time) → tenant row created in Supabase → "Your system is live. First briefing tomorrow at 07:30."
 
 ### Crons
 
@@ -118,10 +118,10 @@ Populated by roadmapper. Updated as phases complete.
 |-------------|-------|--------|
 | INFRA-01 | Phase 6 | Complete |
 | INFRA-02 | Phase 6 | Complete |
-| BOT-01 | Phase 6 | Pending |
-| BOT-02 | Phase 6 | Pending |
-| BOT-03 | Phase 6 | Pending |
-| BOT-04 | Phase 6 | Pending |
+| BOT-01 | Phase 6 | Complete |
+| BOT-02 | Phase 6 | Complete |
+| BOT-03 | Phase 6 | Complete |
+| BOT-04 | Phase 6 | Complete |
 | CRON-01 | Phase 6 | Complete |
 | CRON-02 | Phase 6 | Complete |
 | CRON-03 | Phase 6 | Complete |
