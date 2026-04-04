@@ -27,9 +27,9 @@ Requirements for milestone v2.0 (Phases 6–9).
 
 ### Execution Engine Features
 
-- [ ] **EE-01**: User can manage 12-week goals with milestones via natural Telegram conversation (Claude tools handle CRUD)
-- [ ] **EE-02**: Daily execution score calculated and stored in daily_priorities.execution_score
-- [ ] **EE-03**: Weekly pattern detection: system identifies recurring low-execution days and surfaces patterns in weekly review (e.g. "Wednesday is your worst day for 3 weeks running")
+- [x] **EE-01**: User can manage 12-week goals with milestones via natural Telegram conversation (Claude tools handle CRUD)
+- [x] **EE-02**: Daily execution score calculated and stored in daily_priorities.execution_score
+- [x] **EE-03**: Weekly pattern detection: system identifies recurring low-execution days and surfaces patterns in weekly review (e.g. "Wednesday is your worst day for 3 weeks running")
 
 ### Scorecard Wiring
 
@@ -125,9 +125,9 @@ Populated by roadmapper. Updated as phases complete.
 | CRON-01 | Phase 6 | Complete |
 | CRON-02 | Phase 6 | Complete |
 | CRON-03 | Phase 6 | Complete |
-| EE-01 | Phase 6 | Pending |
-| EE-02 | Phase 6 | Pending |
-| EE-03 | Phase 6 | Pending |
+| EE-01 | Phase 6 | Complete |
+| EE-02 | Phase 6 | Complete |
+| EE-03 | Phase 6 | Complete |
 | SCORE-01 | Phase 7 | Pending |
 | SCORE-02 | Phase 7 | Pending |
 | SCORE-03 | Phase 7 | Pending |

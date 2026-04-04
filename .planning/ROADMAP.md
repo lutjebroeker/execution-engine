@@ -12,7 +12,7 @@ Four phases that turn a validated single-user system into a multi-tenant SaaS an
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 6: Multi-tenant EE Core** - Multi-tenant Supabase schema, Telegram bot with Claude tool-use agent, three cron loops, and self-service onboarding — dogfooded by Jelle for 2+ weeks to produce real execution scores
+- [x] **Phase 6: Multi-tenant EE Core** - Multi-tenant Supabase schema, Telegram bot with Claude tool-use agent, three cron loops, and self-service onboarding — dogfooded by Jelle for 2+ weeks to produce real execution scores (completed 2026-04-04)
 - [ ] **Phase 7: Publish Engine + Scorecard Wiring** - Scorecard submissions land in Supabase, Jelle gets notified and can approve LinkedIn/X posts via Telegram for automatic publishing
 - [ ] **Phase 8: Stripe + Launch** - Stripe checkout-to-tenant automation and landing page updates — a stranger can go from post to paying client without Jelle doing anything manually
 - [ ] **Phase 9: Scale + Intelligence Engine** - IE MVP briefing delivered weekly to Jelle; self-learning pattern aggregator runs monthly and surfaces actionable system prompt improvements
@@ -93,7 +93,7 @@ Phases execute in numeric order: 6 → 7 → 8 → 9
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 6. Multi-tenant EE Core | 3/4 | In Progress|  |
+| 6. Multi-tenant EE Core | 4/4 | Complete   | 2026-04-04 |
 | 7. Publish Engine + Scorecard Wiring | 0/4 | Not started | - |
 | 8. Stripe + Launch | 0/3 | Not started | - |
 | 9. Scale + Intelligence Engine | 0/2 | Not started | - |

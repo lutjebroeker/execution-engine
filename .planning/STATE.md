@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Engine Ecosystem Multi-tenant SaaS
 status: in_progress
-stopped_at: "Completed 06-multi-tenant-ee-core/06-02-PLAN.md"
-last_updated: "2026-04-04T12:30:05Z"
+stopped_at: "Completed 06-multi-tenant-ee-core/06-04-PLAN.md"
+last_updated: "2026-04-04T12:49:00Z"
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 13
-  completed_plans: 3
+  completed_plans: 4
 ---
 
 # Project State
@@ -24,12 +24,12 @@ See: .planning/PROJECT.md (updated 2026-04-04)
 ## Current Position
 
 Phase: 6 — Multi-tenant EE Core
-Plan: 06-02 complete (3/4)
-Status: In progress — 06-01 + 06-02 + 06-03 complete, 06-04 next
-Last activity: 2026-04-04 — 06-02 complete: 40-node Telegram bot + Claude tool-use agent, /start onboarding, 6 Supabase-backed tools
+Plan: 06-04 complete (4/4)
+Status: Phase 6 code complete — pending human verification (Task 3 of 06-04)
+Last activity: 2026-04-04 — 06-04 complete: check-in response handler, goal CRUD tooling, weekly pattern detection seed data
 
 ```
-[###       ] Phase 6 — Multi-tenant EE Core (3/4 plans)
+[####      ] Phase 6 — Multi-tenant EE Core (4/4 plans — pending human verification)
 [          ] Phase 7 — Publish Engine + Scorecard Wiring
 [          ] Phase 8 — Stripe + Launch
 [          ] Phase 9 — Scale + Intelligence Engine
@@ -58,6 +58,12 @@ Phases 1–4 completed. Phase 5 (Hosted VPS Package) superseded by multi-tenant 
 2. Onboarding state in n8n staticData keyed by chat_id — avoids tenant_id FK constraint during multi-step onboarding
 3. Dual Claude API call pattern — first call for tool selection, second call with tool_result for final user response
 4. Returning /start guard: existing tenants receive "You're already set up" instead of triggering new onboarding
+
+## Decisions (06-04)
+
+1. Check-in routing uses Supabase query gate (checkin_sent_at not null + checkin_completed_at is null) as authoritative check — not regex alone — avoids false positives
+2. Tone-aware ack messages built in Code node (no extra Claude call) — faster daily interaction, no latency spike
+3. Checkpoint Task 3 (human verification of all 6 SC) deferred — Phase 6 code complete, pending Jelle's verification pass
 
 ## Decisions (06-03)
 
