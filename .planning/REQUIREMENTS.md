@@ -21,9 +21,9 @@ Requirements for milestone v2.0 (Phases 6–9).
 
 ### Crons
 
-- [ ] **CRON-01**: Morning briefing cron (07:00, configurable per tenant) loops all active tenants and sends personalized AI-generated daily priorities aligned to their goals
-- [ ] **CRON-02**: Accountability check-in cron (17:00) loops all active tenants and asks "Did you complete what you said this morning?"
-- [ ] **CRON-03**: Weekly review cron (Sunday 18:00) generates execution score (% lead actions completed) + pattern analysis per tenant, stores in weekly_reviews, sends to Telegram
+- [x] **CRON-01**: Morning briefing cron (07:00, configurable per tenant) loops all active tenants and sends personalized AI-generated daily priorities aligned to their goals
+- [x] **CRON-02**: Accountability check-in cron (17:00) loops all active tenants and asks "Did you complete what you said this morning?"
+- [x] **CRON-03**: Weekly review cron (Sunday 18:00) generates execution score (% lead actions completed) + pattern analysis per tenant, stores in weekly_reviews, sends to Telegram
 
 ### Execution Engine Features
 
@@ -122,9 +122,9 @@ Populated by roadmapper. Updated as phases complete.
 | BOT-02 | Phase 6 | Pending |
 | BOT-03 | Phase 6 | Pending |
 | BOT-04 | Phase 6 | Pending |
-| CRON-01 | Phase 6 | Pending |
-| CRON-02 | Phase 6 | Pending |
-| CRON-03 | Phase 6 | Pending |
+| CRON-01 | Phase 6 | Complete |
+| CRON-02 | Phase 6 | Complete |
+| CRON-03 | Phase 6 | Complete |
 | EE-01 | Phase 6 | Pending |
 | EE-02 | Phase 6 | Pending |
 | EE-03 | Phase 6 | Pending |

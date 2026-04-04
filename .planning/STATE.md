@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Engine Ecosystem Multi-tenant SaaS
 status: in_progress
-stopped_at: "Completed 06-multi-tenant-ee-core/06-01-PLAN.md"
-last_updated: "2026-04-04T08:30:35Z"
+stopped_at: "Completed 06-multi-tenant-ee-core/06-03-PLAN.md"
+last_updated: "2026-04-04T12:20:04Z"
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 13
-  completed_plans: 1
+  completed_plans: 2
 ---
 
 # Project State
@@ -24,12 +24,12 @@ See: .planning/PROJECT.md (updated 2026-04-04)
 ## Current Position
 
 Phase: 6 — Multi-tenant EE Core
-Plan: 06-01 complete (1/4)
-Status: In progress — 06-01 complete, 06-02 next
-Last activity: 2026-04-04 — 06-01 complete: 9-table multi-tenant schema deployed to Supabase, n8n webhook routing confirmed
+Plan: 06-03 complete (2/4)
+Status: In progress — 06-01 + 06-03 complete, 06-02 next
+Last activity: 2026-04-04 — 06-03 complete: three n8n cron workflows (morning briefing 07:00, check-in 17:00, weekly review Sunday 18:00)
 
 ```
-[#         ] Phase 6 — Multi-tenant EE Core (1/4 plans)
+[##        ] Phase 6 — Multi-tenant EE Core (2/4 plans)
 [          ] Phase 7 — Publish Engine + Scorecard Wiring
 [          ] Phase 8 — Stripe + Launch
 [          ] Phase 9 — Scale + Intelligence Engine
@@ -51,6 +51,13 @@ Phases 1–4 completed. Phase 5 (Hosted VPS Package) superseded by multi-tenant 
 - scorecard (/score) built but not wired to Supabase + n8n yet — SCORE-01/02 complete this
 - 22 AM workflows in bundle — ~70% reusable as basis for new Telegram agent
 - Proxmox available for n8n + Ollama + Postiz deployments
+
+## Decisions (06-03)
+
+1. SplitInBatches(batchSize=1) for tenant loop in all 3 cron workflows — most reliable n8n pattern for sequential per-tenant processing
+2. Check-in response routing (parsing user replies, updating completed fields + execution_score) deferred to 06-02 (telegram-bot-agent) — crons only send messages
+3. Weekly execution score = average of daily scores for days with check-in only; days without check-in excluded from average
+4. claude-haiku-4-5 used for both briefing and weekly review generation (fast, low cost)
 
 ## Decisions (06-01)
 
