@@ -29,11 +29,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. On Sunday at 18:00 Jelle receives his weekly execution score (a real percentage, not a placeholder) and a pattern observation about his week
   4. Jelle can tell the bot "add goal: ship Phase 7 by April 30" and it creates the goal; he can ask "what are my goals?" and get an accurate list back
   5. A second person completes /start onboarding via the same bot link and receives their own isolated briefings — Jelle's data is never shown to them
+  6. Jelle tells the bot "remember: I do deep work best before 10:00" and it saves to memory; later asking "what do you know about my schedule?" retrieves it — memory persists across sessions
 **Plans**: TBD
 
 Plans:
 - [ ] 06-01: Infrastructure — Supabase multi-tenant schema + RLS (INFRA-01, INFRA-02)
-- [ ] 06-02: Telegram bot + Claude tool-use agent + /start onboarding (BOT-01, BOT-02, BOT-03, BOT-04)
+- [ ] 06-02: Telegram bot + Claude tool-use agent + /start onboarding + memory tools (BOT-01, BOT-02, BOT-03, BOT-04) — agent tools include manage_goal, log_progress, get_goals_overview, save_memory, search_memory, web_search
 - [ ] 06-03: Cron loops — morning briefing, accountability check-in, weekly review (CRON-01, CRON-02, CRON-03)
 - [ ] 06-04: EE features — goal tracking, execution score, pattern detection (EE-01, EE-02, EE-03)
 
