@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Engine Ecosystem Multi-tenant SaaS
-status: roadmap_ready
-stopped_at: Roadmap created — ready to plan Phase 6
-last_updated: "2026-04-04T00:00:00.000Z"
+status: in_progress
+stopped_at: "Completed 06-multi-tenant-ee-core/06-01-PLAN.md"
+last_updated: "2026-04-04T08:30:35Z"
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 13
-  completed_plans: 0
+  completed_plans: 1
 ---
 
 # Project State
@@ -24,12 +24,12 @@ See: .planning/PROJECT.md (updated 2026-04-04)
 ## Current Position
 
 Phase: 6 — Multi-tenant EE Core
-Plan: Not started
-Status: Roadmap ready — awaiting phase planning
-Last activity: 2026-04-04 — v2.0 roadmap created (4 phases, 13 plans, 27 requirements mapped)
+Plan: 06-01 complete (1/4)
+Status: In progress — 06-01 complete, 06-02 next
+Last activity: 2026-04-04 — 06-01 complete: 9-table multi-tenant schema deployed to Supabase, n8n webhook routing confirmed
 
 ```
-[          ] Phase 6 — Multi-tenant EE Core
+[#         ] Phase 6 — Multi-tenant EE Core (1/4 plans)
 [          ] Phase 7 — Publish Engine + Scorecard Wiring
 [          ] Phase 8 — Stripe + Launch
 [          ] Phase 9 — Scale + Intelligence Engine
@@ -51,6 +51,13 @@ Phases 1–4 completed. Phase 5 (Hosted VPS Package) superseded by multi-tenant 
 - scorecard (/score) built but not wired to Supabase + n8n yet — SCORE-01/02 complete this
 - 22 AM workflows in bundle — ~70% reusable as basis for new Telegram agent
 - Proxmox available for n8n + Ollama + Postiz deployments
+
+## Decisions (06-01)
+
+1. Apply migrations via `docker exec` on remote Postgres — port 8032 maps to Supavisor pooler, not raw Postgres
+2. `score_submissions` gets RLS enabled with anon INSERT policy — engine-site scorecard submissions don't need auth
+3. `system_patterns` has no RLS — internal cross-tenant table, service_role only
+4. seed.sql uses `telegram_chat_id=0` placeholder — replace with real chat ID before running `/start`
 
 ## Open Decisions
 

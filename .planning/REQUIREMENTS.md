@@ -9,8 +9,8 @@ Requirements for milestone v2.0 (Phases 6–9).
 
 ### Infrastructure
 
-- [ ] **INFRA-01**: Supabase multi-tenant schema deployed — tenants, conversations, goals, goal_logs, daily_priorities, weekly_reviews, memory, system_patterns, score_submissions — all with tenant_id + RLS enabled
-- [ ] **INFRA-02**: n8n running on Proxmox with Cloudflare Tunnel providing a stable public webhook URL (n8n.jellespek.nl or equivalent)
+- [x] **INFRA-01**: Supabase multi-tenant schema deployed — tenants, conversations, goals, goal_logs, daily_priorities, weekly_reviews, memory, system_patterns, score_submissions — all with tenant_id + RLS enabled
+- [x] **INFRA-02**: n8n running on Proxmox with Cloudflare Tunnel providing a stable public webhook URL (n8n.jellespek.nl or equivalent)
 
 ### Telegram Bot — EE Core
 
@@ -116,8 +116,8 @@ Populated by roadmapper. Updated as phases complete.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INFRA-01 | Phase 6 | Pending |
-| INFRA-02 | Phase 6 | Pending |
+| INFRA-01 | Phase 6 | Complete |
+| INFRA-02 | Phase 6 | Complete |
 | BOT-01 | Phase 6 | Pending |
 | BOT-02 | Phase 6 | Pending |
 | BOT-03 | Phase 6 | Pending |
