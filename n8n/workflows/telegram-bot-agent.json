@@ -127,7 +127,7 @@
       "typeVersion": 2,
       "position": [1340, 300],
       "parameters": {
-        "jsCode": "const tenantLookupItems = $('Lookup Tenant').all();\nconst tenant = tenantLookupItems[0]?.json;\nconst chat_id = $('Extract Message Data').item.json.chat_id;\nconst userText = $('Extract Message Data').item.json.text;\n\nconst toneDescriptions = {\n  direct: 'direct (Alex Hormozi-style — blunt, no fluff)',\n  warm: 'warm (encouraging, personal, supportive)',\n  professional: 'professional (neutral, structured, data-focused)'\n};\nconst toneDesc = toneDescriptions[tenant.tone] || tenant.tone || 'direct';\n\nconst systemPrompt = `You are ${tenant.persona_name || 'Coach'}, an AI accountability coach. Your tone is ${toneDesc}.\\n\\nTone styles:\\n- direct: Alex Hormozi-style. Blunt, no fluff. Call out missed commitments plainly.\\n- warm: Encouraging, personal, supportive. Celebrate wins.\\n- professional: Neutral, structured. Data-focused.\\n\\nYour job: Help the user manage their 12-week goals, track daily execution, and stay accountable.\\n\\nDuring free-form chat: interpret as a goal/memory/progress action. Confirm the action, execute it, then get out of the way. Do not ramble.\\n\\nWhen user misses a commitment or reports low execution (direct tone): \"You said you'd do X. You didn't. What's the plan tomorrow?\"`;\n\nconst historyItems = $input.all();\nconst history = historyItems\n  .map(i => i.json)\n  .filter(m => m.role && m.content)\n  .reverse();\n\nconst messages = [\n  ...history.map(m => ({ role: m.role, content: m.content })),\n  { role: 'user', content: userText }\n];\n\nconst tools = [\n  {\n    name: 'manage_goal',\n    description: 'Create, update, or delete a 12-week goal.',\n    input_schema: {\n      type: 'object',\n      properties: {\n        action: { type: 'string', enum: ['create', 'update', 'delete'] },\n        title: { type: 'string' },\n        description: { type: 'string' },\n        deadline: { type: 'string', description: 'ISO date YYYY-MM-DD' },\n        status: { type: 'string', enum: ['active', 'completed', 'paused'] },\n        progress_pct: { type: 'integer', minimum: 0, maximum: 100 },\n        goal_id: { type: 'string', description: 'UUID — required for update/delete' }\n      },\n      required: ['action']\n    }\n  },\n  {\n    name: 'log_progress',\n    description: 'Log a progress note against a goal.',\n    input_schema: {\n      type: 'object',\n      properties: {\n        goal_id: { type: 'string' },\n        log_type: { type: 'string', enum: ['progress', 'milestone', 'note', 'status_change'] },\n        content: { type: 'string' }\n      },\n      required: ['goal_id', 'log_type', 'content']\n    }\n  },\n  {\n    name: 'get_goals_overview',\n    description: 'Retrieve all active goals with progress.',\n    input_schema: {\n      type: 'object',\n      properties: {}\n    }\n  },\n  {\n    name: 'save_memory',\n    description: 'Save something the user wants remembered across sessions.',\n    input_schema: {\n      type: 'object',\n      properties: {\n        content: { type: 'string' },\n        tags: { type: 'array', items: { type: 'string' } }\n      },\n      required: ['content']\n    }\n  },\n  {\n    name: 'search_memory',\n    description: 'Search saved memories by keyword.',\n    input_schema: {\n      type: 'object',\n      properties: {\n        query: { type: 'string' }\n      },\n      required: ['query']\n    }\n  },\n  {\n    name: 'web_search',\n    description: 'Search the web. Use sparingly — only when user explicitly asks.',\n    input_schema: {\n      type: 'object',\n      properties: {\n        query: { type: 'string' }\n      },\n      required: ['query']\n    }\n  }\n];\n\nreturn [{\n  json: {\n    tenant_id: tenant.id,\n    tenant_chat_id: chat_id,\n    system_prompt: systemPrompt,\n    messages: messages,\n    tools: tools,\n    user_text: userText\n  }\n}];"
+        "jsCode": "const tenantLookupItems = $('Lookup Tenant').all();\nconst tenant = tenantLookupItems[0]?.json;\nconst chat_id = $('Extract Message Data').item.json.chat_id;\nconst userText = $('Extract Message Data').item.json.text;\n\nconst toneDescriptions = {\n  direct: 'direct (Alex Hormozi-style — blunt, no fluff)',\n  warm: 'warm (encouraging, personal, supportive)',\n  professional: 'professional (neutral, structured, data-focused)'\n};\nconst toneDesc = toneDescriptions[tenant.tone] || tenant.tone || 'direct';\n\nconst systemPrompt = `You are ${tenant.persona_name || 'Coach'}, an AI accountability coach. Your tone is ${toneDesc}.\\n\\nTone styles:\\n- direct: Alex Hormozi-style. Blunt, no fluff. Call out missed commitments plainly.\\n- warm: Encouraging, personal, supportive. Celebrate wins.\\n- professional: Neutral, structured. Data-focused.\\n\\nYour job: Help the user manage their 12-week goals, track daily execution, and stay accountable.\\n\\nDuring free-form chat: interpret as a goal/memory/progress action. Confirm the action, execute it, then get out of the way. Do not ramble.\\n\\nWhen user misses a commitment or reports low execution (direct tone): \"You said you'd do X. You didn't. What's the plan tomorrow?\"\\n\\n## Tool Rules\\n\\nFor update/delete actions on goals: ALWAYS call get_goals_overview first to find the goal_id, then call manage_goal with the resolved UUID.\\nWhen marking a goal completed: call manage_goal(action: update, status: completed) AND log_progress(log_type: status_change).\\nFor vague progress updates: call log_progress(log_type: note).\\nWhen showing goals: format as numbered list with progress percentage — never return raw JSON.`;\n\nconst historyItems = $input.all();\nconst history = historyItems\n  .map(i => i.json)\n  .filter(m => m.role && m.content)\n  .reverse();\n\nconst messages = [\n  ...history.map(m => ({ role: m.role, content: m.content })),\n  { role: 'user', content: userText }\n];\n\nconst tools = [\n  {\n    name: 'manage_goal',\n    description: 'Create, update, or delete a 12-week goal. For update/delete, goal_id is required — call get_goals_overview first if you only have the title.',\n    input_schema: {\n      type: 'object',\n      properties: {\n        action: { type: 'string', enum: ['create', 'update', 'delete'] },\n        title: { type: 'string' },\n        description: { type: 'string' },\n        deadline: { type: 'string', description: 'ISO date YYYY-MM-DD' },\n        status: { type: 'string', enum: ['active', 'completed', 'paused'] },\n        progress_pct: { type: 'integer', minimum: 0, maximum: 100 },\n        goal_id: { type: 'string', description: 'UUID — required for update/delete' }\n      },\n      required: ['action']\n    }\n  },\n  {\n    name: 'log_progress',\n    description: 'Log a progress note against a goal. Use goal_id (UUID). log_type: progress (numeric update), milestone, note (vague update), status_change (when status changes).',\n    input_schema: {\n      type: 'object',\n      properties: {\n        goal_id: { type: 'string' },\n        log_type: { type: 'string', enum: ['progress', 'milestone', 'note', 'status_change'] },\n        content: { type: 'string' }\n      },\n      required: ['goal_id', 'log_type', 'content']\n    }\n  },\n  {\n    name: 'get_goals_overview',\n    description: 'Retrieve all active goals with progress. Call this to show goals OR to find a goal_id before updating/completing/deleting.',\n    input_schema: {\n      type: 'object',\n      properties: {}\n    }\n  },\n  {\n    name: 'save_memory',\n    description: 'Save something the user wants remembered across sessions.',\n    input_schema: {\n      type: 'object',\n      properties: {\n        content: { type: 'string' },\n        tags: { type: 'array', items: { type: 'string' } }\n      },\n      required: ['content']\n    }\n  },\n  {\n    name: 'search_memory',\n    description: 'Search saved memories by keyword.',\n    input_schema: {\n      type: 'object',\n      properties: {\n        query: { type: 'string' }\n      },\n      required: ['query']\n    }\n  },\n  {\n    name: 'web_search',\n    description: 'Search the web. Use sparingly — only when user explicitly asks.',\n    input_schema: {\n      type: 'object',\n      properties: {\n        query: { type: 'string' }\n      },\n      required: ['query']\n    }\n  }\n];\n\nreturn [{\n  json: {\n    tenant_id: tenant.id,\n    tenant_chat_id: chat_id,\n    system_prompt: systemPrompt,\n    messages: messages,\n    tools: tools,\n    user_text: userText\n  }\n}];"
       }
     },
     {
@@ -865,6 +865,113 @@
         "jsonBody": "={\n  \"chat_id\": {{ $json.chat_id }},\n  \"text\": \"You're already set up. Use /help to see what I can do.\"\n}",
         "options": {}
       }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000041",
+      "name": "Check-in Reply Routing",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1120, 200],
+      "parameters": {
+        "jsCode": "// Determine if this message is a check-in reply.\n// Conditions: tenant has checkin_sent_at today AND checkin_completed_at is null\n// AND message looks like a check-in reply (numbers, 'all', 'none').\n\nconst tenantLookupItems = $('Lookup Tenant').all();\nconst tenant = tenantLookupItems[0]?.json;\nconst userText = $('Extract Message Data').item.json.text?.trim().toLowerCase() || '';\n\nif (!tenant) {\n  return [{ json: { is_checkin_reply: false } }];\n}\n\n// Check if today's daily_priorities row has checkin_sent_at set but checkin_completed_at null\nconst today = new Date().toISOString().split('T')[0];\n\n// Look at the tenant's checkin status — we'll check Supabase in the next node\n// For now, determine if text pattern matches a check-in reply\nconst isNumberPattern = /^[\\d\\s,]+$/.test(userText); // e.g. \"1 3\", \"1,2,3\", \"2\"\nconst isAllNone = userText === 'all' || userText === 'none';\nconst looksLikeCheckin = isNumberPattern || isAllNone;\n\nreturn [{\n  json: {\n    tenant_id: tenant.id,\n    tenant_chat_id: tenant.telegram_chat_id,\n    tenant_tone: tenant.tone || 'direct',\n    persona_name: tenant.persona_name || 'Coach',\n    user_text: userText,\n    today,\n    looksLikeCheckin\n  }\n}];"
+      }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000042",
+      "name": "Get Today Priorities for Checkin",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [1340, 160],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/daily_priorities?tenant_id=eq.{{ $json.tenant_id }}&date=eq.{{ $json.today }}&checkin_sent_at=not.is.null&checkin_completed_at=is.null&select=*",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "={{ $env.SUPABASE_SERVICE_ROLE_KEY }}" },
+            { "name": "Authorization", "value": "=Bearer {{ $env.SUPABASE_SERVICE_ROLE_KEY }}" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000043",
+      "name": "Is Check-in Reply?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1560, 160],
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "strict" },
+          "conditions": [
+            {
+              "id": "cond-has-row",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": { "type": "string", "operation": "notEmpty" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000044",
+      "name": "Parse Checkin Reply",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1780, 100],
+      "parameters": {
+        "jsCode": "const dailyRow = $input.first().json;\nconst checkinData = $('Check-in Reply Routing').item.json;\nconst userText = checkinData.user_text;\n\nconst priorities = dailyRow.priorities || [];\nconst total = priorities.length;\n\n// Parse the reply\nlet completedIndices = new Set();\n\nif (userText === 'all') {\n  for (let i = 0; i < total; i++) completedIndices.add(i);\n} else if (userText === 'none') {\n  // No indices — all false\n} else {\n  // Parse numbers like \"1 3\" or \"1,2,3\" or \"2\" — 1-indexed\n  const nums = userText.split(/[\\s,]+/).map(n => parseInt(n.trim(), 10)).filter(n => !isNaN(n));\n  nums.forEach(n => {\n    if (n >= 1 && n <= total) completedIndices.add(n - 1); // convert to 0-indexed\n  });\n}\n\n// Update priorities with completed flags\nconst updatedPriorities = priorities.map((p, i) => ({\n  ...p,\n  completed: completedIndices.has(i)\n}));\n\n// Calculate execution score: completed / total * 100, round to 1 decimal\nconst completedCount = completedIndices.size;\nconst executionScore = total > 0 ? Math.round((completedCount / total) * 1000) / 10 : 0;\n\n// Build acknowledgment message based on tone and score\nconst tone = checkinData.tenant_tone;\nconst persona = checkinData.persona_name;\nlet ackMessage;\n\nif (executionScore >= 80) {\n  if (tone === 'warm') {\n    ackMessage = `${completedCount}/${total} — that's a solid day. Keep building on that momentum.`;\n  } else if (tone === 'professional') {\n    ackMessage = `Execution: ${executionScore}%. ${completedCount}/${total} priorities completed. Strong result.`;\n  } else { // direct\n    ackMessage = `${completedCount}/${total}. Good. Keep that up.`;\n  }\n} else if (executionScore >= 50) {\n  if (tone === 'warm') {\n    ackMessage = `${completedCount}/${total} today. Progress. What will you close out tomorrow?`;\n  } else if (tone === 'professional') {\n    ackMessage = `Execution: ${executionScore}%. ${completedCount}/${total} priorities completed. Room to improve.`;\n  } else { // direct\n    ackMessage = `${completedCount}/${total}. Decent, not great. What's on the list tomorrow?`;\n  }\n} else {\n  // Below 50% — callout\n  const missedItems = updatedPriorities\n    .filter(p => !p.completed)\n    .map(p => p.text)\n    .slice(0, 2); // name at most 2 missed items\n  const missedText = missedItems.length > 0 ? ` You didn't do: ${missedItems.join(', ')}.` : '';\n\n  if (tone === 'warm') {\n    ackMessage = `${completedCount}/${total} today.${missedText} What got in the way, and what's the plan tomorrow?`;\n  } else if (tone === 'professional') {\n    ackMessage = `Execution: ${executionScore}%. ${completedCount}/${total} completed.${missedText} Plan corrections for tomorrow.`;\n  } else { // direct\n    ackMessage = `${completedCount}/${total}.${missedText} You said you'd do it. What's the plan tomorrow?`;\n  }\n}\n\nreturn [{\n  json: {\n    tenant_id: checkinData.tenant_id,\n    tenant_chat_id: checkinData.tenant_chat_id,\n    today: checkinData.today,\n    updatedPriorities,\n    executionScore,\n    completedCount,\n    total,\n    ackMessage\n  }\n}];"
+      }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000045",
+      "name": "Update Daily Priorities with Score",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [2000, 100],
+      "parameters": {
+        "method": "PATCH",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/daily_priorities?tenant_id=eq.{{ $json.tenant_id }}&date=eq.{{ $json.today }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "={{ $env.SUPABASE_SERVICE_ROLE_KEY }}" },
+            { "name": "Authorization", "value": "=Bearer {{ $env.SUPABASE_SERVICE_ROLE_KEY }}" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"priorities\": {{ JSON.stringify($json.updatedPriorities) }},\n  \"execution_score\": {{ $json.executionScore }},\n  \"checkin_completed_at\": \"{{ $now.toISO() }}\"\n}",
+        "options": {}
+      }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000046",
+      "name": "Send Checkin Acknowledgment",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [2220, 100],
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.telegram.org/bot{{ $env.TELEGRAM_BOT_TOKEN }}/sendMessage",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"chat_id\": {{ $('Parse Checkin Reply').item.json.tenant_chat_id }},\n  \"text\": \"{{ $('Parse Checkin Reply').item.json.ackMessage.replace(/\"/g, '\\\\\"') }}\"\n}",
+        "options": {}
+      }
     }
   ],
   "connections": {
@@ -913,7 +1020,45 @@
           { "node": "Send Already Set Up Reply", "type": "main", "index": 0 }
         ],
         [
+          { "node": "Check-in Reply Routing", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Check-in Reply Routing": {
+      "main": [
+        [
+          { "node": "Get Today Priorities for Checkin", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get Today Priorities for Checkin": {
+      "main": [
+        [
+          { "node": "Is Check-in Reply?", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Is Check-in Reply?": {
+      "main": [
+        [
+          { "node": "Parse Checkin Reply", "type": "main", "index": 0 }
+        ],
+        [
           { "node": "Get Conversation History", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Parse Checkin Reply": {
+      "main": [
+        [
+          { "node": "Update Daily Priorities with Score", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Update Daily Priorities with Score": {
+      "main": [
+        [
+          { "node": "Send Checkin Acknowledgment", "type": "main", "index": 0 }
         ]
       ]
     },
